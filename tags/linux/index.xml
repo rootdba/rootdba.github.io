@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 牧人池塘</title>
+    <link>https://rootdba.github.io/tags/linux/</link>
+    <description>Recent content in Linux on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://rootdba.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux系统dig和nslookup及iftop的安装</title>
+      <link>https://rootdba.github.io/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootdba.github.io/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
+    </item>
+    
+  </channel>
+</rss>
