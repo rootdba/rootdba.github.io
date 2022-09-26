@@ -1,3 +1,3 @@
-**The is dbsing Web Log.**
+**The is rootdba Web Log.**
 
-https://dbsing.github.io/about/
+https://rootdba.github.io/about/
