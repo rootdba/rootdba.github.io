@@ -1,3 +1,3 @@
-**The is rootdba Web Log.**
+**The is rootdba Web Log**
 
-https://rootdba.github.io/about/
+https://rootdba.github.io/about
