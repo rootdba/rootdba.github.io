@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术 on 牧人池塘</title>
+    <link>https://rootdba.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 技术 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://rootdba.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux系统dig和nslookup及iftop的安装</title>
+      <link>https://rootdba.github.io/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootdba.github.io/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
+    </item>
+    
+    <item>
+      <title>对MVC模式的一些理解和看法</title>
+      <link>https://rootdba.github.io/notes/mvc-think/</link>
+      <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootdba.github.io/notes/mvc-think/</guid>
+      <description>模型 (Model) 模型代表了程序逻辑。（在企业级程序中经常称为业务层（business layer）） 总的来说，模型的任务是把原有数据转换成包含某些意义的</description>
+    </item>
+    
+  </channel>
+</rss>
