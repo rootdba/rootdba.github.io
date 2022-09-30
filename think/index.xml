@@ -6,7 +6,16 @@
     <description>Recent content in Thinks on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 01 Sep 2022 21:38:42 +0800</lastBuildDate><atom:link href="https://rootdba.github.io/think/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Sep 2022 11:08:55 +0800</lastBuildDate><atom:link href="https://rootdba.github.io/think/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>测试引用图片</title>
+      <link>https://rootdba.github.io/think/test1/</link>
+      <pubDate>Fri, 30 Sep 2022 11:08:55 +0800</pubDate>
+      
+      <guid>https://rootdba.github.io/think/test1/</guid>
+      <description>测试图片引用模式</description>
+    </item>
+    
     <item>
       <title>新开始，新起点</title>
       <link>https://rootdba.github.io/think/the/</link>
