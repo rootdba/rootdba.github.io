@@ -17,11 +17,29 @@
     </item>
     
     <item>
-      <title>技术</title>
-      <link>/categories/%E6%8A%80%E6%9C%AF/</link>
+      <title>Linux</title>
+      <link>/categories/linux/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>开发</title>
+      <link>/categories/%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游记</title>
+      <link>/categories/%E6%B8%B8%E8%AE%B0/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%E6%B8%B8%E8%AE%B0/</guid>
       <description></description>
     </item>
     

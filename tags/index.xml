@@ -17,11 +17,38 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
+      <title>dig</title>
+      <link>/tags/dig/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>/tags/linux/</guid>
+      <guid>/tags/dig/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dnsutils</title>
+      <link>/tags/dnsutils/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dnsutils/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iftop</title>
+      <link>/tags/iftop/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/iftop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nslookup</title>
+      <link>/tags/nslookup/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nslookup/</guid>
       <description></description>
     </item>
     
