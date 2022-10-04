@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Thinks - 勿在浮沙筑高台</title>
+        <title>故乡的雨雾和秋风秋雨 - 勿在浮沙筑高台</title>
         
         <style>
 
@@ -78,9 +78,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.102.2" />
         
-            <link href="/think/index.xml" rel="alternate" type="application/rss&#43;xml" title="牧人池塘" />
-            <link href="/think/index.xml" rel="feed" type="application/rss&#43;xml" title="牧人池塘" />
-        
 
         
 
@@ -101,7 +98,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Thinks</a>
+                    <a class="navbar-brand visible-xs" href="#">故乡的雨雾和秋风秋雨</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -142,37 +139,158 @@
 
 <main>
 
-    <h2>Thinks</h2>
+    <div>
+        <h2 class="title">故乡的雨雾和秋风秋雨</h2>
+		
+		 日期: 2022-08-01 
+		 
+		
+		  
+			 分类: <a href="/categories/%E6%84%9F%E6%82%9F">感悟</a>
+		   
+		
+		<br>
+		
+				<span>
+				<span id="/think/autumn/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
 
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4 class="title"><a href="/think/the/">新开始，新起点</a></h4>
-    <h5>2022-09-01</h5>
-    
-<a href="/tags/%E5%BC%80%E5%A7%8B"><kbd class="item-tag">开始</kbd></a>
 
 
+<script src="/js/av-core-mini-0.6.1.js"></script>
 
-</div>
-  <div class="item">
+<script>
+	AV.initialize("", "");
+</script>
 
-    
-    
-    
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
 
-    
-    
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
 
-    <h4 class="title"><a href="/think/autumn/">故乡的雨雾和秋风秋雨</a></h4>
-    <h5>2022-08-01</h5>
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
     
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+				</span></span><span class="post-date">全文共187字，</span>阅读完毕需<span class="more-meta"> 1 分钟</span>
+		
+		
+		
+</span>
+		<br>
+		Tags:
 <a href="/tags/%E9%9B%BE"><kbd class="item-tag">雾</kbd></a>
 
 <a href="/tags/%E6%95%85%E4%B9%A1"><kbd class="item-tag">故乡</kbd></a>
@@ -183,14 +301,22 @@
 
 <a href="/tags/%E7%A7%8B%E9%9B%A8"><kbd class="item-tag">秋雨</kbd></a>
 
-
-
-</div>
  
 
+    <div align="start" class="content"><p>秋天的时候，老家多雨，基本9&ndash;10月份算是北方的雨季，前半年没下的雨都放到9月底10月初下了。</p>
+<p>先一天下雨，下下停停成了连阴雨，连绵几天，空气中的湿度太大的时候，第二天雾就出现了，可见范围不到20米，宛如仙境。</p>
+<p><img src="/upfile/img/wu.jpg" alt=""></p>
+<p><img src="/upfile/img/wu1.jpg" alt=""></p>
+<p>大雾下成熟了的玉米，等着掰下</p>
+<p><img src="/upfile/img/wu2.jpg" alt=""></p>
+<p>秋菊迎着晨雾，等着太阳，争相开放</p>
+<p><img src="/upfile/img/wu3.jpg" alt=""></p>
+<p>喜欢老家黄土上的秋天，秋高气爽的那种感觉，看满山沟的红叶</p>
+<p>秋雨秋风的时候满地的黄叶…</p>
+<p>秋风扫落叶！</p>
+</div>
+
 </main>
-
-
 
 
 <footer>
