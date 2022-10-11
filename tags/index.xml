@@ -6,7 +6,43 @@
     <description>Recent content in Tags on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Sep 2022 21:38:42 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx</title>
+      <link>/tags/nginx/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>域名</title>
+      <link>/tags/%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%9F%9F%E5%90%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>禁止</title>
+      <link>/tags/%E7%A6%81%E6%AD%A2/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%A6%81%E6%AD%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>访问</title>
+      <link>/tags/%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%AE%BF%E9%97%AE/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>故乡</title>
       <link>/tags/%E6%95%85%E4%B9%A1/</link>

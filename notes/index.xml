@@ -6,7 +6,16 @@
     <description>Recent content in Notes on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx禁止ip直接访问或任意域名访问</title>
+      <link>/notes/nginx_default_site/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx_default_site/</guid>
+      <description>禁止未绑定的域名或任意域名直接访问： 1server 2{ 3 listen 80 default_server; 4 server_name _; # 默认server 5 return 500; 6} 对任意域名访问做301跳转： 1server { 2 listen 80 default_server; 3 server_name _; 4 return 301 https://www.test.com$request_uri; 5} 以上</description>
+    </item>
+    
     <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
       <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>

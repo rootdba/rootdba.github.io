@@ -3,10 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2022-09-12T21:38:42+08:00</lastmod>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nginx/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/nginx/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/nginx_default_site/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-09-12T21:38:42+08:00</lastmod>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%A6%81%E6%AD%A2/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%AE%BF%E9%97%AE/</loc>
+    <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/think/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
@@ -18,9 +42,6 @@
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
     <loc>/think/autumn/</loc>
-    <lastmod>2022-09-12T21:38:42+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
     <loc>/tags/%E7%A7%8B%E9%9B%A8/</loc>
@@ -57,9 +78,6 @@
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</loc>
-    <lastmod>2015-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/notes/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/nslookup/</loc>
