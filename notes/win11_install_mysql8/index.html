@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Win11部署MySQL Community Server 8.0.31 绿色免安装 - 勿在浮沙筑高台</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Lora', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: Green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="/css/google_fons.css?family=Lora">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/monokai.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.102.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+		
+
+		
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Win11部署MySQL Community Server 8.0.31 绿色免安装</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/" title="首页">首页</a></li>
+                            
+                                <li><a href="/notes/" title="记录">记录</a></li>
+                            
+                                <li><a href="/think/" title="感悟">感悟</a></li>
+                            
+                                <li><a href="/travels/" title="游记">游记</a></li>
+                            
+                                <li><a href="/about/" title="关于">关于</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/rootdba" title="fab fa-github"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/imlaoma/" title="fab fa-twitter"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://stackoverflow.com/users/12230740/ice/" title="fab fa-stack-overflow"><i class="fab fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2 class="title">Win11部署MySQL Community Server 8.0.31 绿色免安装</h2>
+		
+		 日期: 2022-10-12 
+		 
+		
+		  
+			 分类: <a href="/categories/mysql">MySQL</a>
+		   
+		
+		<br>
+		
+				<span>
+				<span id="/notes/win11_install_mysql8/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+				</span></span><span class="post-date">全文共939字，</span>阅读完毕需<span class="more-meta"> 2 分钟</span>
+		
+		
+		
+</span>
+		<br>
+		Tags:
+<a href="/tags/mysql"><kbd class="item-tag">MySQL</kbd></a>
+
+<a href="/tags/%E5%AE%89%E8%A3%85"><kbd class="item-tag">安装</kbd></a>
+
+<a href="/tags/win11"><kbd class="item-tag">Win11</kbd></a>
+
+<a href="/tags/%E7%BB%BF%E8%89%B2"><kbd class="item-tag">绿色</kbd></a>
+
+<a href="/tags/%E9%83%A8%E7%BD%B2"><kbd class="item-tag">部署</kbd></a>
+
+ 
+
+    <div align="start" class="content"><h5 id="1先在mysql官方下载安装包">1、先在MySQL官方下载安装包：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">--MySQL官方下载地址:
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span>https:<span style="color:#f92672">//</span>dev.mysql.com<span style="color:#f92672">/</span>downloads<span style="color:#f92672">/</span>mysql<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e">--直接下载地址：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"></span>https:<span style="color:#f92672">//</span>cdn.mysql.com<span style="color:#f92672">//</span>Downloads<span style="color:#f92672">/</span>MySQL<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span><span style="color:#f92672">/</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64.zip
+</span></span></code></pre></div><h5 id="2解压并设置环境变量">2、解压并设置环境变量：</h5>
+<p>将mysql-8.0.31-winx64.zip解压到C盘根目录下，解压完成后会有C:\mysql-8.0.31-winx64目录。
+添加环境变量：
+电脑-&gt;右键 属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量-&gt;PATH，在PATH里添加入mysql安装路径下的bin的路径—例如我的是：C:\mysql-8.0.31-winx64\bin\</p>
+<h5 id="3创建mycnf配置文件">3、创建my.cnf配置文件：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">--在C:\mysql-8.0.31-winx64目录下创建my.cnf文件，内容如下：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e"></span>[mysql]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>character<span style="color:#f92672">-</span><span style="color:#66d9ef">set</span><span style="color:#f92672">=</span>utf8mb4
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>[mysqld]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">--设置服务端口为3306
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e"></span>port<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e">--设置mysql的安装目录，注意目录需要使用\\连接
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#75715e"></span>basedir<span style="color:#f92672">=</span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e">--设置mysql数据库的数据的存放目录，注意目录需要使用\\连接
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"></span>datadir<span style="color:#f92672">=</span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64<span style="color:#960050;background-color:#1e0010">\\</span><span style="color:#66d9ef">data</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e">--允许最大连接数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#75715e"></span>max_connections<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#75715e">--允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#75715e"></span>max_connect_errors<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>     
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>character<span style="color:#f92672">-</span><span style="color:#66d9ef">set</span><span style="color:#f92672">-</span>server<span style="color:#f92672">=</span>utf8mb4
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e">--创建新表时将使用的默认存储引擎
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#66d9ef">storage</span><span style="color:#f92672">-</span>engine<span style="color:#f92672">=</span>INNODB
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#75715e">--默认使用“mysql_native_password”插件认证
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#75715e"></span>default_authentication_plugin<span style="color:#f92672">=</span>mysql_native_password
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>log<span style="color:#f92672">-</span>bin <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64<span style="color:#960050;background-color:#1e0010">\\</span>binlog<span style="color:#960050;background-color:#1e0010">\\</span>binlog
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>sync_binlog <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>binlog_cache_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>M
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>max_binlog_cache_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">G</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>max_binlog_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">G</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>slow_query_log_file <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64<span style="color:#960050;background-color:#1e0010">\\</span>slow.log
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>log<span style="color:#f92672">-</span>error <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64<span style="color:#960050;background-color:#1e0010">\\</span>error.log
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>[client]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span><span style="color:#75715e">--设置mysql客户端连接服务端时默认使用的端口
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#75715e"></span>port<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>character<span style="color:#f92672">-</span><span style="color:#66d9ef">set</span><span style="color:#f92672">=</span>utf8mb4
+</span></span></code></pre></div><h5 id="4创建data目录安装服务及初始化">4、创建data目录、安装服务及初始化：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">--在C:\mysql-8.0.31-winx64下创建data和binglog目录
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">--以管理员账号运行CMD，执行初始化引导：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"></span>PS <span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>Users<span style="color:#960050;background-color:#1e0010">\</span>ice<span style="color:#f92672">&gt;</span> mysqld <span style="color:#75715e">--initialize --console
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e"></span><span style="color:#ae81ff">2022</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>T04:<span style="color:#ae81ff">26</span>:<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">382015</span>Z <span style="color:#ae81ff">0</span> [Warning] [MY<span style="color:#f92672">-</span><span style="color:#ae81ff">010918</span>] [Server] <span style="color:#e6db74">&#39;default_authentication_plugin&#39;</span> <span style="color:#66d9ef">is</span> deprecated <span style="color:#66d9ef">and</span> will be removed <span style="color:#66d9ef">in</span> a future release. Please use authentication_policy <span style="color:#66d9ef">instead</span>.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#ae81ff">2022</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>T04:<span style="color:#ae81ff">26</span>:<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">382036</span>Z <span style="color:#ae81ff">0</span> [<span style="color:#66d9ef">System</span>] [MY<span style="color:#f92672">-</span><span style="color:#ae81ff">013169</span>] [Server] <span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span><span style="color:#f92672">-</span>winx64<span style="color:#960050;background-color:#1e0010">\</span>bin<span style="color:#960050;background-color:#1e0010">\</span>mysqld.exe (mysqld <span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">31</span>) initializing <span style="color:#66d9ef">of</span> server <span style="color:#66d9ef">in</span> progress <span style="color:#66d9ef">as</span> process <span style="color:#ae81ff">9528</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#ae81ff">2022</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>T04:<span style="color:#ae81ff">26</span>:<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">404446</span>Z <span style="color:#ae81ff">1</span> [<span style="color:#66d9ef">System</span>] [MY<span style="color:#f92672">-</span><span style="color:#ae81ff">013576</span>] [InnoDB] InnoDB initialization has started.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#ae81ff">2022</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>T04:<span style="color:#ae81ff">26</span>:<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">641875</span>Z <span style="color:#ae81ff">1</span> [<span style="color:#66d9ef">System</span>] [MY<span style="color:#f92672">-</span><span style="color:#ae81ff">013577</span>] [InnoDB] InnoDB initialization has ended.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#ae81ff">2022</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>T04:<span style="color:#ae81ff">26</span>:<span style="color:#ae81ff">17</span>.<span style="color:#ae81ff">411693</span>Z <span style="color:#ae81ff">6</span> [Note] [MY<span style="color:#f92672">-</span><span style="color:#ae81ff">010454</span>] [Server] A <span style="color:#66d9ef">temporary</span> password <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">generated</span> <span style="color:#66d9ef">for</span> root<span style="color:#f92672">@</span>localhost: ,KOtD<span style="color:#f92672">%</span>adf2zD
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e">--此处会显示mysql的初始密码如上所示。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#75715e">--安装服务：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>Windows<span style="color:#960050;background-color:#1e0010">\</span>System32<span style="color:#f92672">&gt;</span> mysqld <span style="color:#75715e">--install mysqld
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#75715e"></span>Service successfully installed.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e">--启动服务：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>Windows<span style="color:#960050;background-color:#1e0010">\</span>System32<span style="color:#f92672">&gt;</span>net <span style="color:#66d9ef">start</span> mysqld
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务正在启动</span> .
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务已经启动成功。</span>
+</span></span></code></pre></div><h5 id="5修改默认密码">5、修改默认密码：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>mysql <span style="color:#f92672">-</span>uroot <span style="color:#f92672">-</span>p
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e">--输入密码即可登录
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e">--修改密码：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> root<span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#66d9ef">WITH</span> mysql_native_password <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;abcd@2022&#39;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>flush <span style="color:#66d9ef">privileges</span>;
+</span></span></code></pre></div><h5 id="6进行初始化设置">6、进行初始化设置：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">--在cmd命令行中运行
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e"></span>mysql_secure_installation
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">--回车后根据提示设置，最后重启mysql服务
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>Windows<span style="color:#960050;background-color:#1e0010">\</span>System32<span style="color:#f92672">&gt;</span>net stop mysqld
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务正在停止</span>..
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务已成功停止。</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">C</span>:<span style="color:#960050;background-color:#1e0010">\</span>Windows<span style="color:#960050;background-color:#1e0010">\</span>System32<span style="color:#f92672">&gt;</span>net <span style="color:#66d9ef">start</span> mysqld
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务正在启动</span> .
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>mysqld <span style="color:#960050;background-color:#1e0010">服务无法启动。</span>
+</span></span></code></pre></div><p>至此MySQL8.0.31已部署完成，可以根据实际需求配置修改my.cnf文件。</p>
+<p><img src="/upfile/img/mysql8.png" alt=""></p>
+</div>
+
+</main>
+
+
+<footer>
+            <p class="copyright text-muted"><a href="/" title="牧人池塘">牧人池塘</a> &copy; 2015-2022 由 <a href="https://gohugo.io" target="_blank">Hugo</a> & <a href="https://github.com/calintat/minimal" target="_blank">Minimal</a> 驱动 <a href='/sitemap.xml' title="SiteMap" target="_blank"> SiteMap</a></p>
+        </footer>
+		<div style="display:none">
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?122cb1ee936b158c8afbcaa53dcdd32e";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+		</div>
+        
+
+        
+    </body>
+
+</html>
+
