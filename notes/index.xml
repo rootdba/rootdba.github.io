@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Notes on 牧人池塘</title>
-    <link>/notes/</link>
+    <link>https://note.iops.top/notes/</link>
     <description>Recent content in Notes on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.iops.top/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Win11部署MySQL Community Server 8.0.31 绿色免安装</title>
-      <link>/notes/win11_install_mysql8/</link>
+      <link>https://note.iops.top/notes/win11_install_mysql8/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>/notes/win11_install_mysql8/</guid>
+      <guid>https://note.iops.top/notes/win11_install_mysql8/</guid>
       <description>1、先在MySQL官方下载安装包： 1--MySQL官方下载地址: 2https://dev.mysql.com/downloads/mysql/ 3--直接下载地址： 4https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-</description>
     </item>
     
     <item>
       <title>Nginx禁止ip直接访问或任意域名访问</title>
-      <link>/notes/nginx_default_site/</link>
+      <link>https://note.iops.top/notes/nginx_default_site/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>/notes/nginx_default_site/</guid>
+      <guid>https://note.iops.top/notes/nginx_default_site/</guid>
       <description>禁止未绑定的域名或任意域名直接访问： 1server 2{ 3 listen 80 default_server; 4 server_name _; # 默认server 5 return 500; 6} 对任意域名访问做301跳转： 1server { 2 listen 80 default_server; 3 server_name _; 4 return 301 https://www.test.com$request_uri; 5} 以上</description>
     </item>
     
     <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
-      <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <link>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <guid>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
       <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
     </item>
     
     <item>
       <title>对MVC模式的一些理解和看法</title>
-      <link>/notes/mvc-think/</link>
+      <link>https://note.iops.top/notes/mvc-think/</link>
       <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>/notes/mvc-think/</guid>
+      <guid>https://note.iops.top/notes/mvc-think/</guid>
       <description>模型 (Model) 模型代表了程序逻辑。（在企业级程序中经常称为业务层（business layer）） 总的来说，模型的任务是把原有数据转换成包含某些意义的</description>
     </item>
     
