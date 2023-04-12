@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_Hans">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>请求和响应对象 &#8212; Django 3.2.11.dev 文档</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="SchemaEditor" href="schema-editor.html" />
+    <link rel="prev" title="分页器" href="paginator.html" />
+
+
+
+ 
+<script src="../templatebuiltins.js"></script>
+<script>
+(function($) {
+    if (!django_template_builtins) {
+       // templatebuiltins.js missing, do nothing.
+       return;
+    }
+    $(document).ready(function() {
+        // Hyperlink Django template tags and filters
+        var base = "templates/builtins.html";
+        if (base == "#") {
+            // Special case for builtins.html itself
+            base = "";
+        }
+        // Tags are keywords, class '.k'
+        $("div.highlight\\-html\\+django span.k").each(function(i, elem) {
+             var tagname = $(elem).text();
+             if ($.inArray(tagname, django_template_builtins.ttags) != -1) {
+                 var fragment = tagname.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + tagname + "</a>");
+             }
+        });
+        // Filters are functions, class '.nf'
+        $("div.highlight\\-html\\+django span.nf").each(function(i, elem) {
+             var filtername = $(elem).text();
+             if ($.inArray(filtername, django_template_builtins.tfilters) != -1) {
+                 var fragment = filtername.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + filtername + "</a>");
+             }
+        });
+    });
+})(jQuery);</script>
+
+  </head><body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../index.html">Django 3.2.11.dev 文档</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>  |
+        <a title="Table of contents" href="../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../genindex.html">Index</a>  |
+        <a title="Module index" href="../py-modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="paginator.html" title="分页器">previous</a>
+     |
+    <a href="index.html" title="API 参考" accesskey="U">up</a>
+   |
+    <a href="schema-editor.html" title="&lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;SchemaEditor&lt;/span&gt;&lt;/code&gt;">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="ref-request-response">
+            
+  <div class="section" id="s-module-django.http">
+<span id="s-request-and-response-objects"></span><span id="module-django.http"></span><span id="request-and-response-objects"></span><h1>请求和响应对象<a class="headerlink" href="#module-django.http" title="永久链接至标题">¶</a></h1>
+<div class="section" id="s-quick-overview">
+<span id="quick-overview"></span><h2>快速概述<a class="headerlink" href="#quick-overview" title="永久链接至标题">¶</a></h2>
+<p>Django 使用请求和响应对象在系统中传递状态。</p>
+<p>当一个页面被请求时，Django 会创建一个 <a class="reference internal" href="#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpRequest</span></code></a> 对象，这个对象包含了请求的元数据。然后，Django 加载相应的视图，将 <a class="reference internal" href="#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpRequest</span></code></a> 作为视图函数的第一个参数。每个视图负责返回一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 对象。</p>
+<p>本文档解释了 <a class="reference internal" href="#module-django.http" title="django.http: Classes dealing with HTTP requests and responses."><code class="xref py py-mod docutils literal notranslate"><span class="pre">django.http</span></code></a> 模块中定义的 <a class="reference internal" href="#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpRequest</span></code></a> 和 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 对象的 API。</p>
+</div>
+<div class="section" id="s-httprequest-objects">
+<span id="httprequest-objects"></span><h2><code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 对象<a class="headerlink" href="#httprequest-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.HttpRequest">
+<em class="property">class </em><code class="descname">HttpRequest</code><a class="headerlink" href="#django.http.HttpRequest" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="s-attributes">
+<span id="s-httprequest-attributes"></span><span id="attributes"></span><span id="httprequest-attributes"></span><h3>属性<a class="headerlink" href="#attributes" title="永久链接至标题">¶</a></h3>
+<p>除非另有说明，否则所有属性都应视为只读。</p>
+<dl class="attribute">
+<dt id="django.http.HttpRequest.scheme">
+<code class="descclassname">HttpRequest.</code><code class="descname">scheme</code><a class="headerlink" href="#django.http.HttpRequest.scheme" title="永久链接至目标">¶</a></dt>
+<dd><p>代表请求协议的字符串（通常是 <code class="docutils literal notranslate"><span class="pre">http</span></code> 或 <code class="docutils literal notranslate"><span class="pre">https</span></code>）。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.body">
+<code class="descclassname">HttpRequest.</code><code class="descname">body</code><a class="headerlink" href="#django.http.HttpRequest.body" title="永久链接至目标">¶</a></dt>
+<dd><p>原始的 HTTP 请求体作为一个字节字符串。这对于以不同方式处理非常规 HTML 表单的数据很有用：二进制图像，XML 有效负载等。对于处理传统的表单数据，使用 <a class="reference internal" href="#django.http.HttpRequest.POST" title="django.http.HttpRequest.POST"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpRequest.POST</span></code></a>。</p>
+<p>你也可以使用类似文件的接口 <a class="reference internal" href="#django.http.HttpRequest.read" title="django.http.HttpRequest.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HttpRequest.read()</span></code></a> 或 <a class="reference internal" href="#django.http.HttpRequest.readline" title="django.http.HttpRequest.readline"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HttpRequest.readline()</span></code></a> 从 <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 中读取。在使用这些 I/O 流方法中的任何一种方法读取请求后，访问 <code class="docutils literal notranslate"><span class="pre">body</span></code> 属性会产生 <code class="docutils literal notranslate"><span class="pre">RawPostDataException</span></code>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.path">
+<code class="descclassname">HttpRequest.</code><code class="descname">path</code><a class="headerlink" href="#django.http.HttpRequest.path" title="永久链接至目标">¶</a></dt>
+<dd><p>A string representing the full path to the requested page, not including
+the scheme, domain, or query string.</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">&quot;/music/bands/the_beatles/&quot;</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.path_info">
+<code class="descclassname">HttpRequest.</code><code class="descname">path_info</code><a class="headerlink" href="#django.http.HttpRequest.path_info" title="永久链接至目标">¶</a></dt>
+<dd><p>在某些 Web 服务器的配置下，主机名之后的 URL 部分被分割成脚本前缀部分和路径信息部分。<code class="docutils literal notranslate"><span class="pre">path_info</span></code> 属性总是包含路径的路径信息部分，无论使用的是什么 Web 服务器。使用它代替 <a class="reference internal" href="#django.http.HttpRequest.path" title="django.http.HttpRequest.path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">path</span></code></a> 可以使你的代码更容易在测试服务器和部署服务器之间移动。</p>
+<p>例如，如果你的应用程序的 <code class="docutils literal notranslate"><span class="pre">WSGIScriptAlias</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">&quot;/minfo&quot;</span></code>，那么 <code class="docutils literal notranslate"><span class="pre">path</span></code> 可能是 <code class="docutils literal notranslate"><span class="pre">&quot;/minfo/music/bands/the_beatles/&quot;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">path_info</span></code> 将是 <code class="docutils literal notranslate"><span class="pre">&quot;/music/bands/the_beatles/&quot;</span></code>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.method">
+<code class="descclassname">HttpRequest.</code><code class="descname">method</code><a class="headerlink" href="#django.http.HttpRequest.method" title="永久链接至目标">¶</a></dt>
+<dd><p>代表请求中使用的 HTTP 方法的字符串。保证是大写字母。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+<span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="n">do_something_else</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.encoding">
+<code class="descclassname">HttpRequest.</code><code class="descname">encoding</code><a class="headerlink" href="#django.http.HttpRequest.encoding" title="永久链接至目标">¶</a></dt>
+<dd><p>表示当前用于解码表单提交数据的编码的字符串（或 <code class="docutils literal notranslate"><span class="pre">None</span></code>，表示使用 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a> 设置）。你可以写入这个属性来改变访问表单数据时使用的编码。任何后续的属性访问（如从 <a class="reference internal" href="#django.http.HttpRequest.GET" title="django.http.HttpRequest.GET"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GET</span></code></a> 或 <a class="reference internal" href="#django.http.HttpRequest.POST" title="django.http.HttpRequest.POST"><code class="xref py py-attr docutils literal notranslate"><span class="pre">POST</span></code></a> 中读取）将使用新的 <code class="docutils literal notranslate"><span class="pre">encoding</span></code> 值。如果你知道表单数据不是在 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a> 编码中，这很有用。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.content_type">
+<code class="descclassname">HttpRequest.</code><code class="descname">content_type</code><a class="headerlink" href="#django.http.HttpRequest.content_type" title="永久链接至目标">¶</a></dt>
+<dd><p>代表请求的 MIME 类型的字符串，从 <code class="docutils literal notranslate"><span class="pre">CONTENT_TYPE</span></code> 头解析。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.content_params">
+<code class="descclassname">HttpRequest.</code><code class="descname">content_params</code><a class="headerlink" href="#django.http.HttpRequest.content_params" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">CONTENT_TYPE</span></code> 头中包含的键／值参数字典。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.GET">
+<code class="descclassname">HttpRequest.</code><code class="descname">GET</code><a class="headerlink" href="#django.http.HttpRequest.GET" title="永久链接至目标">¶</a></dt>
+<dd><p>一个类似字典的对象，包含所有给定的 HTTP GET 参数。参见下面的 <a class="reference internal" href="#django.http.QueryDict" title="django.http.QueryDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueryDict</span></code></a> 文档。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.POST">
+<code class="descclassname">HttpRequest.</code><code class="descname">POST</code><a class="headerlink" href="#django.http.HttpRequest.POST" title="永久链接至目标">¶</a></dt>
+<dd><p>一个类似字典的对象，包含所有给定的 HTTP POST 参数，前提是请求包含表单数据。参见下面的 <a class="reference internal" href="#django.http.QueryDict" title="django.http.QueryDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueryDict</span></code></a> 文档。如果你需要访问请求中发布的原始或非表单数据，可以通过 <a class="reference internal" href="#django.http.HttpRequest.body" title="django.http.HttpRequest.body"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpRequest.body</span></code></a> 属性来访问。</p>
+<p>有可能一个请求是通过 POST 方式进来的，并带有一个空的 <code class="docutils literal notranslate"><span class="pre">POST</span></code> 字典——比如说，一个表单是通过 POST HTTP 方法请求的，但不包括表单数据。因此，你不应该使用 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">request.POST</span></code> 来检查是否使用了 POST 方法；而应该使用 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">request.method</span> <span class="pre">==</span> <span class="pre">&quot;POST&quot;</span></code> （参见 <a class="reference internal" href="#django.http.HttpRequest.method" title="django.http.HttpRequest.method"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpRequest.method</span></code></a>）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code> 不包括文件上传信息。见 <a class="reference internal" href="#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FILES</span></code></a>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.COOKIES">
+<code class="descclassname">HttpRequest.</code><code class="descname">COOKIES</code><a class="headerlink" href="#django.http.HttpRequest.COOKIES" title="永久链接至目标">¶</a></dt>
+<dd><p>一个包含所有 cookies 的字典。键和值是字符串。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.FILES">
+<code class="descclassname">HttpRequest.</code><code class="descname">FILES</code><a class="headerlink" href="#django.http.HttpRequest.FILES" title="永久链接至目标">¶</a></dt>
+<dd><p>一个类似字典的对象，包含所有上传的文件。<code class="docutils literal notranslate"><span class="pre">FILES</span></code> 中的每个键是 <code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;file&quot;</span> <span class="pre">name=&quot;&quot;&gt;</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">name</span></code>。<code class="docutils literal notranslate"><span class="pre">FILES</span></code> 中的每个值是一个 <a class="reference internal" href="files/uploads.html#django.core.files.uploadedfile.UploadedFile" title="django.core.files.uploadedfile.UploadedFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">UploadedFile</span></code></a>。</p>
+<p>更多信息请参见 <a class="reference internal" href="../topics/files.html"><span class="doc">管理文件</span></a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">FILES</span></code> 只有在请求方法是 POST，并且发布请求的 <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> 有 <code class="docutils literal notranslate"><span class="pre">enctype=&quot;multipart/form-data&quot;</span></code> 的情况下，才会包含数据。否则，<code class="docutils literal notranslate"><span class="pre">FILES</span></code> 将是一个类似字典的空白对象。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.META">
+<code class="descclassname">HttpRequest.</code><code class="descname">META</code><a class="headerlink" href="#django.http.HttpRequest.META" title="永久链接至目标">¶</a></dt>
+<dd><p>一个包含所有可用的 HTTP 头文件的字典。可用的头信息取决于客户端和服务器，但这里有一些例子：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">CONTENT_LENGTH</span></code> —— 请求体的长度（字符串）。</li>
+<li><code class="docutils literal notranslate"><span class="pre">CONTENT_TYPE</span></code> —— 请求体的 MIME 类型。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_ACCEPT</span></code> —— 可接受的响应内容类型。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_ACCEPT_ENCODING</span></code> —— 可接受的响应编码。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_ACCEPT_LANGUAGE</span></code> —— 可接受的响应语言。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_HOST</span></code> —— 客户端发送的 HTTP 主机头。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_REFERER</span></code> —— referrer 页面，如果有的话。</li>
+<li><code class="docutils literal notranslate"><span class="pre">HTTP_USER_AGENT</span></code> —— 客户端的用户代理字符串。</li>
+<li><code class="docutils literal notranslate"><span class="pre">QUERY_STRING</span></code> —— 查询字符串，是一个单一的（未解析的）字符串。</li>
+<li><code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> —— 客户机的 IP 地址。</li>
+<li><code class="docutils literal notranslate"><span class="pre">REMOTE_HOST</span></code> —— 客户机的主机名。</li>
+<li><code class="docutils literal notranslate"><span class="pre">REMOTE_USER</span></code> —— Web 服务器认证的用户，如果有的话。</li>
+<li><code class="docutils literal notranslate"><span class="pre">REQUEST_METHOD</span></code> —— <code class="docutils literal notranslate"><span class="pre">&quot;GET&quot;</span></code> 或 <code class="docutils literal notranslate"><span class="pre">&quot;POST&quot;</span></code> 等字符串。</li>
+<li><code class="docutils literal notranslate"><span class="pre">SERVER_NAME</span></code> —— 服务器的主机名。</li>
+<li><code class="docutils literal notranslate"><span class="pre">SERVER_PORT</span></code> —— 服务器的端口（字符串）。</li>
+</ul>
+<p>除了上面给出的 <code class="docutils literal notranslate"><span class="pre">CONTENT_LENGTH</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CONTENT_TYPE</span></code> 之外，请求中的任何 HTTP 头都会被转换为 <code class="docutils literal notranslate"><span class="pre">META</span></code> 键，方法是将所有字符转换为大写字母，用下划线代替任何连字符，并在名称前加上 <code class="docutils literal notranslate"><span class="pre">HTTP_`</span></code> 前缀。因此，例如，一个名为 <code class="docutils literal notranslate"><span class="pre">X-Bender</span></code> 的头将被映射到 <code class="docutils literal notranslate"><span class="pre">META</span></code> 键 <code class="docutils literal notranslate"><span class="pre">HTTP_X_BENDER</span></code>。</p>
+<p>请注意 <a class="reference internal" href="django-admin.html#django-admin-runserver"><code class="xref std std-djadmin docutils literal notranslate"><span class="pre">runserver</span></code></a> 会剥离所有名称中带有下划线的请求头，所以你在 <code class="docutils literal notranslate"><span class="pre">META</span></code> 中不会看到它们。这可以防止基于下划线和破折号之间的歧义而产生的头欺骗，因为在 WSGI 环境变量中，下划线和破折号都被规范化为下划线。它与 Nginx 和 Apache 2.4+ 等 Web 服务器的行为相匹配。</p>
+<p><a class="reference internal" href="#django.http.HttpRequest.headers" title="django.http.HttpRequest.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpRequest.headers</span></code></a> 是一种更简单的方式来访问所有 HTTP 前缀头，加上 <code class="docutils literal notranslate"><span class="pre">CONTENT_LENGTH</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CONTENT_TYPE</span></code>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.headers">
+<code class="descclassname">HttpRequest.</code><code class="descname">headers</code><a class="headerlink" href="#django.http.HttpRequest.headers" title="永久链接至目标">¶</a></dt>
+<dd><p>一个不区分大小写的类似字典的对象，提供对请求中所有 HTTP 前缀头的访问（加上 <code class="docutils literal notranslate"><span class="pre">Content-Length</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>）。</p>
+<p>当显示每个请求头时，请求头名称都是用标题的形式来表示的（例如 <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code>）。你可以不分大小写的访问请求头：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">headers</span>
+<span class="go">{&#39;User-Agent&#39;: &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6&#39;, ...}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;User-Agent&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;user-agent&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span>
+<span class="go">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;user-agent&#39;</span><span class="p">]</span>
+<span class="go">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">)</span>
+<span class="go">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user-agent&#39;</span><span class="p">)</span>
+<span class="go">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span>
+</pre></div>
+</div>
+<p>例如在 Django 模板中使用，请求头也可以用下划线代替连字符来查询：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">user_agent</span> <span class="p">}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.resolver_match">
+<code class="descclassname">HttpRequest.</code><code class="descname">resolver_match</code><a class="headerlink" href="#django.http.HttpRequest.resolver_match" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="urlresolvers.html#django.urls.ResolverMatch" title="django.urls.ResolverMatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResolverMatch</span></code></a> 的一个实例，代表解析后的 URL。这个属性只有在 UR L解析发生后才会被设置，这意味着它在所有的视图中都是可用的，但在 URL 解析发生前被执行的中间件中则不可用（不过你可以在 <a class="reference internal" href="../topics/http/middleware.html#process_view" title="process_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_view()</span></code></a> 中使用它）。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="s-attributes-set-by-application-code">
+<span id="attributes-set-by-application-code"></span><h3>应用程序代码设置的属性<a class="headerlink" href="#attributes-set-by-application-code" title="永久链接至标题">¶</a></h3>
+<p>Django 不会自己设置这些属性，但如果你的应用程序设置了这些属性，就会使用它们。</p>
+<dl class="attribute">
+<dt id="django.http.HttpRequest.current_app">
+<code class="descclassname">HttpRequest.</code><code class="descname">current_app</code><a class="headerlink" href="#django.http.HttpRequest.current_app" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="templates/builtins.html#std:templatetag-url"><code class="xref std std-ttag docutils literal notranslate"><span class="pre">url</span></code></a> 模板标签将使用它的值作为 <a class="reference internal" href="urlresolvers.html#django.urls.reverse" title="django.urls.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> 的 <code class="docutils literal notranslate"><span class="pre">current_app</span></code> 参数。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.urlconf">
+<code class="descclassname">HttpRequest.</code><code class="descname">urlconf</code><a class="headerlink" href="#django.http.HttpRequest.urlconf" title="永久链接至目标">¶</a></dt>
+<dd><p>这将作为当前请求的根 URLconf，覆盖 <a class="reference internal" href="settings.html#std:setting-ROOT_URLCONF"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROOT_URLCONF</span></code></a> 设置。详情请参见 <a class="reference internal" href="../topics/http/urls.html#how-django-processes-a-request"><span class="std std-ref">Django 如何处理一个请求</span></a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">urlconf</span></code> 可以设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，以恢复之前中间件所做的任何更改，并返回到使用 <a class="reference internal" href="settings.html#std:setting-ROOT_URLCONF"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROOT_URLCONF</span></code></a>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.exception_reporter_filter">
+<code class="descclassname">HttpRequest.</code><code class="descname">exception_reporter_filter</code><a class="headerlink" href="#django.http.HttpRequest.exception_reporter_filter" title="永久链接至目标">¶</a></dt>
+<dd><p>这将代替当前请求的 <a class="reference internal" href="settings.html#std:setting-DEFAULT_EXCEPTION_REPORTER_FILTER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_EXCEPTION_REPORTER_FILTER</span></code></a> 使用。详情请参见 <a class="reference internal" href="../howto/error-reporting.html#custom-error-reports"><span class="std std-ref">自定义错误报告</span></a>。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.exception_reporter_class">
+<code class="descclassname">HttpRequest.</code><code class="descname">exception_reporter_class</code><a class="headerlink" href="#django.http.HttpRequest.exception_reporter_class" title="永久链接至目标">¶</a></dt>
+<dd><p>这将代替 <a class="reference internal" href="settings.html#std:setting-DEFAULT_EXCEPTION_REPORTER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_EXCEPTION_REPORTER</span></code></a> 用于当前请求。详情请参见 <a class="reference internal" href="../howto/error-reporting.html#custom-error-reports"><span class="std std-ref">自定义错误报告</span></a>。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="s-attributes-set-by-middleware">
+<span id="attributes-set-by-middleware"></span><h3>中间件设置的属性<a class="headerlink" href="#attributes-set-by-middleware" title="永久链接至标题">¶</a></h3>
+<p>Django 的 contrib 应用中包含的一些中间件会在请求中设置属性。如果你没有在请求中看到属性，请确认在 <a class="reference internal" href="settings.html#std:setting-MIDDLEWARE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MIDDLEWARE</span></code></a> 中列出了相应的中间件类。</p>
+<dl class="attribute">
+<dt id="django.http.HttpRequest.session">
+<code class="descclassname">HttpRequest.</code><code class="descname">session</code><a class="headerlink" href="#django.http.HttpRequest.session" title="永久链接至目标">¶</a></dt>
+<dd><p>来自 <code class="xref py py-class docutils literal notranslate"><span class="pre">SessionMiddleware</span></code>。一个可读可写的，类似字典的对象，代表当前会话。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.site">
+<code class="descclassname">HttpRequest.</code><code class="descname">site</code><a class="headerlink" href="#django.http.HttpRequest.site" title="永久链接至目标">¶</a></dt>
+<dd><p>来自 <a class="reference internal" href="middleware.html#django.contrib.sites.middleware.CurrentSiteMiddleware" title="django.contrib.sites.middleware.CurrentSiteMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurrentSiteMiddleware</span></code></a>。由 <a class="reference internal" href="contrib/sites.html#django.contrib.sites.models.Site" title="django.contrib.sites.models.Site"><code class="xref py py-func docutils literal notranslate"><span class="pre">Site()</span></code></a> 或 <code class="xref py py-class docutils literal notranslate"><span class="pre">RequestSite</span></code> 返回的 <a class="reference internal" href="contrib/sites.html#django.contrib.sites.shortcuts.get_current_site" title="django.contrib.sites.shortcuts.get_current_site"><code class="xref py py-class docutils literal notranslate"><span class="pre">get_current_site()</span></code></a> 的实例，代表当前站点。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpRequest.user">
+<code class="descclassname">HttpRequest.</code><code class="descname">user</code><a class="headerlink" href="#django.http.HttpRequest.user" title="永久链接至目标">¶</a></dt>
+<dd><p>从 <code class="xref py py-class docutils literal notranslate"><span class="pre">AuthenticationMiddleware</span></code>。<a class="reference internal" href="settings.html#std:setting-AUTH_USER_MODEL"><code class="xref std std-setting docutils literal notranslate"><span class="pre">AUTH_USER_MODEL</span></code></a> 的一个实例，代表当前登录的用户。如果用户当前没有登录，<code class="docutils literal notranslate"><span class="pre">user</span></code> 将被设置为一个 <code class="xref py py-class docutils literal notranslate"><span class="pre">AnonymousUser</span></code> 的实例。你可以用 <a class="reference internal" href="contrib/auth.html#django.contrib.auth.models.User.is_authenticated" title="django.contrib.auth.models.User.is_authenticated"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_authenticated</span></code></a> 来区分它们，比如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="o">...</span> <span class="c1"># Do something for logged-in users.</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">...</span> <span class="c1"># Do something for anonymous users.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="s-methods">
+<span id="methods"></span><h3>方法<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h3>
+<dl class="method">
+<dt id="django.http.HttpRequest.get_host">
+<code class="descclassname">HttpRequest.</code><code class="descname">get_host</code>()<a class="headerlink" href="#django.http.HttpRequest.get_host" title="永久链接至目标">¶</a></dt>
+<dd><p>使用 <code class="docutils literal notranslate"><span class="pre">HTTP_X_FORWARDED_HOST</span></code> （如果 <a class="reference internal" href="settings.html#std:setting-USE_X_FORWARDED_HOST"><code class="xref std std-setting docutils literal notranslate"><span class="pre">USE_X_FORWARDED_HOST</span></code></a> 已启用）和 <code class="docutils literal notranslate"><span class="pre">HTTP_HOST</span></code> 头信息，按顺序返回请求的发起主机。如果它们没有提供一个值，则该方法使用 <code class="docutils literal notranslate"><span class="pre">SERVER_NAME</span></code> 和 <code class="docutils literal notranslate"><span class="pre">SERVER_PORT</span></code> 的组合，详见 <span class="target" id="index-20"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3333"><strong>PEP 3333</strong></a>。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">&quot;127.0.0.1:8000&quot;</span></code></p>
+<p>Raises <code class="docutils literal notranslate"><span class="pre">django.core.exceptions.DisallowedHost</span></code> if the host is not in
+<a class="reference internal" href="settings.html#std:setting-ALLOWED_HOSTS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ALLOWED_HOSTS</span></code></a> or the domain name is invalid according to
+<span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc1034.html"><strong>RFC 1034</strong></a>/<span class="target" id="index-2"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc1035.html"><strong>1035</strong></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><a class="reference internal" href="#django.http.HttpRequest.get_host" title="django.http.HttpRequest.get_host"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_host()</span></code></a> 方法在主机处于多个代理后面时失效。一个解决方案是使用中间件重写代理头，如下面的例子：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultipleProxyMiddleware</span><span class="p">:</span>
+    <span class="n">FORWARDED_FOR_FIELDS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HTTP_X_FORWARDED_HOST&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HTTP_X_FORWARDED_SERVER&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_response</span> <span class="o">=</span> <span class="n">get_response</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Rewrites the proxy headers so that only the most</span>
+<span class="sd">        recent proxy is used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">FORWARDED_FOR_FIELDS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="n">field</span><span class="p">]:</span>
+                    <span class="n">parts</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">这个中间件应该定位在任何其他依赖于:meth:<cite>~HttpRequest.get_host()</cite> 值的中间件之前——例如 <a class="reference internal" href="middleware.html#django.middleware.common.CommonMiddleware" title="django.middleware.common.CommonMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommonMiddleware</span></code></a> 或 <a class="reference internal" href="middleware.html#django.middleware.csrf.CsrfViewMiddleware" title="django.middleware.csrf.CsrfViewMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">CsrfViewMiddleware</span></code></a>。</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.get_port">
+<code class="descclassname">HttpRequest.</code><code class="descname">get_port</code>()<a class="headerlink" href="#django.http.HttpRequest.get_port" title="永久链接至目标">¶</a></dt>
+<dd><p>使用 <code class="docutils literal notranslate"><span class="pre">HTTP_X_FORWARDED_PORT</span></code> （如果 <a href="#id1"><span class="problematic" id="id2">:set:`USE_X_FORWARDED_PORT`</span></a> 已启用）和 <code class="docutils literal notranslate"><span class="pre">SERVER_PORT</span></code> <code class="docutils literal notranslate"><span class="pre">META</span></code> 变量中的信息，按顺序返回请求的起始端口。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.get_full_path">
+<code class="descclassname">HttpRequest.</code><code class="descname">get_full_path</code>()<a class="headerlink" href="#django.http.HttpRequest.get_full_path" title="永久链接至目标">¶</a></dt>
+<dd><p>返回 <code class="docutils literal notranslate"><span class="pre">path</span></code>，加上附加的查询字符串（如果适用）。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">&quot;/music/bands/the_beatles/?print=true&quot;</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.get_full_path_info">
+<code class="descclassname">HttpRequest.</code><code class="descname">get_full_path_info</code>()<a class="headerlink" href="#django.http.HttpRequest.get_full_path_info" title="永久链接至目标">¶</a></dt>
+<dd><p>像 <a class="reference internal" href="#django.http.HttpRequest.get_full_path" title="django.http.HttpRequest.get_full_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_full_path()</span></code></a> 一样，但使用 <a class="reference internal" href="#django.http.HttpRequest.path_info" title="django.http.HttpRequest.path_info"><code class="xref py py-attr docutils literal notranslate"><span class="pre">path_info</span></code></a> 代替 <a class="reference internal" href="#django.http.HttpRequest.path" title="django.http.HttpRequest.path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">path</span></code></a>。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">&quot;/minfo/music/bands/the_beatles/?print=true&quot;</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.build_absolute_uri">
+<code class="descclassname">HttpRequest.</code><code class="descname">build_absolute_uri</code>(<em>location=None</em>)<a class="headerlink" href="#django.http.HttpRequest.build_absolute_uri" title="永久链接至目标">¶</a></dt>
+<dd><p>返回 <code class="docutils literal notranslate"><span class="pre">location</span></code> 的绝对 URI 形式。如果没有提供 location，location 将被设置为 <code class="docutils literal notranslate"><span class="pre">request.get_full_path()</span></code>。</p>
+<p>如果 location 已经是一个绝对 URI，它将不会被改变。否则，绝对 URI 将使用这个请求中可用的服务器变量建立。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">()</span>
+<span class="go">&#39;https://example.com/music/bands/the_beatles/?print=true&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="s1">&#39;/bands/&#39;</span><span class="p">)</span>
+<span class="go">&#39;https://example.com/bands/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="s1">&#39;https://example2.com/bands/&#39;</span><span class="p">)</span>
+<span class="go">&#39;https://example2.com/bands/&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">不鼓励在同一个网站上混合使用 HTTP 和 HTTPS，因为 <a class="reference internal" href="#django.http.HttpRequest.build_absolute_uri" title="django.http.HttpRequest.build_absolute_uri"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_absolute_uri()</span></code></a> 总是会生成一个与当前请求具有相同方案的绝对 URI。如果你需要将用户重定向到 HTTPS，最好让 Web 服务器将所有的 HTTP 流量重定向到 HTTPS。</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.get_signed_cookie">
+<code class="descclassname">HttpRequest.</code><code class="descname">get_signed_cookie</code>(<em>key</em>, <em>default=RAISE_ERROR</em>, <em>salt=''</em>, <em>max_age=None</em>)<a class="headerlink" href="#django.http.HttpRequest.get_signed_cookie" title="永久链接至目标">¶</a></dt>
+<dd><p>返回已签名 cookie 的 cookie 值，如果签名不再有效，则会引发 <code class="docutils literal notranslate"><span class="pre">django.core.signing.BadSignature</span></code> 异常。如果你提供了 <code class="docutils literal notranslate"><span class="pre">default</span></code> 参数，异常将被抑制，并返回默认值。</p>
+<p>可选的 <code class="docutils literal notranslate"><span class="pre">salt</span></code> 参数可以用来提供额外的保护，以防止对你秘钥的暴力攻击。如果提供了这个参数，<code class="docutils literal notranslate"><span class="pre">max_age</span></code> 参数将根据附加在 cookie 值上的签名时间戳进行检查，以确保 cookie 不超过 <code class="docutils literal notranslate"><span class="pre">max_age</span></code> 秒。</p>
+<p>例子：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="go">&#39;Tony&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="s1">&#39;name-salt&#39;</span><span class="p">)</span>
+<span class="go">&#39;Tony&#39; # assuming cookie was set using the same salt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;nonexistent-cookie&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">KeyError: &#39;nonexistent-cookie&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;nonexistent-cookie&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;cookie-that-was-tampered-with&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">BadSignature: ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">max_age</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">SignatureExpired: Signature age 1677.3839159 &gt; 60 seconds</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">max_age</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>更多信息请参见 <a class="reference internal" href="../topics/signing.html"><span class="doc">加密签名</span></a>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.is_secure">
+<code class="descclassname">HttpRequest.</code><code class="descname">is_secure</code>()<a class="headerlink" href="#django.http.HttpRequest.is_secure" title="永久链接至目标">¶</a></dt>
+<dd><p>如果请求是安全的，返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>；如果请求是通过 HTTPS 发出的，返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.accepts">
+<code class="descclassname">HttpRequest.</code><code class="descname">accepts</code>(<em>mime_type</em>)<a class="headerlink" href="#django.http.HttpRequest.accepts" title="永久链接至目标">¶</a></dt>
+<dd><div class="versionadded">
+<span class="title">New in Django 3.1.</span> </div>
+<p>如果请求的 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 头符合 <code class="docutils literal notranslate"><span class="pre">mime_type</span></code> 参数，则返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="s1">&#39;text/html&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>大多数浏览器默认发送 <code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">*/*</span></code>，默认情况下，这将为所有内容类型返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>。在 API 请求中设置一个显式的 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 头，对于只为那些消费者返回不同的内容类型是很有用的。参见 <a class="reference internal" href="../topics/class-based-views/generic-editing.html#content-negotiation-example"><span class="std std-ref">内容协商示例</span></a> 使用 <code class="docutils literal notranslate"><span class="pre">accepts()</span></code> 向 API 消费者返回不同的内容。</p>
+<p>如果一个响应根据 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 头的内容而变化，并且你使用了某种形式的缓存，比如 Django 的 <a class="reference internal" href="middleware.html#module-django.middleware.cache" title="django.middleware.cache: Middleware for the site-wide cache."><code class="xref py py-mod docutils literal notranslate"><span class="pre">cache</span> <span class="pre">middleware</span></code></a>，你应该用 <code class="xref py py-func docutils literal notranslate"><span class="pre">vary_on_headers('Accept')</span></code> 来装饰视图，这样响应就会被正确地缓存。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.is_ajax">
+<code class="descclassname">HttpRequest.</code><code class="descname">is_ajax</code>()<a class="headerlink" href="#django.http.HttpRequest.is_ajax" title="永久链接至目标">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified">3.1 版后已移除.</span></p>
+</div>
+<p>如果请求是通过 <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code> 发出的，则返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>，检查 <code class="docutils literal notranslate"><span class="pre">HTTP_X_REQUESTED_WITH</span></code> 头中是否有 <code class="docutils literal notranslate"><span class="pre">'XMLHttpRequest'</span></code>。大多数现代 JavaScript 库都会发送这个头。如果你写了自己的 <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code> 调用（在浏览器端），如果你想让 <code class="docutils literal notranslate"><span class="pre">is_ajax()</span></code> 工作，你必须手动设置这个头。</p>
+<p>如果一个响应因是否通过 AJAX 请求而变化，并且你使用了某种形式的缓存，比如 Django 的 <a class="reference internal" href="middleware.html#module-django.middleware.cache" title="django.middleware.cache: Middleware for the site-wide cache."><code class="xref py py-mod docutils literal notranslate"><span class="pre">cache</span> <span class="pre">middleware</span></code></a>，你应该用 <code class="xref py py-func docutils literal notranslate"><span class="pre">vary_on_headers('X-Requested-With')</span></code> 来装饰视图，这样响应就会被正确缓存。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.read">
+<code class="descclassname">HttpRequest.</code><code class="descname">read</code>(<em>size=None</em>)<a class="headerlink" href="#django.http.HttpRequest.read" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.readline">
+<code class="descclassname">HttpRequest.</code><code class="descname">readline</code>()<a class="headerlink" href="#django.http.HttpRequest.readline" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.readlines">
+<code class="descclassname">HttpRequest.</code><code class="descname">readlines</code>()<a class="headerlink" href="#django.http.HttpRequest.readlines" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpRequest.__iter__">
+<code class="descclassname">HttpRequest.</code><code class="descname">__iter__</code>()<a class="headerlink" href="#django.http.HttpRequest.__iter__" title="永久链接至目标">¶</a></dt>
+<dd><p>实现从 <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 实例中读取文件的类似接口的方法。这使得它可以以流式方式处理一个传入的请求。一个常见的用例是用迭代解析器处理一个大的 XML 有效载荷，而无需在内存中构建一个完整的 XML 树。</p>
+<p>给定这个标准接口，一个 <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 实例可以直接传递给 XML 解析器，如 <a class="reference external" href="https://docs.python.org/3/library/xml.etree.elementtree.html#xml.etree.ElementTree.ElementTree" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementTree</span></code></a>：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">ET</span><span class="o">.</span><span class="n">iterparse</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="s-querydict-objects">
+<span id="querydict-objects"></span><h2><code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 对象<a class="headerlink" href="#querydict-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.QueryDict">
+<em class="property">class </em><code class="descname">QueryDict</code><a class="headerlink" href="#django.http.QueryDict" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<p>在一个 <a class="reference internal" href="#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpRequest</span></code></a> 对象中， <a class="reference internal" href="#django.http.HttpRequest.GET" title="django.http.HttpRequest.GET"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GET</span></code></a> 和 <a class="reference internal" href="#django.http.HttpRequest.POST" title="django.http.HttpRequest.POST"><code class="xref py py-attr docutils literal notranslate"><span class="pre">POST</span></code></a> 属性是 <code class="docutils literal notranslate"><span class="pre">django.http.QueryDict</span></code> 的实例，这是一个类似字典的类，用来处理同一个键的多个值。这是很有必要的，因为一些 HTML 表单元素，尤其是 <code class="docutils literal notranslate"><span class="pre">&lt;select</span> <span class="pre">multiple&gt;</span></code>，会传递同一个键的多个值。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">request.POST</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.GET</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 将在正常的请求／响应周期中被访问时是不可改变的。要得到一个可变的版本，你需要使用 <a class="reference internal" href="#django.http.QueryDict.copy" title="django.http.QueryDict.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QueryDict.copy()</span></code></a>。</p>
+<div class="section" id="s-id1">
+<span id="id1"></span><h3>方法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="#django.http.QueryDict" title="django.http.QueryDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueryDict</span></code></a> 实现了所有标准的字典方法，因为它是字典的一个子类。这里概述了例外情况：</p>
+<dl class="method">
+<dt id="django.http.QueryDict.__init__">
+<code class="descclassname">QueryDict.</code><code class="descname">__init__</code>(<em>query_string=None</em>, <em>mutable=False</em>, <em>encoding=None</em>)<a class="headerlink" href="#django.http.QueryDict.__init__" title="永久链接至目标">¶</a></dt>
+<dd><p>基于 <code class="docutils literal notranslate"><span class="pre">query_string</span></code> 实例化一个 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 对象。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;c=3&#39;</span><span class="p">)</span>
+<span class="go">&lt;QueryDict: {&#39;a&#39;: [&#39;1&#39;, &#39;2&#39;], &#39;c&#39;: [&#39;3&#39;]}&gt;</span>
+</pre></div>
+</div>
+<p>如果没有传入 <code class="docutils literal notranslate"><span class="pre">query_string</span></code>，产生的 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 将是空的（它将没有键或值）。</p>
+<p>你遇到的大多数 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code>s，特别是那些在 <code class="docutils literal notranslate"><span class="pre">request.POST</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.GET</span></code> 的，将是不可变的。如果你自己实例化一个，你可以通过传递 <code class="docutils literal notranslate"><span class="pre">mutable=True</span></code> 到它的 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> 来使它可变。</p>
+<p>设置键和值的字符串将从 <code class="docutils literal notranslate"><span class="pre">encoding</span></code> 转换为 <code class="docutils literal notranslate"><span class="pre">str</span></code>。如果没有设置 <code class="docutils literal notranslate"><span class="pre">encoding</span></code>，则默认为 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a>。</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="django.http.QueryDict.fromkeys">
+<em class="property">classmethod </em><code class="descclassname">QueryDict.</code><code class="descname">fromkeys</code>(<em>iterable</em>, <em>value=''</em>, <em>mutable=False</em>, <em>encoding=None</em>)<a class="headerlink" href="#django.http.QueryDict.fromkeys" title="永久链接至目标">¶</a></dt>
+<dd><p>创建一个新的 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code>，键来自 <code class="docutils literal notranslate"><span class="pre">iterable</span></code>，每个值等于 <code class="docutils literal notranslate"><span class="pre">value</span></code>。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">QueryDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
+<span class="go">&lt;QueryDict: {&#39;a&#39;: [&#39;val&#39;, &#39;val&#39;], &#39;b&#39;: [&#39;val&#39;]}&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.__getitem__">
+<code class="descclassname">QueryDict.</code><code class="descname">__getitem__</code>(<em>key</em>)<a class="headerlink" href="#django.http.QueryDict.__getitem__" title="永久链接至目标">¶</a></dt>
+<dd><p>返回给定键的值。如果键有多个值，则返回最后一个值。如果键不存在，会引发 <code class="docutils literal notranslate"><span class="pre">django.utils.datastructures.MultiValueDictKeyError</span></code>。（这是 Python 标准的 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(在 Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code></a> 的一个子类，所以你可以坚持捕捉 <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>。)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.__setitem__">
+<code class="descclassname">QueryDict.</code><code class="descname">__setitem__</code>(<em>key</em>, <em>value</em>)<a class="headerlink" href="#django.http.QueryDict.__setitem__" title="永久链接至目标">¶</a></dt>
+<dd><p>将给定的键设置为 <code class="docutils literal notranslate"><span class="pre">[value]</span></code> （一个单一元素为 <code class="docutils literal notranslate"><span class="pre">value</span></code> 的列表）。请注意，这个函数和其他有副作用的字典函数一样，只能在一个可变的 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 上调用（比如通过 <a class="reference internal" href="#django.http.QueryDict.copy" title="django.http.QueryDict.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QueryDict.copy()</span></code></a> 创建的）。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.__contains__">
+<code class="descclassname">QueryDict.</code><code class="descname">__contains__</code>(<em>key</em>)<a class="headerlink" href="#django.http.QueryDict.__contains__" title="永久链接至目标">¶</a></dt>
+<dd><p>如果给定的键被设置，返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>。这让你可以执行，例如，<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&quot;foo&quot;</span> <span class="pre">in</span> <span class="pre">request.GET</span></code>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.get">
+<code class="descclassname">QueryDict.</code><code class="descname">get</code>(<em>key</em>, <em>default=None</em>)<a class="headerlink" href="#django.http.QueryDict.get" title="永久链接至目标">¶</a></dt>
+<dd><p>使用与 <a class="reference internal" href="#django.http.QueryDict.__getitem__" title="django.http.QueryDict.__getitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code></a> 相同的逻辑，如果键不存在，则用钩子返回一个默认值。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.setdefault">
+<code class="descclassname">QueryDict.</code><code class="descname">setdefault</code>(<em>key</em>, <em>default=None</em>)<a class="headerlink" href="#django.http.QueryDict.setdefault" title="永久链接至目标">¶</a></dt>
+<dd><p>与 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.setdefault" title="(在 Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.setdefault()</span></code></a> 一样，只是它在内部使用 <a class="reference internal" href="#django.http.QueryDict.__setitem__" title="django.http.QueryDict.__setitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__setitem__()</span></code></a>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.update">
+<code class="descclassname">QueryDict.</code><code class="descname">update</code>(<em>other_dict</em>)<a class="headerlink" href="#django.http.QueryDict.update" title="永久链接至目标">¶</a></dt>
+<dd><p>取一个 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 或一个字典。就像 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.update" title="(在 Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.update()</span></code></a> 一样，除了它 <em>附加</em> 到当前的字典项，而不是替换它们。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&#39;</span><span class="p">,</span> <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">[&#39;1&#39;, &#39;2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="c1"># returns the last</span>
+<span class="go">&#39;2&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.items">
+<code class="descclassname">QueryDict.</code><code class="descname">items</code>()<a class="headerlink" href="#django.http.QueryDict.items" title="永久链接至目标">¶</a></dt>
+<dd><p>与 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.items" title="(在 Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.items()</span></code></a> 一样，除了使用与 <a class="reference internal" href="#django.http.QueryDict.__getitem__" title="django.http.QueryDict.__getitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code></a> 相同的最后值逻辑，并返回一个迭代器对象而不是视图对象。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;a=3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">[(&#39;a&#39;, &#39;3&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.values">
+<code class="descclassname">QueryDict.</code><code class="descname">values</code>()<a class="headerlink" href="#django.http.QueryDict.values" title="永久链接至目标">¶</a></dt>
+<dd><p>与 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.values" title="(在 Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.values()</span></code></a> 一样，除了使用与 <a class="reference internal" href="#django.http.QueryDict.__getitem__" title="django.http.QueryDict.__getitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code></a> 相同的最后值逻辑，并返回一个迭代器而不是视图对象。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;a=3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="go">[&#39;3&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>此外，<code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 有以下方法：</p>
+<dl class="method">
+<dt id="django.http.QueryDict.copy">
+<code class="descclassname">QueryDict.</code><code class="descname">copy</code>()<a class="headerlink" href="#django.http.QueryDict.copy" title="永久链接至目标">¶</a></dt>
+<dd><p>使用 <a class="reference external" href="https://docs.python.org/3/library/copy.html#copy.deepcopy" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code></a> 返回对象的副本。这个副本将是可变的，即使原始副本不是。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.getlist">
+<code class="descclassname">QueryDict.</code><code class="descname">getlist</code>(<em>key</em>, <em>default=None</em>)<a class="headerlink" href="#django.http.QueryDict.getlist" title="永久链接至目标">¶</a></dt>
+<dd><p>返回带有请求键的数据列表。如果键不存在且 <code class="docutils literal notranslate"><span class="pre">default</span></code> 是 <code class="docutils literal notranslate"><span class="pre">None</span></code>，则返回一个空列表。除非提供的默认值不是一个列表，否则保证返回一个列表。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.setlist">
+<code class="descclassname">QueryDict.</code><code class="descname">setlist</code>(<em>key</em>, <em>list_</em>)<a class="headerlink" href="#django.http.QueryDict.setlist" title="永久链接至目标">¶</a></dt>
+<dd><p>将给定的键设置为 <code class="docutils literal notranslate"><span class="pre">list_</span></code> （与 <a class="reference internal" href="#django.http.QueryDict.__setitem__" title="django.http.QueryDict.__setitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__setitem__()</span></code></a> 不同）。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.appendlist">
+<code class="descclassname">QueryDict.</code><code class="descname">appendlist</code>(<em>key</em>, <em>item</em>)<a class="headerlink" href="#django.http.QueryDict.appendlist" title="永久链接至目标">¶</a></dt>
+<dd><p>将一个项目添加到与键相关联的内部列表中。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.setlistdefault">
+<code class="descclassname">QueryDict.</code><code class="descname">setlistdefault</code>(<em>key</em>, <em>default_list=None</em>)<a class="headerlink" href="#django.http.QueryDict.setlistdefault" title="永久链接至目标">¶</a></dt>
+<dd><p>和 <a class="reference internal" href="#django.http.QueryDict.setdefault" title="django.http.QueryDict.setdefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setdefault()</span></code></a> 一样，只不过它取的是一个值的列表，而不是单个值。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.lists">
+<code class="descclassname">QueryDict.</code><code class="descname">lists</code>()<a class="headerlink" href="#django.http.QueryDict.lists" title="永久链接至目标">¶</a></dt>
+<dd><p>像 <a class="reference internal" href="#django.http.QueryDict.items" title="django.http.QueryDict.items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">items()</span></code></a> 一样，除了它包含了所有的值，作为一个列表，为字典的每个成员。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;a=3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">lists</span><span class="p">()</span>
+<span class="go">[(&#39;a&#39;, [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;])]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.pop">
+<code class="descclassname">QueryDict.</code><code class="descname">pop</code>(<em>key</em>)<a class="headerlink" href="#django.http.QueryDict.pop" title="永久链接至目标">¶</a></dt>
+<dd><p>返回给定键的值列表，并从字典中删除它们。如果键不存在，则引发 <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;a=3&#39;</span><span class="p">,</span> <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.popitem">
+<code class="descclassname">QueryDict.</code><code class="descname">popitem</code>()<a class="headerlink" href="#django.http.QueryDict.popitem" title="永久链接至目标">¶</a></dt>
+<dd><p>删除字典中的任意成员（因为没有排序的概念），并返回一个包含键和键的所有值的二元元组。当调用空字典时，会引发 <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=2&amp;a=3&#39;</span><span class="p">,</span> <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="go">(&#39;a&#39;, [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.dict">
+<code class="descclassname">QueryDict.</code><code class="descname">dict</code>()<a class="headerlink" href="#django.http.QueryDict.dict" title="永久链接至目标">¶</a></dt>
+<dd><p>返回 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 的 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 表示。对于 <code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 中的每一个 (key, list) 对，<code class="docutils literal notranslate"><span class="pre">dict</span></code> 将有 (key, item)，其中 item 是列表中的一个元素，使用与 <a class="reference internal" href="#django.http.QueryDict.__getitem__" title="django.http.QueryDict.__getitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QueryDict.__getitem__()</span></code></a> 相同的逻辑：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=1&amp;a=3&amp;a=5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+<span class="go">{&#39;a&#39;: &#39;5&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.QueryDict.urlencode">
+<code class="descclassname">QueryDict.</code><code class="descname">urlencode</code>(<em>safe=None</em>)<a class="headerlink" href="#django.http.QueryDict.urlencode" title="永久链接至目标">¶</a></dt>
+<dd><p>返回一个查询字符串格式的数据字符串。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="s1">&#39;a=2&amp;b=3&amp;b=5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">urlencode</span><span class="p">()</span>
+<span class="go">&#39;a=2&amp;b=3&amp;b=5&#39;</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">safe</span></code> 参数来传递不需要编码的字符。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">QueryDict</span><span class="p">(</span><span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;next&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/a&amp;b/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="go">&#39;next=/a%26b/&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="s-httpresponse-objects">
+<span id="httpresponse-objects"></span><h2><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 对象<a class="headerlink" href="#httpresponse-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.HttpResponse">
+<em class="property">class </em><code class="descname">HttpResponse</code><a class="headerlink" href="#django.http.HttpResponse" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<p>与 Django 自动创建的 <a class="reference internal" href="#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpRequest</span></code></a> 对象不同， <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 对象是你的责任。你写的每个视图都要负责实例化、填充和返回一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 对象。</p>
+<p><a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 类位于 <a class="reference internal" href="#module-django.http" title="django.http: Classes dealing with HTTP requests and responses."><code class="xref py py-mod docutils literal notranslate"><span class="pre">django.http</span></code></a> 模块中。</p>
+<div class="section" id="s-usage">
+<span id="usage"></span><h3>用法<a class="headerlink" href="#usage" title="永久链接至标题">¶</a></h3>
+<div class="section" id="s-passing-strings">
+<span id="passing-strings"></span><h4>传入字符串<a class="headerlink" href="#passing-strings" title="永久链接至标题">¶</a></h4>
+<p>典型的用法是将页面的内容以字符串、字节字符串或 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#memoryview" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a> 的形式传递给 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 构造函数：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Here&#39;s the text of the Web page.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Text only, please.&quot;</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;text/plain&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Bytestrings are also accepted.&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="nb">memoryview</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Memoryview as well.&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>但如果你想增量添加内容，你可以使用 <code class="docutils literal notranslate"><span class="pre">response</span></code> 作为一个类似文件的对象：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;Here&#39;s the text of the Web page.&lt;/p&gt;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;Here&#39;s another paragraph.&lt;/p&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s-passing-iterators">
+<span id="passing-iterators"></span><h4>传入迭代器<a class="headerlink" href="#passing-iterators" title="永久链接至标题">¶</a></h4>
+<p>最后，你可以传递 <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 一个迭代器而不是字符串。<code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 将立即消耗迭代器，将其内容存储为一个字符串，然后丢弃它。带有 <code class="docutils literal notranslate"><span class="pre">close()</span></code> 方法的对象，如文件和生成器，会立即关闭。</p>
+<p>如果你需要将响应从迭代器流式传输到客户端，你必须使用 <a class="reference internal" href="#django.http.StreamingHttpResponse" title="django.http.StreamingHttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code></a> 类来代替。</p>
+</div>
+<div class="section" id="s-setting-header-fields">
+<span id="s-id2"></span><span id="setting-header-fields"></span><span id="id2"></span><h4>设置头字段<a class="headerlink" href="#setting-header-fields" title="永久链接至标题">¶</a></h4>
+<p>To set or remove a header field in your response, use
+<a class="reference internal" href="#django.http.HttpResponse.headers" title="django.http.HttpResponse.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpResponse.headers</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can also manipulate headers by treating your response like a dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This proxies to <code class="docutils literal notranslate"><span class="pre">HttpResponse.headers</span></code>, and is the original interface offered
+by <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code>.</p>
+<p>When using this interface, unlike a dictionary, <code class="docutils literal notranslate"><span class="pre">del</span></code> doesn't raise
+<code class="docutils literal notranslate"><span class="pre">KeyError</span></code> if the header field doesn't exist.</p>
+<p>You can also set headers on instantiation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>对于设置 <code class="docutils literal notranslate"><span class="pre">Cache-Control</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Vary</span></code> 头字段，建议使用 <a class="reference internal" href="utils.html#django.utils.cache.patch_cache_control" title="django.utils.cache.patch_cache_control"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django.utils.cache.patch_cache_control</span></code></a> 和 <a class="reference internal" href="utils.html#django.utils.cache.patch_vary_headers" title="django.utils.cache.patch_vary_headers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django.utils.cache.patch_vary_headers</span></code></a> 中的 <a class="reference internal" href="utils.html#django.utils.cache.patch_cache_control" title="django.utils.cache.patch_cache_control"><code class="xref py py-func docutils literal notranslate"><span class="pre">patch_cache_control()</span></code></a> 和 <a class="reference internal" href="utils.html#django.utils.cache.patch_vary_headers" title="django.utils.cache.patch_vary_headers"><code class="xref py py-func docutils literal notranslate"><span class="pre">patch_vary_headers()</span></code></a> 方法，因为这些字段可以有多个以逗号分隔的值。这些“补丁”方法保证了其他的值，例如由中间件添加的值，不会被删除。</p>
+<p>HTTP 头字段不能包含换行符。试图设置一个包含换行符（CR 或 LF）的头字段将引发 <code class="docutils literal notranslate"><span class="pre">BadHeaderError</span></code>。</p>
+<div class="versionchanged">
+<span class="title">Changed in Django 3.2:</span> <p>The <a class="reference internal" href="#django.http.HttpResponse.headers" title="django.http.HttpResponse.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpResponse.headers</span></code></a> interface was added.</p>
+<p>The ability to set headers on instantiation was added.</p>
+</div>
+</div>
+<div class="section" id="s-telling-the-browser-to-treat-the-response-as-a-file-attachment">
+<span id="telling-the-browser-to-treat-the-response-as-a-file-attachment"></span><h4>告诉浏览器将响应作为文件附件处理<a class="headerlink" href="#telling-the-browser-to-treat-the-response-as-a-file-attachment" title="永久链接至标题">¶</a></h4>
+<p>To tell the browser to treat the response as a file attachment, set the
+<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code> headers. For example, this is how
+you might return a Microsoft Excel spreadsheet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">my_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/vnd.ms-excel&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;Content-Disposition&#39;</span><span class="p">:</span> <span class="s1">&#39;attachment; filename=&quot;foo.xls&quot;&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code> 头并没有什么 Django 特有的内容，但是很容易忘记语法，所以我们把它包含在这里。</p>
+</div>
+</div>
+<div class="section" id="s-id3">
+<span id="id3"></span><h3>属性<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<dl class="attribute">
+<dt id="django.http.HttpResponse.content">
+<code class="descclassname">HttpResponse.</code><code class="descname">content</code><a class="headerlink" href="#django.http.HttpResponse.content" title="永久链接至目标">¶</a></dt>
+<dd><p>一个代表内容的字节字符串，必要时由字符串编码。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.headers">
+<code class="descclassname">HttpResponse.</code><code class="descname">headers</code><a class="headerlink" href="#django.http.HttpResponse.headers" title="永久链接至目标">¶</a></dt>
+<dd><div class="versionadded">
+<span class="title">New in Django 3.2.</span> </div>
+<p>A case insensitive, dict-like object that provides an interface to all
+HTTP headers on the response. See <a class="reference internal" href="#setting-header-fields"><span class="std std-ref">设置头字段</span></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.charset">
+<code class="descclassname">HttpResponse.</code><code class="descname">charset</code><a class="headerlink" href="#django.http.HttpResponse.charset" title="永久链接至目标">¶</a></dt>
+<dd><p>表示响应将被编码的字符集的字符串。如果在 <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 实例化时没有给出，将从 <code class="docutils literal notranslate"><span class="pre">content_type</span></code> 中提取，如果不成功，将使用 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a> 设置。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.status_code">
+<code class="descclassname">HttpResponse.</code><code class="descname">status_code</code><a class="headerlink" href="#django.http.HttpResponse.status_code" title="永久链接至目标">¶</a></dt>
+<dd><p>响应的 <span class="target" id="index-21"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc7231.html#section-6"><strong>HTTP 状态码</strong></a>。</p>
+<p>除非 <a class="reference internal" href="#django.http.HttpResponse.reason_phrase" title="django.http.HttpResponse.reason_phrase"><code class="xref py py-attr docutils literal notranslate"><span class="pre">reason_phrase</span></code></a> 被明确设置，否则在构造函数外修改 <code class="docutils literal notranslate"><span class="pre">status_code</span></code> 的值也会修改 <code class="docutils literal notranslate"><span class="pre">reason_phrase</span></code> 的值。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.reason_phrase">
+<code class="descclassname">HttpResponse.</code><code class="descname">reason_phrase</code><a class="headerlink" href="#django.http.HttpResponse.reason_phrase" title="永久链接至目标">¶</a></dt>
+<dd><p>响应的 HTTP 原因短语。它使用 <span class="target" id="index-22"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc7231.html#section-6.1"><strong>HTTP 标准的</strong></a> 默认的原因短语。</p>
+<p>除非明确设置，否则 <code class="docutils literal notranslate"><span class="pre">reason_phrase</span></code> 由 <a class="reference internal" href="#django.http.HttpResponse.status_code" title="django.http.HttpResponse.status_code"><code class="xref py py-attr docutils literal notranslate"><span class="pre">status_code</span></code></a> 的值决定。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.streaming">
+<code class="descclassname">HttpResponse.</code><code class="descname">streaming</code><a class="headerlink" href="#django.http.HttpResponse.streaming" title="永久链接至目标">¶</a></dt>
+<dd><p>这总是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>此属性的存在是为了让中间件能够将流式响应与常规响应区别对待。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.HttpResponse.closed">
+<code class="descclassname">HttpResponse.</code><code class="descname">closed</code><a class="headerlink" href="#django.http.HttpResponse.closed" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> 如果响应已经结束。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="s-id4">
+<span id="id4"></span><h3>方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<dl class="method">
+<dt id="django.http.HttpResponse.__init__">
+<code class="descclassname">HttpResponse.</code><code class="descname">__init__</code>(<em>content=b''</em>, <em>content_type=None</em>, <em>status=200</em>, <em>reason=None</em>, <em>charset=None</em>, <em>headers=None</em>)<a class="headerlink" href="#django.http.HttpResponse.__init__" title="永久链接至目标">¶</a></dt>
+<dd><p>Instantiates an <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> object with the given page content,
+content type, and headers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">content</span></code> 最常见的是迭代器、字节字符串、<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#memoryview" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a> 或字符串。其他类型将通过对它们的字符串表示进行编码而转换为字节组。迭代器应该返回字符串或字节字符串，这些将被连接在一起以形成响应的内容。</p>
+<p><code class="docutils literal notranslate"><span class="pre">content_type</span></code> 是 MIME 类型，可选择用字符集编码完成，用于填充 HTTP <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 头。如果没有指定，则由 <code class="docutils literal notranslate"><span class="pre">'text/html'</span></code> 和 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a> 配置组成，默认情况下：<code class="docutils literal notranslate"><span class="pre">&quot;text/html;</span> <span class="pre">charset=utf-8&quot;</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">status</span></code> 是响应的 <span class="target" id="index-23"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc7231.html#section-6"><strong>HTTP 状态码</strong></a>。你可以使用 Python 的 <a class="reference external" href="https://docs.python.org/3/library/http.html#http.HTTPStatus" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">http.HTTPStatus</span></code></a> 来实现有意义的别名，比如 <code class="docutils literal notranslate"><span class="pre">HTTPStatus.NO_CONTENT</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">reason</span></code> 是 HTTP 响应短语。如果没有提供，将使用默认短语。</p>
+<p><code class="docutils literal notranslate"><span class="pre">charset</span></code> 是对响应进行编码的字符集。如果没有给出，将从 <code class="docutils literal notranslate"><span class="pre">content_type</span></code> 中提取，如果不成功，将使用 <a class="reference internal" href="settings.html#std:setting-DEFAULT_CHARSET"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_CHARSET</span></code></a> 配置。</p>
+<p><code class="docutils literal notranslate"><span class="pre">headers</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of HTTP headers for the response.</p>
+<div class="versionchanged">
+<span class="title">Changed in Django 3.2:</span> <p>The <code class="docutils literal notranslate"><span class="pre">headers</span></code> parameter was added.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.__setitem__">
+<code class="descclassname">HttpResponse.</code><code class="descname">__setitem__</code>(<em>header</em>, <em>value</em>)<a class="headerlink" href="#django.http.HttpResponse.__setitem__" title="永久链接至目标">¶</a></dt>
+<dd><p>将给定的响应头名设置为给定的值。<code class="docutils literal notranslate"><span class="pre">header</span></code> 和 <code class="docutils literal notranslate"><span class="pre">value</span></code> 都应该是字符串。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.__delitem__">
+<code class="descclassname">HttpResponse.</code><code class="descname">__delitem__</code>(<em>header</em>)<a class="headerlink" href="#django.http.HttpResponse.__delitem__" title="永久链接至目标">¶</a></dt>
+<dd><p>删除指定名称的响应头。如果头不存在，则静默失败。不区分大小写。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.__getitem__">
+<code class="descclassname">HttpResponse.</code><code class="descname">__getitem__</code>(<em>header</em>)<a class="headerlink" href="#django.http.HttpResponse.__getitem__" title="永久链接至目标">¶</a></dt>
+<dd><p>返回给定响应头名的值。不区分大小写。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.get">
+<code class="descclassname">HttpResponse.</code><code class="descname">get</code>(<em>header</em>, <em>alternate=None</em>)<a class="headerlink" href="#django.http.HttpResponse.get" title="永久链接至目标">¶</a></dt>
+<dd><p>返回给定响应头的值，如果头不存在，则返回 <code class="docutils literal notranslate"><span class="pre">alternate</span></code>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.has_header">
+<code class="descclassname">HttpResponse.</code><code class="descname">has_header</code>(<em>header</em>)<a class="headerlink" href="#django.http.HttpResponse.has_header" title="永久链接至目标">¶</a></dt>
+<dd><p>根据对给定名称的响应头进行不区分大小写的检查，返回 <code class="docutils literal notranslate"><span class="pre">True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.items">
+<code class="descclassname">HttpResponse.</code><code class="descname">items</code>()<a class="headerlink" href="#django.http.HttpResponse.items" title="永久链接至目标">¶</a></dt>
+<dd><p>像 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.items" title="(在 Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.items()</span></code></a> 一样作用于响应的 HTTP 头信息。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.setdefault">
+<code class="descclassname">HttpResponse.</code><code class="descname">setdefault</code>(<em>header</em>, <em>value</em>)<a class="headerlink" href="#django.http.HttpResponse.setdefault" title="永久链接至目标">¶</a></dt>
+<dd><p>设置响应头，除非它已经被设置。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.set_cookie">
+<code class="descclassname">HttpResponse.</code><code class="descname">set_cookie</code>(<em>key</em>, <em>value=''</em>, <em>max_age=None</em>, <em>expires=None</em>, <em>path='/'</em>, <em>domain=None</em>, <em>secure=False</em>, <em>httponly=False</em>, <em>samesite=None</em>)<a class="headerlink" href="#django.http.HttpResponse.set_cookie" title="永久链接至目标">¶</a></dt>
+<dd><p>设置一个 cookie。参数与 Python 标准库中的 <a class="reference external" href="https://docs.python.org/3/library/http.cookies.html#http.cookies.Morsel" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a> cookie 对象相同。</p>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">max_age</span></code> should be an integer number of seconds, or <code class="docutils literal notranslate"><span class="pre">None</span></code> (default)
+if the cookie should last only as long as the client's browser session.
+If <code class="docutils literal notranslate"><span class="pre">expires</span></code> is not specified, it will be calculated.</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">expires</span></code> 应是格式为 <code class="docutils literal notranslate"><span class="pre">&quot;Wdy,</span> <span class="pre">DD-Mon-YY</span> <span class="pre">HH:MM:SS</span> <span class="pre">GMT&quot;</span></code> 的字符串，或者是 UTC 的 <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> 对象。如果 <code class="docutils literal notranslate"><span class="pre">expires</span></code> 是一个 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 对象，将计算 <code class="docutils literal notranslate"><span class="pre">max_age</span></code>。</p>
+</li>
+<li><p class="first">如果你想设置一个跨域的 cookie，请使用 <code class="docutils literal notranslate"><span class="pre">domain</span></code>。例如，<code class="docutils literal notranslate"><span class="pre">domain=&quot;example.com&quot;</span></code> 将设置一个可被 www.example.com、blog.example.com 等域读取的 cookie。否则，一个 cookie 将只能被设置它的域读取。</p>
+</li>
+<li><p class="first">如果你想让 cookie 只在使用 <code class="docutils literal notranslate"><span class="pre">https</span></code> 方案进行请求时才发送给服务器，请使用 <code class="docutils literal notranslate"><span class="pre">secure=True</span></code>。</p>
+</li>
+<li><p class="first">如果你想防止客户端的 JavaScript 访问 cookie，请使用 <code class="docutils literal notranslate"><span class="pre">httponly=True</span></code>。</p>
+<p><a class="reference external" href="https://owasp.org/www-community/HttpOnly">HttpOnly</a> 是包含在 Set-Cookie HTTP 响应头中的一个标志。它是 <span class="target" id="index-24"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc6265.html#section-4.1.2.6"><strong>RFC 6265</strong></a> 标准中 Cookie 的一部分，可以作为一种有用的方式来降低客户端脚本访问受保护 Cookie 数据的风险。</p>
+</li>
+<li><p class="first">使用 <code class="docutils literal notranslate"><span class="pre">samesite='Strict'</span></code> 或 <code class="docutils literal notranslate"><span class="pre">samesite='Lax'</span></code> 来告诉浏览器在执行跨源请求时不要发送这个 cookie。<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">SameSite</a> 并不是所有浏览器都支持，所以它并不能替代 Django 的 CSRF 保护，而是一种深度防御措施。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">samesite=''None'</span></code> （字符串）来明确说明这个 cookie 会随着所有的同站和跨站请求而发送。</p>
+</li>
+</ul>
+<div class="versionchanged">
+<span class="title">Changed in Django 3.1:</span> <p>允许使用 <code class="docutils literal notranslate"><span class="pre">samesite='None</span></code> （字符串）。</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last"><span class="target" id="index-25"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc6265.html#section-6.1"><strong>RFC 6265</strong></a> 规定，用户代理应支持至少 4096 字节的 cookies。对于很多浏览器来说，这也是最大的尺寸。如果试图存储一个超过 4096 字节的 cookie，Django 不会引发异常，但很多浏览器不会正确设置 cookie。</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.set_signed_cookie">
+<code class="descclassname">HttpResponse.</code><code class="descname">set_signed_cookie</code>(<em>key</em>, <em>value</em>, <em>salt=''</em>, <em>max_age=None</em>, <em>expires=None</em>, <em>path='/'</em>, <em>domain=None</em>, <em>secure=False</em>, <em>httponly=False</em>, <em>samesite=None</em>)<a class="headerlink" href="#django.http.HttpResponse.set_signed_cookie" title="永久链接至目标">¶</a></dt>
+<dd><p>像 <a class="reference internal" href="#django.http.HttpResponse.set_cookie" title="django.http.HttpResponse.set_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_cookie()</span></code></a> 一样，但是 <a class="reference internal" href="../topics/signing.html"><span class="doc">在设置 cookie 之前对它进行加密签名</span></a>。与 <a class="reference internal" href="#django.http.HttpRequest.get_signed_cookie" title="django.http.HttpRequest.get_signed_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HttpRequest.get_signed_cookie()</span></code></a> 一起使用。你可以使用可选的 <code class="docutils literal notranslate"><span class="pre">salt</span></code> 参数来增加密钥强度，但你需要记得把它传递给相应的 <a class="reference internal" href="#django.http.HttpRequest.get_signed_cookie" title="django.http.HttpRequest.get_signed_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HttpRequest.get_signed_cookie()</span></code></a> 调用。</p>
+<div class="versionchanged">
+<span class="title">Changed in Django 3.1:</span> <p>允许使用 <code class="docutils literal notranslate"><span class="pre">samesite='None</span></code> （字符串）。</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.delete_cookie">
+<code class="descclassname">HttpResponse.</code><code class="descname">delete_cookie</code>(<em>key</em>, <em>path='/'</em>, <em>domain=None</em>, <em>samesite=None</em>)<a class="headerlink" href="#django.http.HttpResponse.delete_cookie" title="永久链接至目标">¶</a></dt>
+<dd><p>删除给定键的 cookie。如果键不存在，则静默失败。</p>
+<p>由于 cookie 的工作方式，<code class="docutils literal notranslate"><span class="pre">path</span></code> 和 <code class="docutils literal notranslate"><span class="pre">domain</span></code> 应该与你在 <code class="docutils literal notranslate"><span class="pre">set_cookie()</span></code> 中使用的值相同，否则 cookie 可能不会被删除。</p>
+<div class="versionchanged">
+<span class="title">Changed in Django 2.2.15:</span> <p>增加了 <code class="docutils literal notranslate"><span class="pre">samesite</span></code> 参数。</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.close">
+<code class="descclassname">HttpResponse.</code><code class="descname">close</code>()<a class="headerlink" href="#django.http.HttpResponse.close" title="永久链接至目标">¶</a></dt>
+<dd><p>本方法在请求结束时由 WSGI 服务器直接调用。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.write">
+<code class="descclassname">HttpResponse.</code><code class="descname">write</code>(<em>content</em>)<a class="headerlink" href="#django.http.HttpResponse.write" title="永久链接至目标">¶</a></dt>
+<dd><p>这个方法使一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类似文件的对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.flush">
+<code class="descclassname">HttpResponse.</code><code class="descname">flush</code>()<a class="headerlink" href="#django.http.HttpResponse.flush" title="永久链接至目标">¶</a></dt>
+<dd><p>这个方法使一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类似文件的对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.tell">
+<code class="descclassname">HttpResponse.</code><code class="descname">tell</code>()<a class="headerlink" href="#django.http.HttpResponse.tell" title="永久链接至目标">¶</a></dt>
+<dd><p>这个方法使一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类似文件的对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.getvalue">
+<code class="descclassname">HttpResponse.</code><code class="descname">getvalue</code>()<a class="headerlink" href="#django.http.HttpResponse.getvalue" title="永久链接至目标">¶</a></dt>
+<dd><p>返回 <a class="reference internal" href="#django.http.HttpResponse.content" title="django.http.HttpResponse.content"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpResponse.content</span></code></a> 的值。本方法使一个 :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>HttpResponse`实例成为一个类流对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.readable">
+<code class="descclassname">HttpResponse.</code><code class="descname">readable</code>()<a class="headerlink" href="#django.http.HttpResponse.readable" title="永久链接至目标">¶</a></dt>
+<dd><p>总是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。此方法使 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类流对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.seekable">
+<code class="descclassname">HttpResponse.</code><code class="descname">seekable</code>()<a class="headerlink" href="#django.http.HttpResponse.seekable" title="永久链接至目标">¶</a></dt>
+<dd><p>总是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。此方法使 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类流对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.writable">
+<code class="descclassname">HttpResponse.</code><code class="descname">writable</code>()<a class="headerlink" href="#django.http.HttpResponse.writable" title="永久链接至目标">¶</a></dt>
+<dd><p>总是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。此方法使 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类流对象。</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.http.HttpResponse.writelines">
+<code class="descclassname">HttpResponse.</code><code class="descname">writelines</code>(<em>lines</em>)<a class="headerlink" href="#django.http.HttpResponse.writelines" title="永久链接至目标">¶</a></dt>
+<dd><p>将行的列表写入响应。不添加行的分隔符。此方法使 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 实例成为一个类流对象。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="s-httpresponse-subclasses">
+<span id="s-ref-httpresponse-subclasses"></span><span id="httpresponse-subclasses"></span><span id="ref-httpresponse-subclasses"></span><h3><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 子类<a class="headerlink" href="#httpresponse-subclasses" title="永久链接至标题">¶</a></h3>
+<p>Django 包含了许多 <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 的子类来处理不同类型的 HTTP 响应。像 <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 一样，这些子类位于 <a class="reference internal" href="#module-django.http" title="django.http: Classes dealing with HTTP requests and responses."><code class="xref py py-mod docutils literal notranslate"><span class="pre">django.http</span></code></a> 中。</p>
+<dl class="class">
+<dt id="django.http.HttpResponseRedirect">
+<em class="property">class </em><code class="descname">HttpResponseRedirect</code><a class="headerlink" href="#django.http.HttpResponseRedirect" title="永久链接至目标">¶</a></dt>
+<dd><p>构造函数的第一个参数是必需的——要重定向的路径。这可以是一个完全限定的 URL（例如 <code class="docutils literal notranslate"><span class="pre">'https://www.yahoo.com/search/</span></code>)，一个没有域名的绝对路径（例如 <code class="docutils literal notranslate"><span class="pre">'/search/'</span></code>），甚至是一个相对路径（例如 <code class="docutils literal notranslate"><span class="pre">'search/'</span></code>）。在最后一种情况下，客户端浏览器会根据当前路径自己重建完整的 URL。参见 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 了解其他可选的构造函数参数。请注意，这将返回一个 HTTP 状态码 302。</p>
+<dl class="attribute">
+<dt id="django.http.HttpResponseRedirect.url">
+<code class="descname">url</code><a class="headerlink" href="#django.http.HttpResponseRedirect.url" title="永久链接至目标">¶</a></dt>
+<dd><p>这个只读属性表示响应将重定向到的 URL（相当于 <code class="docutils literal notranslate"><span class="pre">Location</span></code> 响应头）。</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponsePermanentRedirect">
+<em class="property">class </em><code class="descname">HttpResponsePermanentRedirect</code><a class="headerlink" href="#django.http.HttpResponsePermanentRedirect" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponseRedirect" title="django.http.HttpResponseRedirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponseRedirect</span></code></a> 一样，但它返回的是一个永久重定向（HTTP 状态码 301），而不是“found”重定向（状态码 302）。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseNotModified">
+<em class="property">class </em><code class="descname">HttpResponseNotModified</code><a class="headerlink" href="#django.http.HttpResponseNotModified" title="永久链接至目标">¶</a></dt>
+<dd><p>构造函数不接受任何参数，也不应该添加任何内容到这个响应中。用它来表示自用户最后一次请求后，页面没有被修改（状态码 304）。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseBadRequest">
+<em class="property">class </em><code class="descname">HttpResponseBadRequest</code><a class="headerlink" href="#django.http.HttpResponseBadRequest" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 400 状态码。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseNotFound">
+<em class="property">class </em><code class="descname">HttpResponseNotFound</code><a class="headerlink" href="#django.http.HttpResponseNotFound" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 404 状态码。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseForbidden">
+<em class="property">class </em><code class="descname">HttpResponseForbidden</code><a class="headerlink" href="#django.http.HttpResponseForbidden" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 403 状态码。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseNotAllowed">
+<em class="property">class </em><code class="descname">HttpResponseNotAllowed</code><a class="headerlink" href="#django.http.HttpResponseNotAllowed" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 405 状态码。构造函数的第一个参数是必需的：一个允许的方法列表（例如 <code class="docutils literal notranslate"><span class="pre">['GET',</span> <span class="pre">'POST']</span></code>）。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseGone">
+<em class="property">class </em><code class="descname">HttpResponseGone</code><a class="headerlink" href="#django.http.HttpResponseGone" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 410 状态码。</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="django.http.HttpResponseServerError">
+<em class="property">class </em><code class="descname">HttpResponseServerError</code><a class="headerlink" href="#django.http.HttpResponseServerError" title="永久链接至目标">¶</a></dt>
+<dd><p>就像 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 一样，但使用 500 状态码。</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 的自定义子类实现了 <code class="docutils literal notranslate"><span class="pre">render</span></code> 方法，Django 会将其视为模拟 <a class="reference internal" href="template-response.html#django.template.response.SimpleTemplateResponse" title="django.template.response.SimpleTemplateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleTemplateResponse</span></code></a>，并且 <code class="docutils literal notranslate"><span class="pre">render</span></code> 方法本身必须返回一个有效的响应对象。</p>
+</div>
+<div class="section" id="s-custom-response-classes">
+<span id="custom-response-classes"></span><h4>自定义响应类<a class="headerlink" href="#custom-response-classes" title="永久链接至标题">¶</a></h4>
+<p>如果你发现自己需要一个 Django 没有提供的响应类，你可以借助 <a class="reference external" href="https://docs.python.org/3/library/http.html#http.HTTPStatus" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">http.HTTPStatus</span></code></a> 来创建它。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="k">class</span> <span class="nc">HttpResponseNoContent</span><span class="p">(</span><span class="n">HttpResponse</span><span class="p">):</span>
+    <span class="n">status_code</span> <span class="o">=</span> <span class="n">HTTPStatus</span><span class="o">.</span><span class="n">NO_CONTENT</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="s-jsonresponse-objects">
+<span id="jsonresponse-objects"></span><h2><code class="docutils literal notranslate"><span class="pre">JsonResponse</span></code> 对象<a class="headerlink" href="#jsonresponse-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.JsonResponse">
+<em class="property">class </em><code class="descname">JsonResponse</code>(<em>data</em>, <em>encoder=DjangoJSONEncoder</em>, <em>safe=True</em>, <em>json_dumps_params=None</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.http.JsonResponse" title="永久链接至目标">¶</a></dt>
+<dd><p>一个 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 子类，帮助创建一个 JSON 编码的响应。它继承了它的超类的大部分行为，但有一些不同：</p>
+<p>其默认的 <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 头设置为 <em class="mimetype">application/json</em>。</p>
+<p>第一个参数 <code class="docutils literal notranslate"><span class="pre">data</span></code> 应该是 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 实例。如果 <code class="docutils literal notranslate"><span class="pre">safe</span></code> 参数设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> （见下文），它可以是任何 JSON 可序列化的对象。</p>
+<p><code class="docutils literal notranslate"><span class="pre">encoder</span></code>，默认为 <a class="reference internal" href="../topics/serialization.html#django.core.serializers.json.DjangoJSONEncoder" title="django.core.serializers.json.DjangoJSONEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.serializers.json.DjangoJSONEncoder</span></code></a>，将用于序列化数据。关于这个序列化器的更多细节，请参见 <a class="reference internal" href="../topics/serialization.html#serialization-formats-json"><span class="std std-ref">JSON 序列化</span></a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">safe</span></code> 布尔参数默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。如果它被设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，任何对象都可以被传递到序列化中（否则只允许 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 实例）。如果 <code class="docutils literal notranslate"><span class="pre">safe</span></code> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，而第一个参数是一个非 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 对象，则会引发一个 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(在 Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">json_dumps_params</span></code> 参数是一个关键字参数的字典，用来传递给 <code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> 调用，用于生成响应。</p>
+</dd></dl>
+
+<div class="section" id="s-id5">
+<span id="id5"></span><h3>用法<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>典型的用法可能是：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">content</span>
+<span class="go">b&#39;{&quot;foo&quot;: &quot;bar&quot;}&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="s-serializing-non-dictionary-objects">
+<span id="serializing-non-dictionary-objects"></span><h4>序列化非字典对象<a class="headerlink" href="#serializing-non-dictionary-objects" title="永久链接至标题">¶</a></h4>
+<p>为了对 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 以外的对象进行序列化，你必须将 <code class="docutils literal notranslate"><span class="pre">safe</span></code> 参数设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">JsonResponse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果没有传递 <code class="docutils literal notranslate"><span class="pre">safe=False</span></code>，将引发一个 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(在 Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>。</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">Before the <a class="reference external" href="https://262.ecma-international.org/5.1/#sec-11.1.4">5th edition of ECMAScript</a> it was possible to
+poison the JavaScript <code class="docutils literal notranslate"><span class="pre">Array</span></code> constructor. For this reason, Django does
+not allow passing non-dict objects to the
+<a class="reference internal" href="#django.http.JsonResponse" title="django.http.JsonResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonResponse</span></code></a> constructor by default.  However, most
+modern browsers implement EcmaScript 5 which removes this attack vector.
+Therefore it is possible to disable this security precaution.</p>
+</div>
+</div>
+<div class="section" id="s-changing-the-default-json-encoder">
+<span id="changing-the-default-json-encoder"></span><h4>更改默认 JSON 编码器<a class="headerlink" href="#changing-the-default-json-encoder" title="永久链接至标题">¶</a></h4>
+<p>如果你需要使用不同的 JSON 编码器类，你可以将 <code class="docutils literal notranslate"><span class="pre">encoder</span></code> 参数传递给构造方法：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">encoder</span><span class="o">=</span><span class="n">MyJSONEncoder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="s-streaminghttpresponse-objects">
+<span id="s-httpresponse-streaming"></span><span id="streaminghttpresponse-objects"></span><span id="httpresponse-streaming"></span><h2><code class="docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code> 对象<a class="headerlink" href="#streaminghttpresponse-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.StreamingHttpResponse">
+<em class="property">class </em><code class="descname">StreamingHttpResponse</code><a class="headerlink" href="#django.http.StreamingHttpResponse" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<p><a class="reference internal" href="#django.http.StreamingHttpResponse" title="django.http.StreamingHttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code></a> 类用于从 Django 流式传输一个响应给浏览器。如果生成响应的时间太长或者使用了太多的内存，你可能需要这样做。例如，它对于 <a class="reference internal" href="../howto/outputting-csv.html#streaming-csv-files"><span class="std std-ref">生成大型 CSV 文件</span></a> 很有用。</p>
+<div class="admonition-performance-considerations admonition">
+<p class="first admonition-title">性能考量</p>
+<p>Django 是为短时请求设计的。流式响应会在整个响应期间绑定一个工作进程。这可能导致性能不佳。</p>
+<p class="last">一般来说，你应该在请求响应周期之外执行昂贵的任务，而不是求助于流式响应。</p>
+</div>
+<p><a class="reference internal" href="#django.http.StreamingHttpResponse" title="django.http.StreamingHttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code></a> 不是 <a class="reference internal" href="#django.http.HttpResponse" title="django.http.HttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpResponse</span></code></a> 的子类，因此它的 API 略有不同。然而，它几乎是相同的，但有以下显著的区别。</p>
+<ul class="simple">
+<li>应该给它一个迭代器，产生字节字符串作为内容。</li>
+<li>你不能访问它的内容，除非通过迭代响应对象本身。这只应该发生在响应返回给客户端的时候。</li>
+<li>它没有 <code class="docutils literal notranslate"><span class="pre">content</span></code> 属性。相反，它有一个 <a class="reference internal" href="#django.http.StreamingHttpResponse.streaming_content" title="django.http.StreamingHttpResponse.streaming_content"><code class="xref py py-attr docutils literal notranslate"><span class="pre">streaming_content</span></code></a> 属性。</li>
+<li>你不能使用类文件对象的 <code class="docutils literal notranslate"><span class="pre">tell()</span></code> 或 <code class="docutils literal notranslate"><span class="pre">write()</span></code> 方法。这样做会引起一个异常。</li>
+</ul>
+<p><a class="reference internal" href="#django.http.StreamingHttpResponse" title="django.http.StreamingHttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code></a> 只应该用在绝对需要在将数据传输给客户端之前不对整个内容进行迭代的情况下。因为无法访问内容，所以很多中间件无法正常工作。例如 <code class="docutils literal notranslate"><span class="pre">ETag</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Content-Length</span></code> 头不能为流式响应生成。</p>
+<div class="section" id="s-id6">
+<span id="id6"></span><h3>属性<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<dl class="attribute">
+<dt id="django.http.StreamingHttpResponse.streaming_content">
+<code class="descclassname">StreamingHttpResponse.</code><code class="descname">streaming_content</code><a class="headerlink" href="#django.http.StreamingHttpResponse.streaming_content" title="永久链接至目标">¶</a></dt>
+<dd><p>响应内容的迭代器，根据 <a class="reference internal" href="#django.http.HttpResponse.charset" title="django.http.HttpResponse.charset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HttpResponse.charset</span></code></a> 编码的字节字符串。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.StreamingHttpResponse.status_code">
+<code class="descclassname">StreamingHttpResponse.</code><code class="descname">status_code</code><a class="headerlink" href="#django.http.StreamingHttpResponse.status_code" title="永久链接至目标">¶</a></dt>
+<dd><p>响应的 <span class="target" id="index-26"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc7231.html#section-6"><strong>HTTP 状态码</strong></a>。</p>
+<p>除非 <a class="reference internal" href="#django.http.StreamingHttpResponse.reason_phrase" title="django.http.StreamingHttpResponse.reason_phrase"><code class="xref py py-attr docutils literal notranslate"><span class="pre">reason_phrase</span></code></a> 被明确设置，否则在构造函数外修改 <code class="docutils literal notranslate"><span class="pre">status_code</span></code> 的值也会修改 <code class="docutils literal notranslate"><span class="pre">reason_phrase</span></code> 的值。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.StreamingHttpResponse.reason_phrase">
+<code class="descclassname">StreamingHttpResponse.</code><code class="descname">reason_phrase</code><a class="headerlink" href="#django.http.StreamingHttpResponse.reason_phrase" title="永久链接至目标">¶</a></dt>
+<dd><p>响应的 HTTP 原因短语。它使用 <span class="target" id="index-27"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc7231.html#section-6.1"><strong>HTTP 标准的</strong></a> 默认的原因短语。</p>
+<p>除非明确设置，否则 <code class="docutils literal notranslate"><span class="pre">reason_phrase</span></code> 由 <a class="reference internal" href="#django.http.StreamingHttpResponse.status_code" title="django.http.StreamingHttpResponse.status_code"><code class="xref py py-attr docutils literal notranslate"><span class="pre">status_code</span></code></a> 的值决定。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django.http.StreamingHttpResponse.streaming">
+<code class="descclassname">StreamingHttpResponse.</code><code class="descname">streaming</code><a class="headerlink" href="#django.http.StreamingHttpResponse.streaming" title="永久链接至目标">¶</a></dt>
+<dd><p>这总是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="s-fileresponse-objects">
+<span id="fileresponse-objects"></span><h2><code class="docutils literal notranslate"><span class="pre">FileResponse</span></code> 对象<a class="headerlink" href="#fileresponse-objects" title="永久链接至标题">¶</a></h2>
+<dl class="class">
+<dt id="django.http.FileResponse">
+<em class="property">class </em><code class="descname">FileResponse</code>(<em>open_file</em>, <em>as_attachment=False</em>, <em>filename=''</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.http.FileResponse" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="#django.http.FileResponse" title="django.http.FileResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileResponse</span></code></a> 是 <a class="reference internal" href="#django.http.StreamingHttpResponse" title="django.http.StreamingHttpResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code></a> 的一个子类，它针对二进制文件进行了优化。如果 wsgi 服务器提供的话，它使用 <span class="target" id="index-28"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3333#optional-platform-specific-file-handling"><strong>wsgi.file_wrapper</strong></a>，否则它将文件以小块的形式流式传输出去。</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">as_attachment=True</span></code>，<code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code> 头被设置为 <code class="docutils literal notranslate"><span class="pre">attachment</span></code>，要求浏览器将文件作为下载文件提供给用户。否则，只有在有文件名的情况下，才会设置值为 <code class="docutils literal notranslate"><span class="pre">inline</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code> 头（浏览器默认）。</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">open_file</span></code> 没有名字，或者 <code class="docutils literal notranslate"><span class="pre">open_file</span></code> 的名字不合适，可以使用 <code class="docutils literal notranslate"><span class="pre">filename</span></code> 参数提供一个自定义的文件名。请注意，如果你传递了一个类似文件的对象，比如 <code class="docutils literal notranslate"><span class="pre">io.BytesIO</span></code>，你的任务是在把它传递给 <code class="docutils literal notranslate"><span class="pre">FileResponse</span></code> 之前 <code class="docutils literal notranslate"><span class="pre">seek()`</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Content-Length</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 头信息是根据 <code class="docutils literal notranslate"><span class="pre">open_file</span></code> 的内容猜测出来的。</p>
+</dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">FileResponse</span></code> 接受任何具有二进制内容的文件类对象，例如一个以二进制模式打开的文件，如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">FileResponse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">FileResponse</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>该文件会自动关闭，所以不要用上下文管理器打开它。</p>
+<div class="section" id="s-id7">
+<span id="id7"></span><h3>方法<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<dl class="method">
+<dt id="django.http.FileResponse.set_headers">
+<code class="descclassname">FileResponse.</code><code class="descname">set_headers</code>(<em>open_file</em>)<a class="headerlink" href="#django.http.FileResponse.set_headers" title="永久链接至目标">¶</a></dt>
+<dd><p>该方法在响应初始化过程中自动调用，并根据 <code class="docutils literal notranslate"><span class="pre">open_file</span></code> 设置各种头文件（<code class="docutils literal notranslate"><span class="pre">Content-Length</span></code>、<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code>）。</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">请求和响应对象</a><ul>
+<li><a class="reference internal" href="#quick-overview">快速概述</a></li>
+<li><a class="reference internal" href="#httprequest-objects"><code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#attributes">属性</a></li>
+<li><a class="reference internal" href="#attributes-set-by-application-code">应用程序代码设置的属性</a></li>
+<li><a class="reference internal" href="#attributes-set-by-middleware">中间件设置的属性</a></li>
+<li><a class="reference internal" href="#methods">方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#querydict-objects"><code class="docutils literal notranslate"><span class="pre">QueryDict</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#id1">方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#httpresponse-objects"><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#usage">用法</a><ul>
+<li><a class="reference internal" href="#passing-strings">传入字符串</a></li>
+<li><a class="reference internal" href="#passing-iterators">传入迭代器</a></li>
+<li><a class="reference internal" href="#setting-header-fields">设置头字段</a></li>
+<li><a class="reference internal" href="#telling-the-browser-to-treat-the-response-as-a-file-attachment">告诉浏览器将响应作为文件附件处理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">属性</a></li>
+<li><a class="reference internal" href="#id4">方法</a></li>
+<li><a class="reference internal" href="#httpresponse-subclasses"><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> 子类</a><ul>
+<li><a class="reference internal" href="#custom-response-classes">自定义响应类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jsonresponse-objects"><code class="docutils literal notranslate"><span class="pre">JsonResponse</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#id5">用法</a><ul>
+<li><a class="reference internal" href="#serializing-non-dictionary-objects">序列化非字典对象</a></li>
+<li><a class="reference internal" href="#changing-the-default-json-encoder">更改默认 JSON 编码器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streaminghttpresponse-objects"><code class="docutils literal notranslate"><span class="pre">StreamingHttpResponse</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#id6">属性</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fileresponse-objects"><code class="docutils literal notranslate"><span class="pre">FileResponse</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#id7">方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="paginator.html"
+                        title="上一章">分页器</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="schema-editor.html"
+                        title="下一章"><code class="docutils literal notranslate"><span class="pre">SchemaEditor</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/ref/request-response.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">12月 07, 2021</p>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="paginator.html" title="分页器">previous</a>
+     |
+    <a href="index.html" title="API 参考" accesskey="U">up</a>
+   |
+    <a href="schema-editor.html" title="&lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;SchemaEditor&lt;/span&gt;&lt;/code&gt;">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

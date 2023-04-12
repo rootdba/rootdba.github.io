@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作指南 &#8212; Django 4.0.6.dev20220601124058 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="How to authenticate using REMOTE_USER" href="auth-remote-user.html" />
+    <link rel="prev" title="异步支持" href="../topics/async.html" />
+
+
+
+ 
+<script src="../templatebuiltins.js"></script>
+<script>
+(function($) {
+    if (!django_template_builtins) {
+       // templatebuiltins.js missing, do nothing.
+       return;
+    }
+    $(document).ready(function() {
+        // Hyperlink Django template tags and filters
+        var base = "../ref/templates/builtins.html";
+        if (base == "#") {
+            // Special case for builtins.html itself
+            base = "";
+        }
+        // Tags are keywords, class '.k'
+        $("div.highlight\\-html\\+django span.k").each(function(i, elem) {
+             var tagname = $(elem).text();
+             if ($.inArray(tagname, django_template_builtins.ttags) != -1) {
+                 var fragment = tagname.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + tagname + "</a>");
+             }
+        });
+        // Filters are functions, class '.nf'
+        $("div.highlight\\-html\\+django span.nf").each(function(i, elem) {
+             var filtername = $(elem).text();
+             if ($.inArray(filtername, django_template_builtins.tfilters) != -1) {
+                 var fragment = filtername.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + filtername + "</a>");
+             }
+        });
+    });
+})(jQuery);</script>
+
+  </head><body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../index.html">Django 4.0.6.dev20220601124058 文档</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>  |
+        <a title="Table of contents" href="../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../genindex.html">Index</a>  |
+        <a title="Module index" href="../py-modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="../topics/async.html" title="异步支持">previous</a>
+     |
+    <a title="Django 4.0.6.dev20220601124058 文档" href="../index.html" accesskey="U">up</a>
+   |
+    <a href="auth-remote-user.html" title="How to authenticate using &lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;REMOTE_USER&lt;/span&gt;&lt;/code&gt;">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="howto-index">
+            
+  <div class="section" id="s-how-to-guides">
+<span id="how-to-guides"></span><h1>操作指南<a class="headerlink" href="#how-to-guides" title="永久链接至标题">¶</a></h1>
+<p>你将在此找到大量回答形如“我该如何……”问题的简答。这些怎么做指南不会深入各个主题——你可以在 <a class="reference internal" href="../topics/index.html"><span class="doc">使用 Django</span></a> 和 <a class="reference internal" href="../ref/index.html"><span class="doc">API 参考</span></a> 找到深入的讲解。不过，这些指引可以帮你快速完成常见的任务。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auth-remote-user.html">How to authenticate using <code class="docutils literal notranslate"><span class="pre">REMOTE_USER</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-management-commands.html">How to create custom <code class="docutils literal notranslate"><span class="pre">django-admin</span></code> commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-model-fields.html">How to create custom model fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-lookups.html">How to write custom lookups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-template-backend.html">How to implement a custom template backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-template-tags.html">How to create custom template tags and filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-file-storage.html">How to write a custom storage class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/index.html">如何部署 Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade-version.html">How to upgrade Django to a newer version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error-reporting.html">如何管理错误报告</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initial-data.html">How to provide initial data for models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy-databases.html">How to integrate Django with a legacy database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">How to configure and use logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputting-csv.html">How to create CSV output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputting-pdf.html">How to create PDF files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overriding-templates.html">How to override templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static-files/index.html">How to manage static files (e.g. images, JavaScript, CSS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static-files/deployment.html">如何部署静态文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">如何在 Windows 上安装 Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-migrations.html">How to create database migrations</a></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">参见</p>
+<p class="last"><a class="reference external" href="https://www.djangoproject.com/community/">Django 聚合社区</a>，我们将全球 Django 社区的内容聚合至此。聚合社区中的很多作者编写了本快速指南文档。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="../topics/async.html"
+                          title="上一章">异步支持</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="auth-remote-user.html"
+                          title="下一章">How to authenticate using <code class="docutils literal notranslate"><span class="pre">REMOTE_USER</span></code></a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/howto/index.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">6月 01, 2022</p>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="../topics/async.html" title="异步支持">previous</a>
+     |
+    <a title="Django 4.0.6.dev20220601124058 文档" href="../index.html" accesskey="U">up</a>
+   |
+    <a href="auth-remote-user.html" title="How to authenticate using &lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;REMOTE_USER&lt;/span&gt;&lt;/code&gt;">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
