@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 01 Sep 2015 21:38:42 +0800</lastBuildDate><atom:link href="/tags/%E6%96%87%E6%A1%A3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>文档</title>
-      <link>/doc.html</link>
+      <link>/doc/</link>
       <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>/doc.html</guid>
+      <guid>/doc/</guid>
       <description>Django 3.2文档
 Django 4.0文档
 Python最佳实践指南

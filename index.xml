@@ -99,10 +99,10 @@
     
     <item>
       <title>文档</title>
-      <link>/doc.html</link>
+      <link>/doc/</link>
       <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>/doc.html</guid>
+      <guid>/doc/</guid>
       <description>Django 3.2文档
 Django 4.0文档
 Python最佳实践指南
