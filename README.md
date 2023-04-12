@@ -1,5 +1,4 @@
-**The is rootdba Web Log**
+**The is DBA Web Log**
 
-https://dba.unixso.com
+https://note.iops.top
 
-SysDba.net
