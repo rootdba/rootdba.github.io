@@ -32,10 +32,10 @@
     <loc>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/connect/</loc>
+    <loc>https://note.iops.top/tags/cnf/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/my.cnf/</loc>
+    <loc>https://note.iops.top/tags/connect/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
     <loc>https://note.iops.top/tags/mysql/</loc>
@@ -50,7 +50,10 @@
     <loc>https://note.iops.top/notes/mysql_secure_installation/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/mysql.sock/</loc>
+    <loc>https://note.iops.top/tags/mysql_unix_port/</loc>
+    <lastmod>2023-02-19T20:13:20+08:00</lastmod>
+  </url><url>
+    <loc>https://note.iops.top/tags/sock/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
     <loc>https://note.iops.top/tags/almalinux/</loc>

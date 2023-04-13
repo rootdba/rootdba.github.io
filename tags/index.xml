@@ -35,20 +35,20 @@
     </item>
     
     <item>
+      <title>cnf</title>
+      <link>https://note.iops.top/tags/cnf/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/cnf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>connect</title>
       <link>https://note.iops.top/tags/connect/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
       <guid>https://note.iops.top/tags/connect/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>my.cnf</title>
-      <link>https://note.iops.top/tags/my.cnf/</link>
-      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
-      
-      <guid>https://note.iops.top/tags/my.cnf/</guid>
       <description></description>
     </item>
     
@@ -71,11 +71,20 @@
     </item>
     
     <item>
-      <title>mysql.sock</title>
-      <link>https://note.iops.top/tags/mysql.sock/</link>
+      <title>MYSQL_UNIX_PORT</title>
+      <link>https://note.iops.top/tags/mysql_unix_port/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/mysql.sock/</guid>
+      <guid>https://note.iops.top/tags/mysql_unix_port/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sock</title>
+      <link>https://note.iops.top/tags/sock/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/sock/</guid>
       <description></description>
     </item>
     

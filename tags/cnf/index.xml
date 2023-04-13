@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cnf on 牧人池塘</title>
+    <link>https://note.iops.top/tags/cnf/</link>
+    <description>Recent content in cnf on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Feb 2023 20:13:20 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/cnf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql_secure_installation报错Error: Can&#39;t connect to local MySQL server through socket &#39;/data/mysql/mysql.sock&#39; 解决</title>
+      <link>https://note.iops.top/notes/mysql_secure_installation/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/notes/mysql_secure_installation/</guid>
+      <description>MySQL重新初始化以后，使用mysql_secure_installation报错找不到mysql.sock文件，地址是老的文件地址： 1[root@kgoatestdb mysql_logs]#</description>
+    </item>
+    
+  </channel>
+</rss>
