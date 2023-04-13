@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>包管理器 on 牧人池塘</title>
+    <link>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+    <description>Recent content in 包管理器 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Feb 2023 19:57:58 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNF包管理器</title>
+      <link>https://note.iops.top/notes/dnf/</link>
+      <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
+      
+      <guid>https://note.iops.top/notes/dnf/</guid>
+      <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器</description>
+    </item>
+    
+  </channel>
+</rss>

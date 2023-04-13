@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>时区 on 牧人池塘</title>
+    <link>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</link>
+    <description>Recent content in 时区 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian修改时区及定时同步时间</title>
+      <link>https://note.iops.top/notes/debian-timezone-time-update/</link>
+      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
+      
+      <guid>https://note.iops.top/notes/debian-timezone-time-update/</guid>
+      <description>先查看Debian的默认时区： 1root@devops:~# timedatectl 2Local time: Fri 2022-11-24 10:13:29 UTC 3 Universal time: Fri 2022-11-24 10:13:29 UTC 4 RTC time: Fri 2022-11-24 10:13:29 5 Time zone: UTC (UTC, +0000) 6System clock synchronized: no 7 NTP service: inactive 8 RTC in local TZ: no 现在当前是UTC，修改为As</description>
+    </item>
+    
+  </channel>
+</rss>

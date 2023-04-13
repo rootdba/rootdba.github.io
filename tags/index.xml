@@ -17,11 +17,119 @@
     </item>
     
     <item>
+      <title>Debian</title>
+      <link>https://note.iops.top/tags/debian/</link>
+      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>时区</title>
+      <link>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</link>
+      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>connect</title>
+      <link>https://note.iops.top/tags/connect/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/connect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>my.cnf</title>
+      <link>https://note.iops.top/tags/my.cnf/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/my.cnf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MySQL</title>
       <link>https://note.iops.top/tags/mysql/</link>
-      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
       <guid>https://note.iops.top/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql_secure_installation</title>
+      <link>https://note.iops.top/tags/mysql_secure_installation/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/mysql_secure_installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql.sock</title>
+      <link>https://note.iops.top/tags/mysql.sock/</link>
+      <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/mysql.sock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AlmaLinux</title>
+      <link>https://note.iops.top/tags/almalinux/</link>
+      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/almalinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>镜像源</title>
+      <link>https://note.iops.top/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>INFORMATION_SCHEMA</title>
+      <link>https://note.iops.top/tags/information_schema/</link>
+      <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/information_schema/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>统计</title>
+      <link>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNF</title>
+      <link>https://note.iops.top/tags/dnf/</link>
+      <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/dnf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>包管理器</title>
+      <link>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
+      
+      <guid>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
       <description></description>
     </item>
     

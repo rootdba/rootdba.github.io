@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>统计 on 牧人池塘</title>
+    <link>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</link>
+    <description>Recent content in 统计 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Feb 2023 19:59:32 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</title>
+      <link>https://note.iops.top/notes/mysql8_count_information_schema/</link>
+      <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
+      
+      <guid>https://note.iops.top/notes/mysql8_count_information_schema/</guid>
+      <description>导入完数据以后查看最大的表 top 10： 1root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; 2+--------------+----------------------------+------------+ 3| table_schema | table_name | table_rows | 4+--------------+----------------------------+------------+ 5| oadb | schedulerunlog | 2158070 | 6| oadb | hrmonlinecount | 1321563 | 7| oadb | hrmsysmaintenancelog | 538537 | 8| oadb | workflow_trackdetail | 353748 | 9| oadb | workflow_node_fix_flowtime</description>
+    </item>
+    
+  </channel>
+</rss>
