@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>ubuntu15.10下远程连接windows服务器桌面</title>
+      <link>/notes/vinagre_rdesktop/</link>
+      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/vinagre_rdesktop/</guid>
+      <description>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装</description>
+    </item>
+    
+    <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
       <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>

@@ -107,6 +107,33 @@
     </item>
     
     <item>
+      <title>健康最重要</title>
+      <link>/life/health/</link>
+      <pubDate>Tue, 12 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/life/health/</guid>
+      <description>工作啊，赚钱啊，想法啊等等每天忙的和狗一样，人的欲望是无休止的，身体健康才是最重要的，别忙乎了半天，来个出师未捷身先死那就悲催了； 身体是革命的本钱！多运动是王道。</description>
+    </item>
+    
+    <item>
+      <title>localhost与127.0.0.1的区别及MySQL链接相关</title>
+      <link>/notes/localhost_127-0-0-1_mysql/</link>
+      <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/localhost_127-0-0-1_mysql/</guid>
+      <description>很多人会接触到这个ip地址127.0.0.1。也许你会问127.0.0.1是什么地址？其实127.0.0.1是一个回送地址，指本地机，一般用来测试使用。大家常用来ping 127.0.0.1来看本地ip</description>
+    </item>
+    
+    <item>
+      <title>ubuntu15.10下远程连接windows服务器桌面</title>
+      <link>/notes/vinagre_rdesktop/</link>
+      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/vinagre_rdesktop/</guid>
+      <description>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装</description>
+    </item>
+    
+    <item>
       <title>Windows/Linux下查看DNS生效解析的nslookup命令详解</title>
       <link>/notes/windows_linux_nslookup/</link>
       <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>

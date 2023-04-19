@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网卡 on 牧人池塘</title>
+    <link>/tags/%E7%BD%91%E5%8D%A1/</link>
+    <description>Recent content in 网卡 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%BD%91%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>localhost与127.0.0.1的区别及MySQL链接相关</title>
+      <link>/notes/localhost_127-0-0-1_mysql/</link>
+      <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/localhost_127-0-0-1_mysql/</guid>
+      <description>很多人会接触到这个ip地址127.0.0.1。也许你会问127.0.0.1是什么地址？其实127.0.0.1是一个回送地址，指本地机，一般用来测试使用。大家常用来ping 127.0.0.1来看本地ip</description>
+    </item>
+    
+  </channel>
+</rss>

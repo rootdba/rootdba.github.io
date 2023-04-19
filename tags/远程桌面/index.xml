@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>远程桌面 on 牧人池塘</title>
+    <link>/tags/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</link>
+    <description>Recent content in 远程桌面 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ubuntu15.10下远程连接windows服务器桌面</title>
+      <link>/notes/vinagre_rdesktop/</link>
+      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/vinagre_rdesktop/</guid>
+      <description>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装</description>
+    </item>
+    
+  </channel>
+</rss>

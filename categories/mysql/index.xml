@@ -34,5 +34,14 @@
       <description>1、先在MySQL官方下载安装包： --MySQL官方下载地址: https://dev.mysql.com/downloads/mysql/ --直接下载地址： https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-winx64.zip解压到C盘根目录下，解压完成后会有C:\my</description>
     </item>
     
+    <item>
+      <title>localhost与127.0.0.1的区别及MySQL链接相关</title>
+      <link>/notes/localhost_127-0-0-1_mysql/</link>
+      <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/localhost_127-0-0-1_mysql/</guid>
+      <description>很多人会接触到这个ip地址127.0.0.1。也许你会问127.0.0.1是什么地址？其实127.0.0.1是一个回送地址，指本地机，一般用来测试使用。大家常用来ping 127.0.0.1来看本地ip</description>
+    </item>
+    
   </channel>
 </rss>

@@ -8,11 +8,11 @@
 	
 	
 	
-	<title>生活 ｜ 牧人池塘</title>
+	<title>localhost与127.0.0.1的区别及MySQL链接相关 ｜ 牧人池塘</title>
 	
     
     
-    <meta name="description" content="Hugo theme zozo example site." />
+    <meta name="description" content="很多人会接触到这个ip地址127.0.0.1。也许你会问127.0.0.1是什么地址？其实127.0.0.1是一个回送地址，指本地机，一般用来测试使用。大家常用来ping 127.0.0.1来看本地ip" />
     
 
     
@@ -21,8 +21,6 @@
     
 
 	
-	<link rel="alternate" type="application/rss+xml" href="/categories/%E7%94%9F%E6%B4%BB/index.xml" title="牧人池塘" />
-    
     
     <link rel="shortcut icon" href="/images/favicon.ico" />
 
@@ -108,112 +106,73 @@
     </div>
 </div>
         <div class="content">
-            <div class="list_with_title">
-                
-                <div class="listing_title">2022</div>
-                <div class="listing">
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/autumn/">故乡的雨雾和秋风秋雨</a>
-                            <div class="post_time"><span class="date">09-12</span></div>
-                        </div>
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/localhost_127-0-0-1_mysql/'>localhost与127.0.0.1的区别及MySQL链接相关</a></h2>
+                        <span class="date">2015.12.14</span>
                     </div>
-                    
+                    <div class="post_content markdown"><p>很多人会接触到这个ip地址127.0.0.1。也许你会问127.0.0.1是什么地址？其实127.0.0.1是一个回送地址，指本地机，一般用来测试使用。大家常用来ping 127.0.0.1来看本地ip/tcp正不正常，如能ping通即可正常使用。
+localhost也叫local ，正确的解释是:本地服务器，localhot(local)是不经网卡传输！这点很重要，它不受网络防火墙和网卡相关的的限制。
+127.0.0.1在windows等系统的正确解释是:本机地址(本机服务器)，127.0.0.1是通过网卡传输，依赖网卡，并受到网络防火墙和网卡相关的限制。</p>
+<p>一般设置程序时本地服务用localhost是最好的，localhost不会解析成ip，也不会占用网卡、网络资源；</p>
+<p><img src="/upfile/img/981205316.jpg" alt="1730978474.jpg"></p>
+<p>使用 mysql -u root -p访问MYSQL服务器的时候，如果使用了 -h 参数，mysql 就会通过 TCP/IP 的方式去连接服务器；如果没有 -h 参数，默认会使用 UNIX socket 方式连接服务器，Unix domain socket 的路径名经常变化，通常情况下是：/tmp/mysql.sock。</p>
+<p>如果通过 TCP/IP 方式进来的连接，MYSQL服务器接收到的来源主机是 127.0.0.1；如果是 UNIX socket 方式，MYSQL服务器接收到的来源主机是 localhost。要强制使用TCP/IP连接到本地服务器，那就使用IP地址 127.0.0.1 而不是主机名localhost。</p>
+<p>如果MYSQL服务器开启了 skip_name_resolve，MYSQL服务器就不会把接收到的 IP 地址转化为域名，所以前者的current_user就是 root@&lsquo;127.0.0.1&rsquo;，后者的current_user就是 root@&rsquo;localhost&rsquo;。</p>
+<p>如果按照MYSQL的默认配置，skip_name_resovle 是OFF，MYSQL服务器就会将 127.0.0.1 转换为 localhost，那么前者和后者两种连接的 current_user 都是 root@&rsquo;localhost&rsquo;</p>
+<p>当主机填写为localhost时mysql会采用 unix domain socket连接
+当主机填写为127.0.0.1时mysql会采用tcp方式连接</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -h 127.0.0.1 的时候，使用TCP/IP连接，
+</span></span><span class="line"><span class="cl">server 认为该连接来自于127.0.0.1或者是”localhost.localdomain”
+</span></span><span class="line"><span class="cl">mysql -h localhost 的时候，是不使用TCP/IP连接的，而使用Unix socket；
+</span></span></code></pre></div><p>此时，mysql server则认为该client是来自”localhost”</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/localhot/">localhot</a>
+                                    
+                                    <a href="/tags/%E8%A7%A3%E6%9E%90/">解析</a>
+                                    
+                                    <a href="/tags/%E7%BD%91%E5%8D%A1/">网卡</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
                 
-                <div class="listing_title">2016</div>
-                <div class="listing">
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/health/">健康最重要</a>
-                            <div class="post_time"><span class="date">01-12</span></div>
-                        </div>
-                    </div>
-                    
-                </div>
                 
-                <div class="listing_title">2015</div>
-                <div class="listing">
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/subway_reading/">地铁上看书</a>
-                            <div class="post_time"><span class="date">12-03</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/miwu/">迷雾</a>
-                            <div class="post_time"><span class="date">11-30</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/mobile_idc/">上海某移动机房就是个渣</a>
-                            <div class="post_time"><span class="date">11-28</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/book/">书的盗版和正版</a>
-                            <div class="post_time"><span class="date">11-23</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/edu/">有关小孩教育问题</a>
-                            <div class="post_time"><span class="date">11-12</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/chifan/">有关中午吃饭二三事</a>
-                            <div class="post_time"><span class="date">11-06</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/no_ebook/">对电子书说不</a>
-                            <div class="post_time"><span class="date">11-06</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/songjiang-juhua/">松江菊花文化节</a>
-                            <div class="post_time"><span class="date">10-03</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/xihu/">西湖</a>
-                            <div class="post_time"><span class="date">09-08</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="listing_item">
-                        <div class="listing_post">
-                            <a href="/life/the/">新开始，新起点</a>
-                            <div class="post_time"><span class="date">03-01</span></div>
-                        </div>
-                    </div>
-                    
-                </div>
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
                 
             </div>
-            <div class="pagination"></div>
         </div>
-        <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
     </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
     <footer class="footer">
     <div class="powered_by">
 
