@@ -6,7 +6,16 @@
     <description>Recent content in Notes on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQLCMD参数语法说明</title>
+      <link>/notes/sqlcmd/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/sqlcmd/</guid>
+      <description>SQLCMD参数语法说明： sqlcmd -? Microsoft (R) SQL Server 命令行工具 版本 15.0.4298.1 NT 版权所有 (C) 2019 Microsoft Corporation。保留所有权利。 用法: Sqlcmd [-U 登录 ID] [-P 密码] [-S 服务器] [-H 主机名] [-E 信任连接] [-N 加密连接][-C 信任服务器证书] [-d</description>
+    </item>
+    
     <item>
       <title>Debian修改时区及定时同步时间</title>
       <link>/notes/debian-timezone-time-update/</link>

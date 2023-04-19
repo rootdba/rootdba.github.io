@@ -6,7 +6,34 @@
     <description>Recent content in Tags on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Apr 2023 10:48:29 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQLCMD</title>
+      <link>/tags/sqlcmd/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/sqlcmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>参数</title>
+      <link>/tags/%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%8F%82%E6%95%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>语法</title>
+      <link>/tags/%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%AF%AD%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>归档</title>
       <link>/tags/%E5%BD%92%E6%A1%A3/</link>

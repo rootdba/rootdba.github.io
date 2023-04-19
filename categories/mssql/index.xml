@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MSSQL on 牧人池塘</title>
+    <link>/categories/mssql/</link>
+    <description>Recent content in MSSQL on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/mssql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQLCMD参数语法说明</title>
+      <link>/notes/sqlcmd/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/sqlcmd/</guid>
+      <description>SQLCMD参数语法说明： sqlcmd -? Microsoft (R) SQL Server 命令行工具 版本 15.0.4298.1 NT 版权所有 (C) 2019 Microsoft Corporation。保留所有权利。 用法: Sqlcmd [-U 登录 ID] [-P 密码] [-S 服务器] [-H 主机名] [-E 信任连接] [-N 加密连接][-C 信任服务器证书] [-d</description>
+    </item>
+    
+  </channel>
+</rss>
