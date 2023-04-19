@@ -80,6 +80,15 @@
     </item>
     
     <item>
+      <title>Typecho在Windows iis6环境下设置伪静态</title>
+      <link>/notes/typecho_iis6_rewrite/</link>
+      <pubDate>Fri, 27 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/typecho_iis6_rewrite/</guid>
+      <description>之前一直是lnmp环境，直接给nginx设置下typecho的伪静态就好了，刚才在2003+iis6上面设置测试typecho的伪静态记录如下： 1、下载Rewrite.dll文件，放到非系统盘，我是放</description>
+    </item>
+    
+    <item>
       <title>对MVC模式的一些理解和看法</title>
       <link>/notes/mvc-think/</link>
       <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>

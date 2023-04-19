@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>上海 on 牧人池塘</title>
+    <link>/tags/%E4%B8%8A%E6%B5%B7/</link>
+    <description>Recent content in 上海 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 28 Nov 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E4%B8%8A%E6%B5%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>上海某移动机房就是个渣</title>
+      <link>/life/mobile_idc/</link>
+      <pubDate>Sat, 28 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/life/mobile_idc/</guid>
+      <description>上海某移动机房太渣渣了，上海电信和上海联通线路访问的时候，经期性超市，严重影响使用，果然是便宜没好货，建议用作备份等不重要的业务，用来做主要服务会被坑死在上面； 上海电信ping上海移动机房 上海联通pi</description>
+    </item>
+    
+  </channel>
+</rss>
