@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 牧人池塘</title>
-    <link>https://note.iops.top/categories/linux/</link>
+    <link>/categories/linux/</link>
     <description>Recent content in Linux on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="https://note.iops.top/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debian修改时区及定时同步时间</title>
-      <link>https://note.iops.top/notes/debian-timezone-time-update/</link>
+      <link>/notes/debian-timezone-time-update/</link>
       <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/debian-timezone-time-update/</guid>
-      <description>先查看Debian的默认时区： 1root@devops:~# timedatectl 2Local time: Fri 2022-11-24 10:13:29 UTC 3 Universal time: Fri 2022-11-24 10:13:29 UTC 4 RTC time: Fri 2022-11-24 10:13:29 5 Time zone: UTC (UTC, +0000) 6System clock synchronized: no 7 NTP service: inactive 8 RTC in local TZ: no 现在当前是UTC，修改为As</description>
+      <guid>/notes/debian-timezone-time-update/</guid>
+      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
     </item>
     
     <item>
       <title>AlmaLinux9.1替换国内镜像源</title>
-      <link>https://note.iops.top/notes/almalinux9_mirrors/</link>
+      <link>/notes/almalinux9_mirrors/</link>
       <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/almalinux9_mirrors/</guid>
-      <description>备份源地址： 1cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: 1sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ 2 -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ 3 -i.bak \ 4 /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 1阿里云AlmaLinux镜像：h</description>
+      <guid>/notes/almalinux9_mirrors/</guid>
+      <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
     </item>
     
     <item>
       <title>DNF包管理器</title>
-      <link>https://note.iops.top/notes/dnf/</link>
+      <link>/notes/dnf/</link>
       <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/dnf/</guid>
-      <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器</description>
+      <guid>/notes/dnf/</guid>
+      <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器组变得更容易，无需使用rpm手动更新每个机器组。自fedor</description>
     </item>
     
     <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
-      <link>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
-      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
+      <guid>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包括dig命令，安装方法如下： Debian / Ubuntu: sudo apt-get install dnsutils Fedora / Centos / RedHat: yum install bind-utils iftop</description>
     </item>
     
   </channel>

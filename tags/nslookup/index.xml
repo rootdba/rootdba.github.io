@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nslookup on 牧人池塘</title>
-    <link>https://note.iops.top/tags/nslookup/</link>
+    <link>/tags/nslookup/</link>
     <description>Recent content in nslookup on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://note.iops.top/tags/nslookup/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/nslookup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
-      <link>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
-      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
+      <guid>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包括dig命令，安装方法如下： Debian / Ubuntu: sudo apt-get install dnsutils Fedora / Centos / RedHat: yum install bind-utils iftop</description>
     </item>
     
   </channel>

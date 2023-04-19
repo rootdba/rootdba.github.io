@@ -2,395 +2,395 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 牧人池塘</title>
-    <link>https://note.iops.top/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 12 Apr 2023 10:48:29 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Apr 2023 10:48:29 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>归档</title>
-      <link>https://note.iops.top/tags/%E5%BD%92%E6%A1%A3/</link>
+      <link>/tags/%E5%BD%92%E6%A1%A3/</link>
       <pubDate>Wed, 12 Apr 2023 10:48:29 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E5%BD%92%E6%A1%A3/</guid>
+      <guid>/tags/%E5%BD%92%E6%A1%A3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debian</title>
-      <link>https://note.iops.top/tags/debian/</link>
+      <link>/tags/debian/</link>
       <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/debian/</guid>
+      <guid>/tags/debian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>时区</title>
-      <link>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</link>
+      <link>/tags/%E6%97%B6%E5%8C%BA/</link>
       <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</guid>
+      <guid>/tags/%E6%97%B6%E5%8C%BA/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cnf</title>
-      <link>https://note.iops.top/tags/cnf/</link>
+      <link>/tags/cnf/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/cnf/</guid>
+      <guid>/tags/cnf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>connect</title>
-      <link>https://note.iops.top/tags/connect/</link>
+      <link>/tags/connect/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/connect/</guid>
+      <guid>/tags/connect/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>https://note.iops.top/tags/mysql/</link>
+      <link>/tags/mysql/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/mysql/</guid>
+      <guid>/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql_secure_installation</title>
-      <link>https://note.iops.top/tags/mysql_secure_installation/</link>
+      <link>/tags/mysql_secure_installation/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/mysql_secure_installation/</guid>
+      <guid>/tags/mysql_secure_installation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MYSQL_UNIX_PORT</title>
-      <link>https://note.iops.top/tags/mysql_unix_port/</link>
+      <link>/tags/mysql_unix_port/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/mysql_unix_port/</guid>
+      <guid>/tags/mysql_unix_port/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sock</title>
-      <link>https://note.iops.top/tags/sock/</link>
+      <link>/tags/sock/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/sock/</guid>
+      <guid>/tags/sock/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AlmaLinux</title>
-      <link>https://note.iops.top/tags/almalinux/</link>
+      <link>/tags/almalinux/</link>
       <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/almalinux/</guid>
+      <guid>/tags/almalinux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>镜像源</title>
-      <link>https://note.iops.top/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <link>/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</link>
       <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <guid>/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
       <description></description>
     </item>
     
     <item>
       <title>INFORMATION_SCHEMA</title>
-      <link>https://note.iops.top/tags/information_schema/</link>
+      <link>/tags/information_schema/</link>
       <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/information_schema/</guid>
+      <guid>/tags/information_schema/</guid>
       <description></description>
     </item>
     
     <item>
       <title>统计</title>
-      <link>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</link>
+      <link>/tags/%E7%BB%9F%E8%AE%A1/</link>
       <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</guid>
+      <guid>/tags/%E7%BB%9F%E8%AE%A1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DNF</title>
-      <link>https://note.iops.top/tags/dnf/</link>
+      <link>/tags/dnf/</link>
       <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/dnf/</guid>
+      <guid>/tags/dnf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>包管理器</title>
-      <link>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <link>/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
       <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
+      <guid>/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Win11</title>
-      <link>https://note.iops.top/tags/win11/</link>
+      <link>/tags/win11/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/win11/</guid>
+      <guid>/tags/win11/</guid>
       <description></description>
     </item>
     
     <item>
       <title>安装</title>
-      <link>https://note.iops.top/tags/%E5%AE%89%E8%A3%85/</link>
+      <link>/tags/%E5%AE%89%E8%A3%85/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/%E5%AE%89%E8%A3%85/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>绿色</title>
-      <link>https://note.iops.top/tags/%E7%BB%BF%E8%89%B2/</link>
-      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E7%BB%BF%E8%89%B2/</guid>
+      <guid>/tags/%E5%AE%89%E8%A3%85/</guid>
       <description></description>
     </item>
     
     <item>
       <title>部署</title>
-      <link>https://note.iops.top/tags/%E9%83%A8%E7%BD%B2/</link>
+      <link>/tags/%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/%E9%83%A8%E7%BD%B2/</guid>
+      <guid>/tags/%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>绿色</title>
+      <link>/tags/%E7%BB%BF%E8%89%B2/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%BB%BF%E8%89%B2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://note.iops.top/tags/nginx/</link>
+      <link>/tags/nginx/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>域名</title>
-      <link>https://note.iops.top/tags/%E5%9F%9F%E5%90%8D/</link>
-      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E5%9F%9F%E5%90%8D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>禁止</title>
-      <link>https://note.iops.top/tags/%E7%A6%81%E6%AD%A2/</link>
-      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E7%A6%81%E6%AD%A2/</guid>
+      <guid>/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>访问</title>
-      <link>https://note.iops.top/tags/%E8%AE%BF%E9%97%AE/</link>
+      <link>/tags/%E8%AE%BF%E9%97%AE/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/%E8%AE%BF%E9%97%AE/</guid>
+      <guid>/tags/%E8%AE%BF%E9%97%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>禁止</title>
+      <link>/tags/%E7%A6%81%E6%AD%A2/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%A6%81%E6%AD%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>域名</title>
+      <link>/tags/%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%9F%9F%E5%90%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>故乡</title>
-      <link>https://note.iops.top/tags/%E6%95%85%E4%B9%A1/</link>
+      <link>/tags/%E6%95%85%E4%B9%A1/</link>
       <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E6%95%85%E4%B9%A1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>秋雨</title>
-      <link>https://note.iops.top/tags/%E7%A7%8B%E9%9B%A8/</link>
-      <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E7%A7%8B%E9%9B%A8/</guid>
+      <guid>/tags/%E6%95%85%E4%B9%A1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>秋风</title>
-      <link>https://note.iops.top/tags/%E7%A7%8B%E9%A3%8E/</link>
+      <link>/tags/%E7%A7%8B%E9%A3%8E/</link>
       <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E7%A7%8B%E9%A3%8E/</guid>
+      <guid>/tags/%E7%A7%8B%E9%A3%8E/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>雨</title>
-      <link>https://note.iops.top/tags/%E9%9B%A8/</link>
+      <title>秋雨</title>
+      <link>/tags/%E7%A7%8B%E9%9B%A8/</link>
       <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E9%9B%A8/</guid>
+      <guid>/tags/%E7%A7%8B%E9%9B%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>雾</title>
-      <link>https://note.iops.top/tags/%E9%9B%BE/</link>
+      <link>/tags/%E9%9B%BE/</link>
       <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E9%9B%BE/</guid>
+      <guid>/tags/%E9%9B%BE/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>开始</title>
-      <link>https://note.iops.top/tags/%E5%BC%80%E5%A7%8B/</link>
+      <title>雨</title>
+      <link>/tags/%E9%9B%A8/</link>
+      <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
+      
+      <guid>/tags/%E9%9B%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>学习文档</title>
+      <link>/tags/%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/</link>
       <pubDate>Thu, 01 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E5%BC%80%E5%A7%8B/</guid>
+      <guid>/tags/%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dig</title>
-      <link>https://note.iops.top/tags/dig/</link>
+      <link>/tags/dig/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/dig/</guid>
+      <guid>/tags/dig/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dnsutils</title>
-      <link>https://note.iops.top/tags/dnsutils/</link>
+      <link>/tags/dnsutils/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/dnsutils/</guid>
+      <guid>/tags/dnsutils/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iftop</title>
-      <link>https://note.iops.top/tags/iftop/</link>
+      <link>/tags/iftop/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/iftop/</guid>
+      <guid>/tags/iftop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nslookup</title>
-      <link>https://note.iops.top/tags/nslookup/</link>
+      <link>/tags/nslookup/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/nslookup/</guid>
+      <guid>/tags/nslookup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MVC</title>
-      <link>https://note.iops.top/tags/mvc/</link>
+      <link>/tags/mvc/</link>
       <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/mvc/</guid>
+      <guid>/tags/mvc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>模式</title>
-      <link>https://note.iops.top/tags/%E6%A8%A1%E5%BC%8F/</link>
+      <link>/tags/%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/%E6%A8%A1%E5%BC%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>文化节</title>
-      <link>https://note.iops.top/tags/%E6%96%87%E5%8C%96%E8%8A%82/</link>
-      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E6%96%87%E5%8C%96%E8%8A%82/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>松江</title>
-      <link>https://note.iops.top/tags/%E6%9D%BE%E6%B1%9F/</link>
-      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://note.iops.top/tags/%E6%9D%BE%E6%B1%9F/</guid>
+      <guid>/tags/%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>菊花</title>
-      <link>https://note.iops.top/tags/%E8%8F%8A%E8%8A%B1/</link>
+      <link>/tags/%E8%8F%8A%E8%8A%B1/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/tags/%E8%8F%8A%E8%8A%B1/</guid>
+      <guid>/tags/%E8%8F%8A%E8%8A%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>松江</title>
+      <link>/tags/%E6%9D%BE%E6%B1%9F/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E6%9D%BE%E6%B1%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文化节</title>
+      <link>/tags/%E6%96%87%E5%8C%96%E8%8A%82/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E6%96%87%E5%8C%96%E8%8A%82/</guid>
       <description></description>
     </item>
     
     <item>
       <title>乐园</title>
-      <link>https://note.iops.top/tags/%E4%B9%90%E5%9B%AD/</link>
+      <link>/tags/%E4%B9%90%E5%9B%AD/</link>
       <pubDate>Tue, 08 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E4%B9%90%E5%9B%AD/</guid>
+      <guid>/tags/%E4%B9%90%E5%9B%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>西湖</title>
-      <link>https://note.iops.top/tags/%E8%A5%BF%E6%B9%96/</link>
+      <link>/tags/%E8%A5%BF%E6%B9%96/</link>
       <pubDate>Tue, 08 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E8%A5%BF%E6%B9%96/</guid>
+      <guid>/tags/%E8%A5%BF%E6%B9%96/</guid>
       <description></description>
     </item>
     
     <item>
       <title>音乐</title>
-      <link>https://note.iops.top/tags/%E9%9F%B3%E4%B9%90/</link>
+      <link>/tags/%E9%9F%B3%E4%B9%90/</link>
       <pubDate>Tue, 08 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E9%9F%B3%E4%B9%90/</guid>
+      <guid>/tags/%E9%9F%B3%E4%B9%90/</guid>
       <description></description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>https://note.iops.top/tags/%E5%85%B3%E4%BA%8E/</link>
+      <link>/tags/%E5%85%B3%E4%BA%8E/</link>
       <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E5%85%B3%E4%BA%8E/</guid>
+      <guid>/tags/%E5%85%B3%E4%BA%8E/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>文档</title>
-      <link>https://note.iops.top/tags/%E6%96%87%E6%A1%A3/</link>
-      <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
+      <title>开始</title>
+      <link>/tags/%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Sun, 01 Mar 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/tags/%E6%96%87%E6%A1%A3/</guid>
+      <guid>/tags/%E5%BC%80%E5%A7%8B/</guid>
       <description></description>
     </item>
     

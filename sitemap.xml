@@ -2,220 +2,211 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://note.iops.top/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2023-04-12T10:48:29+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/archives/</loc>
+    <loc>/tags/%E5%BD%92%E6%A1%A3/</loc>
     <lastmod>2023-04-12T10:48:29+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%BD%92%E6%A1%A3/</loc>
+    <loc>/archives/</loc>
     <lastmod>2023-04-12T10:48:29+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/</loc>
+    <loc>/</loc>
     <lastmod>2023-04-12T10:48:29+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/debian/</loc>
+    <loc>/tags/debian/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/debian-timezone-time-update/</loc>
+    <loc>/notes/debian-timezone-time-update/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/linux/</loc>
+    <loc>/categories/linux/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/</loc>
+    <loc>/notes/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%97%B6%E5%8C%BA/</loc>
+    <loc>/tags/%E6%97%B6%E5%8C%BA/</loc>
     <lastmod>2023-02-19T20:15:48+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/cnf/</loc>
+    <loc>/tags/cnf/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/connect/</loc>
+    <loc>/tags/connect/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/mysql/</loc>
+    <loc>/tags/mysql/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/mysql/</loc>
+    <loc>/categories/mysql/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/mysql_secure_installation/</loc>
+    <loc>/tags/mysql_secure_installation/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/mysql_secure_installation/</loc>
+    <loc>/notes/mysql_secure_installation/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/mysql_unix_port/</loc>
+    <loc>/tags/mysql_unix_port/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/sock/</loc>
+    <loc>/tags/sock/</loc>
     <lastmod>2023-02-19T20:13:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/almalinux/</loc>
+    <loc>/tags/almalinux/</loc>
     <lastmod>2023-02-19T20:11:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/almalinux9_mirrors/</loc>
+    <loc>/notes/almalinux9_mirrors/</loc>
     <lastmod>2023-02-19T20:11:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
+    <loc>/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
     <lastmod>2023-02-19T20:11:20+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/information_schema/</loc>
+    <loc>/tags/information_schema/</loc>
     <lastmod>2023-02-19T19:59:32+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/mysql8_count_information_schema/</loc>
+    <loc>/notes/mysql8_count_information_schema/</loc>
     <lastmod>2023-02-19T19:59:32+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E7%BB%9F%E8%AE%A1/</loc>
+    <loc>/tags/%E7%BB%9F%E8%AE%A1/</loc>
     <lastmod>2023-02-19T19:59:32+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/dnf/</loc>
+    <loc>/tags/dnf/</loc>
     <lastmod>2023-02-19T19:57:58+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/dnf/</loc>
+    <loc>/notes/dnf/</loc>
     <lastmod>2023-02-19T19:57:58+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
+    <loc>/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
     <lastmod>2023-02-19T19:57:58+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/win11/</loc>
+    <loc>/tags/win11/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/win11_install_mysql8/</loc>
+    <loc>/notes/win11_install_mysql8/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%AE%89%E8%A3%85/</loc>
+    <loc>/tags/%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E7%BB%BF%E8%89%B2/</loc>
+    <loc>/tags/%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E9%83%A8%E7%BD%B2/</loc>
+    <loc>/tags/%E7%BB%BF%E8%89%B2/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/nginx/</loc>
+    <loc>/tags/nginx/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/nginx/</loc>
+    <loc>/categories/nginx/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/nginx_default_site/</loc>
+    <loc>/notes/nginx_default_site/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <loc>/tags/%E8%AE%BF%E9%97%AE/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E7%A6%81%E6%AD%A2/</loc>
+    <loc>/tags/%E7%A6%81%E6%AD%A2/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E8%AE%BF%E9%97%AE/</loc>
+    <loc>/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/think/</loc>
+    <loc>/life/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/%E6%84%9F%E6%82%9F/</loc>
+    <loc>/tags/%E6%95%85%E4%B9%A1/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%95%85%E4%B9%A1/</loc>
+    <loc>/life/autumn/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/think/autumn/</loc>
+    <loc>/tags/%E7%A7%8B%E9%A3%8E/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E7%A7%8B%E9%9B%A8/</loc>
+    <loc>/tags/%E7%A7%8B%E9%9B%A8/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E7%A7%8B%E9%A3%8E/</loc>
+    <loc>/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E9%9B%A8/</loc>
+    <loc>/tags/%E9%9B%BE/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E9%9B%BE/</loc>
+    <loc>/tags/%E9%9B%A8/</loc>
     <lastmod>2022-09-12T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%BC%80%E5%A7%8B/</loc>
+    <loc>/tags/%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2022-09-01T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/think/the/</loc>
+    <loc>/doc/</loc>
     <lastmod>2022-09-01T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2022-09-01T21:38:42+08:00</lastmod>
-  </url><url>
-    <loc>https://note.iops.top/tags/dig/</loc>
+    <loc>/tags/dig/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/dnsutils/</loc>
+    <loc>/tags/dnsutils/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/iftop/</loc>
+    <loc>/tags/iftop/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</loc>
+    <loc>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/nslookup/</loc>
+    <loc>/tags/nslookup/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/mvc/</loc>
+    <loc>/tags/mvc/</loc>
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/notes/mvc-think/</loc>
+    <loc>/notes/mvc-think/</loc>
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/%E5%BC%80%E5%8F%91/</loc>
+    <loc>/categories/%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>/tags/%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/travels/</loc>
+    <loc>/tags/%E8%8F%8A%E8%8A%B1/</loc>
     <lastmod>2015-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%96%87%E5%8C%96%E8%8A%82/</loc>
+    <loc>/tags/%E6%9D%BE%E6%B1%9F/</loc>
     <lastmod>2015-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%9D%BE%E6%B1%9F/</loc>
+    <loc>/life/songjiang-juhua/</loc>
     <lastmod>2015-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/travels/songjiang-juhua/</loc>
+    <loc>/tags/%E6%96%87%E5%8C%96%E8%8A%82/</loc>
     <lastmod>2015-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/categories/%E6%B8%B8%E8%AE%B0/</loc>
-    <lastmod>2015-10-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://note.iops.top/tags/%E8%8F%8A%E8%8A%B1/</loc>
-    <lastmod>2015-10-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://note.iops.top/tags/%E4%B9%90%E5%9B%AD/</loc>
+    <loc>/tags/%E4%B9%90%E5%9B%AD/</loc>
     <lastmod>2015-09-08T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E8%A5%BF%E6%B9%96/</loc>
+    <loc>/tags/%E8%A5%BF%E6%B9%96/</loc>
     <lastmod>2015-09-08T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/travels/xihu/</loc>
+    <loc>/life/xihu/</loc>
     <lastmod>2015-09-08T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E9%9F%B3%E4%B9%90/</loc>
+    <loc>/tags/%E9%9F%B3%E4%B9%90/</loc>
     <lastmod>2015-09-08T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>/tags/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2015-09-01T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2015-09-01T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/tags/%E6%96%87%E6%A1%A3/</loc>
-    <lastmod>2015-09-01T21:38:42+08:00</lastmod>
+    <loc>/tags/%E5%BC%80%E5%A7%8B/</loc>
+    <lastmod>2015-03-01T21:38:42+08:00</lastmod>
   </url><url>
-    <loc>https://note.iops.top/doc/</loc>
-    <lastmod>2015-09-01T21:38:42+08:00</lastmod>
+    <loc>/life/the/</loc>
+    <lastmod>2015-03-01T21:38:42+08:00</lastmod>
   </url>
 </urlset>

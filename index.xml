@@ -2,159 +2,153 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>牧人池塘</title>
-    <link>https://note.iops.top/</link>
+    <link>/</link>
     <description>Recent content on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 12 Apr 2023 10:48:29 +0800</lastBuildDate><atom:link href="https://note.iops.top/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Apr 2023 10:48:29 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>历史归档</title>
-      <link>https://note.iops.top/archives/</link>
+      <link>/archives/</link>
       <pubDate>Wed, 12 Apr 2023 10:48:29 +0800</pubDate>
       
-      <guid>https://note.iops.top/archives/</guid>
+      <guid>/archives/</guid>
       <description>历史文章按照年月归档.</description>
     </item>
     
     <item>
       <title>Debian修改时区及定时同步时间</title>
-      <link>https://note.iops.top/notes/debian-timezone-time-update/</link>
+      <link>/notes/debian-timezone-time-update/</link>
       <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/debian-timezone-time-update/</guid>
-      <description>先查看Debian的默认时区： 1root@devops:~# timedatectl 2Local time: Fri 2022-11-24 10:13:29 UTC 3 Universal time: Fri 2022-11-24 10:13:29 UTC 4 RTC time: Fri 2022-11-24 10:13:29 5 Time zone: UTC (UTC, +0000) 6System clock synchronized: no 7 NTP service: inactive 8 RTC in local TZ: no 现在当前是UTC，修改为As</description>
+      <guid>/notes/debian-timezone-time-update/</guid>
+      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
     </item>
     
     <item>
       <title>mysql_secure_installation报错Error: Can&#39;t connect to local MySQL server through socket &#39;/data/mysql/mysql.sock&#39; 解决</title>
-      <link>https://note.iops.top/notes/mysql_secure_installation/</link>
+      <link>/notes/mysql_secure_installation/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/mysql_secure_installation/</guid>
-      <description>MySQL重新初始化以后，使用mysql_secure_installation报错找不到mysql.sock文件，地址是老的文件地址： 1[root@kgoatestdb mysql_logs]#</description>
+      <guid>/notes/mysql_secure_installation/</guid>
+      <description>MySQL重新初始化以后，使用mysql_secure_installation报错找不到mysql.sock文件，地址是老的文件地址： [root@kgoatestdb mysql_logs]# mysql_secure_installation mysql_secure_installation: [ERROR] unknown variable &amp;#39;default-character-set=utf8&amp;#39; Securing the MySQL server deployment. Enter password for user root: Error: Can&amp;#39;t connect to local MySQL server through socket &amp;#39;/data/mysql/mysql.sock&amp;#39; (2) 解决办</description>
     </item>
     
     <item>
       <title>AlmaLinux9.1替换国内镜像源</title>
-      <link>https://note.iops.top/notes/almalinux9_mirrors/</link>
+      <link>/notes/almalinux9_mirrors/</link>
       <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/almalinux9_mirrors/</guid>
-      <description>备份源地址： 1cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: 1sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ 2 -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ 3 -i.bak \ 4 /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 1阿里云AlmaLinux镜像：h</description>
+      <guid>/notes/almalinux9_mirrors/</guid>
+      <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
     </item>
     
     <item>
       <title>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</title>
-      <link>https://note.iops.top/notes/mysql8_count_information_schema/</link>
+      <link>/notes/mysql8_count_information_schema/</link>
       <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/mysql8_count_information_schema/</guid>
-      <description>导入完数据以后查看最大的表 top 10： 1root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; 2+--------------+----------------------------+------------+ 3| table_schema | table_name | table_rows | 4+--------------+----------------------------+------------+ 5| oadb | schedulerunlog | 2158070 | 6| oadb | hrmonlinecount | 1321563 | 7| oadb | hrmsysmaintenancelog | 538537 | 8| oadb | workflow_trackdetail | 353748 | 9| oadb | workflow_node_fix_flowtime</description>
+      <guid>/notes/mysql8_count_information_schema/</guid>
+      <description>导入完数据以后查看最大的表 top 10： root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; +--------------+----------------------------+------------+ | table_schema | table_name | table_rows | +--------------+----------------------------+------------+ | oadb | schedulerunlog | 2158070 | | oadb | hrmonlinecount | 1321563 | | oadb | hrmsysmaintenancelog | 538537 | | oadb | workflow_trackdetail | 353748 | | oadb | workflow_node_fix_flowtime | 226093 | | oadb | htmllabelinfo | 177120 | | oadb | workflow_requestflowinfo | 160161 | | oadb | workflow_approvelog | 156978 | | oadb | docshare | 142524</description>
     </item>
     
     <item>
       <title>DNF包管理器</title>
-      <link>https://note.iops.top/notes/dnf/</link>
+      <link>/notes/dnf/</link>
       <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/dnf/</guid>
-      <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器</description>
+      <guid>/notes/dnf/</guid>
+      <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器组变得更容易，无需使用rpm手动更新每个机器组。自fedor</description>
     </item>
     
     <item>
       <title>Win11部署MySQL Community Server 8.0.31 绿色免安装</title>
-      <link>https://note.iops.top/notes/win11_install_mysql8/</link>
+      <link>/notes/win11_install_mysql8/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/win11_install_mysql8/</guid>
-      <description>1、先在MySQL官方下载安装包： 1--MySQL官方下载地址: 2https://dev.mysql.com/downloads/mysql/ 3--直接下载地址： 4https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-</description>
+      <guid>/notes/win11_install_mysql8/</guid>
+      <description>1、先在MySQL官方下载安装包： --MySQL官方下载地址: https://dev.mysql.com/downloads/mysql/ --直接下载地址： https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-winx64.zip解压到C盘根目录下，解压完成后会有C:\my</description>
     </item>
     
     <item>
       <title>Nginx禁止ip直接访问或任意域名访问</title>
-      <link>https://note.iops.top/notes/nginx_default_site/</link>
+      <link>/notes/nginx_default_site/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/nginx_default_site/</guid>
-      <description>禁止未绑定的域名或任意域名直接访问： 1server 2{ 3 listen 80 default_server; 4 server_name _; # 默认server 5 return 500; 6} 对任意域名访问做301跳转： 1server { 2 listen 80 default_server; 3 server_name _; 4 return 301 https://www.test.com$request_uri; 5} 以上</description>
+      <guid>/notes/nginx_default_site/</guid>
+      <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
     </item>
     
     <item>
       <title>故乡的雨雾和秋风秋雨</title>
-      <link>https://note.iops.top/think/autumn/</link>
+      <link>/life/autumn/</link>
       <pubDate>Mon, 12 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/think/autumn/</guid>
-      <description>秋天的时候，老家多雨，基本9&amp;ndash;10月份算是北方的雨季，前半年没下的雨都放到9月底10月初下了。 先一天下雨，下下停停成了连阴雨，连</description>
+      <guid>/life/autumn/</guid>
+      <description>秋天的时候，老家多雨，基本9&amp;ndash;10月份算是北方的雨季，前半年没下的雨都放到9月底10月初下了。 先一天下雨，下下停停成了连阴雨，连绵几天，空气中的湿度太大的时候，第二天雾就出现了，可见范围不</description>
     </item>
     
     <item>
-      <title>新开始，新起点</title>
-      <link>https://note.iops.top/think/the/</link>
+      <title>学习文档</title>
+      <link>/doc/</link>
       <pubDate>Thu, 01 Sep 2022 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/think/the/</guid>
-      <description>这里写的都是敲键盘进来的； 记录着生活工作心情，努力让心静下来； “胜，不妄喜；败，不惶馁；胸有激雷而面如平湖者，可拜上将军。” 忽然想起了很早之</description>
+      <guid>/doc/</guid>
+      <description>Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
     </item>
     
     <item>
       <title>Linux系统dig和nslookup及iftop的安装</title>
-      <link>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
+      <link>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
-      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包</description>
+      <guid>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</guid>
+      <description>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包括dig命令，安装方法如下： Debian / Ubuntu: sudo apt-get install dnsutils Fedora / Centos / RedHat: yum install bind-utils iftop</description>
     </item>
     
     <item>
       <title>对MVC模式的一些理解和看法</title>
-      <link>https://note.iops.top/notes/mvc-think/</link>
+      <link>/notes/mvc-think/</link>
       <pubDate>Fri, 13 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/mvc-think/</guid>
-      <description>模型 (Model) 模型代表了程序逻辑。（在企业级程序中经常称为业务层（business layer）） 总的来说，模型的任务是把原有数据转换成包含某些意义的</description>
+      <guid>/notes/mvc-think/</guid>
+      <description>模型 (Model) 模型代表了程序逻辑。（在企业级程序中经常称为业务层（business layer）） 总的来说，模型的任务是把原有数据转换成包含某些意义的数据，这些数据将被视图所显示。通常，模型将封装数据查询，可能</description>
     </item>
     
     <item>
       <title>松江菊花文化节</title>
-      <link>https://note.iops.top/travels/songjiang-juhua/</link>
+      <link>/life/songjiang-juhua/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/travels/songjiang-juhua/</guid>
-      <description>国庆第二天带小崽子和老婆去的，第一天下雨额，没去成。 之前只见过菊花有黄色和红色及白色的，没想到现在竟然有那么多颜色～～都是杂交培育出来的· 空</description>
+      <guid>/life/songjiang-juhua/</guid>
+      <description>国庆第二天带小崽子和老婆去的，第一天下雨额，没去成。 之前只见过菊花有黄色和红色及白色的，没想到现在竟然有那么多颜色～～都是杂交培育出来的· 空气很好很清新，不多说，上图了：</description>
     </item>
     
     <item>
       <title>西湖</title>
-      <link>https://note.iops.top/travels/xihu/</link>
+      <link>/life/xihu/</link>
       <pubDate>Tue, 08 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/travels/xihu/</guid>
-      <description>崽子两岁了，带着老婆和他去西湖、烂苹果乐园玩了两天，小家伙很开心，不过由于年龄太小，很多项目不能玩，让开开眼界也挺好的· 风景区的消费比较高，</description>
+      <guid>/life/xihu/</guid>
+      <description>崽子两岁了，带着老婆和他去西湖、烂苹果乐园玩了两天，小家伙很开心，不过由于年龄太小，很多项目不能玩，让开开眼界也挺好的· 风景区的消费比较高，可能国内大部分都是如此吧。特别是吃的；在清河坊的老杭州吃了顿</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>https://note.iops.top/about/</link>
+      <link>/about/</link>
       <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/about/</guid>
-      <description>想做个有技术功底的DevOpsDba，取长补短，止于至善，用简约的技术实现最大的效益; 本站坚持原创，在记录自己工作生活中经验教训的同时，尽可</description>
+      <guid>/about/</guid>
+      <description>想做个有技术功底的DevOpsDba，取长补短，止于至善，用简约的技术实现最大的效益; 本站坚持原创，在记录自己工作生活中经验教训的同时，尽可能的提供有益的指导、有用的答案; 不乱于心，不困于情，不畏将来</description>
     </item>
     
     <item>
-      <title>文档</title>
-      <link>https://note.iops.top/doc/</link>
-      <pubDate>Tue, 01 Sep 2015 21:38:42 +0800</pubDate>
+      <title>新开始，新起点</title>
+      <link>/life/the/</link>
+      <pubDate>Sun, 01 Mar 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/doc/</guid>
-      <description>Django 3.2文档
-Django 4.0文档
-Python最佳实践指南
-PythonCookbook3中文版
-Python3官网文档
-MySQL 8.0中文参考手册
-TiDB官网文档</description>
+      <guid>/life/the/</guid>
+      <description>记录生活工作心情，努力让心静下来； “胜，不妄喜；败，不惶馁；胸有激雷而面如平湖者，可拜上将军。” 忽然想起了很早之前一部电视剧中的台词，感觉很好·</description>
     </item>
     
   </channel>

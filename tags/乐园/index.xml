@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>乐园 on 牧人池塘</title>
-    <link>https://note.iops.top/tags/%E4%B9%90%E5%9B%AD/</link>
+    <link>/tags/%E4%B9%90%E5%9B%AD/</link>
     <description>Recent content in 乐园 on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Sep 2015 21:38:42 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/%E4%B9%90%E5%9B%AD/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 08 Sep 2015 21:38:42 +0800</lastBuildDate><atom:link href="/tags/%E4%B9%90%E5%9B%AD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>西湖</title>
-      <link>https://note.iops.top/travels/xihu/</link>
+      <link>/life/xihu/</link>
       <pubDate>Tue, 08 Sep 2015 21:38:42 +0800</pubDate>
       
-      <guid>https://note.iops.top/travels/xihu/</guid>
-      <description>崽子两岁了，带着老婆和他去西湖、烂苹果乐园玩了两天，小家伙很开心，不过由于年龄太小，很多项目不能玩，让开开眼界也挺好的· 风景区的消费比较高，</description>
+      <guid>/life/xihu/</guid>
+      <description>崽子两岁了，带着老婆和他去西湖、烂苹果乐园玩了两天，小家伙很开心，不过由于年龄太小，很多项目不能玩，让开开眼界也挺好的· 风景区的消费比较高，可能国内大部分都是如此吧。特别是吃的；在清河坊的老杭州吃了顿</description>
     </item>
     
   </channel>

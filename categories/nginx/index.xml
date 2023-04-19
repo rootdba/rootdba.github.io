@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on 牧人池塘</title>
-    <link>https://note.iops.top/categories/nginx/</link>
+    <link>/categories/nginx/</link>
     <description>Recent content in Nginx on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 01 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.iops.top/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx禁止ip直接访问或任意域名访问</title>
-      <link>https://note.iops.top/notes/nginx_default_site/</link>
+      <link>/notes/nginx_default_site/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/nginx_default_site/</guid>
-      <description>禁止未绑定的域名或任意域名直接访问： 1server 2{ 3 listen 80 default_server; 4 server_name _; # 默认server 5 return 500; 6} 对任意域名访问做301跳转： 1server { 2 listen 80 default_server; 3 server_name _; 4 return 301 https://www.test.com$request_uri; 5} 以上</description>
+      <guid>/notes/nginx_default_site/</guid>
+      <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
     </item>
     
   </channel>

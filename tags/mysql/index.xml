@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on 牧人池塘</title>
-    <link>https://note.iops.top/tags/mysql/</link>
+    <link>/tags/mysql/</link>
     <description>Recent content in MySQL on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:13:20 +0800</lastBuildDate><atom:link href="https://note.iops.top/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Feb 2023 20:13:20 +0800</lastBuildDate><atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mysql_secure_installation报错Error: Can&#39;t connect to local MySQL server through socket &#39;/data/mysql/mysql.sock&#39; 解决</title>
-      <link>https://note.iops.top/notes/mysql_secure_installation/</link>
+      <link>/notes/mysql_secure_installation/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/mysql_secure_installation/</guid>
-      <description>MySQL重新初始化以后，使用mysql_secure_installation报错找不到mysql.sock文件，地址是老的文件地址： 1[root@kgoatestdb mysql_logs]#</description>
+      <guid>/notes/mysql_secure_installation/</guid>
+      <description>MySQL重新初始化以后，使用mysql_secure_installation报错找不到mysql.sock文件，地址是老的文件地址： [root@kgoatestdb mysql_logs]# mysql_secure_installation mysql_secure_installation: [ERROR] unknown variable &amp;#39;default-character-set=utf8&amp;#39; Securing the MySQL server deployment. Enter password for user root: Error: Can&amp;#39;t connect to local MySQL server through socket &amp;#39;/data/mysql/mysql.sock&amp;#39; (2) 解决办</description>
     </item>
     
     <item>
       <title>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</title>
-      <link>https://note.iops.top/notes/mysql8_count_information_schema/</link>
+      <link>/notes/mysql8_count_information_schema/</link>
       <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
       
-      <guid>https://note.iops.top/notes/mysql8_count_information_schema/</guid>
-      <description>导入完数据以后查看最大的表 top 10： 1root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; 2+--------------+----------------------------+------------+ 3| table_schema | table_name | table_rows | 4+--------------+----------------------------+------------+ 5| oadb | schedulerunlog | 2158070 | 6| oadb | hrmonlinecount | 1321563 | 7| oadb | hrmsysmaintenancelog | 538537 | 8| oadb | workflow_trackdetail | 353748 | 9| oadb | workflow_node_fix_flowtime</description>
+      <guid>/notes/mysql8_count_information_schema/</guid>
+      <description>导入完数据以后查看最大的表 top 10： root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; +--------------+----------------------------+------------+ | table_schema | table_name | table_rows | +--------------+----------------------------+------------+ | oadb | schedulerunlog | 2158070 | | oadb | hrmonlinecount | 1321563 | | oadb | hrmsysmaintenancelog | 538537 | | oadb | workflow_trackdetail | 353748 | | oadb | workflow_node_fix_flowtime | 226093 | | oadb | htmllabelinfo | 177120 | | oadb | workflow_requestflowinfo | 160161 | | oadb | workflow_approvelog | 156978 | | oadb | docshare | 142524</description>
     </item>
     
     <item>
       <title>Win11部署MySQL Community Server 8.0.31 绿色免安装</title>
-      <link>https://note.iops.top/notes/win11_install_mysql8/</link>
+      <link>/notes/win11_install_mysql8/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://note.iops.top/notes/win11_install_mysql8/</guid>
-      <description>1、先在MySQL官方下载安装包： 1--MySQL官方下载地址: 2https://dev.mysql.com/downloads/mysql/ 3--直接下载地址： 4https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-</description>
+      <guid>/notes/win11_install_mysql8/</guid>
+      <description>1、先在MySQL官方下载安装包： --MySQL官方下载地址: https://dev.mysql.com/downloads/mysql/ --直接下载地址： https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-winx64.zip解压到C盘根目录下，解压完成后会有C:\my</description>
     </item>
     
   </channel>
