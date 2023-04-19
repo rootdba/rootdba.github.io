@@ -113,12 +113,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/notes/vinagre_rdesktop/'>ubuntu15.10下远程连接windows服务器桌面</a></h2>
+        <h2><a href='/notes/win11_install_mysql8/'>Win11部署MySQL Community Server 8.0.31 绿色免安装</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装......</p>
+            <p>1、先在MySQL官方下载安装包： --MySQL官方下载地址: https://dev.mysql.com/downloads/mysql/ --直接下载地址： https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.31-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.31-winx64.zip解压到C盘根目录下，解压完成后会有C:\my......</p>
         </div>
     </div>
     
@@ -127,19 +127,21 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.12.11</span>
+                    <span class="date">2022.10.12</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="/tags/ubuntu/">ubuntu</a>
+                    <a href="/tags/mysql/">MySQL</a>
                     
-                    <a href="/tags/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">远程桌面</a>
+                    <a href="/tags/%E5%AE%89%E8%A3%85/">安装</a>
                     
-                    <a href="/tags/vinagre/">vinagre</a>
+                    <a href="/tags/win11/">Win11</a>
                     
-                    <a href="/tags/rdesktop/">rdesktop</a>
+                    <a href="/tags/%E7%BB%BF%E8%89%B2/">绿色</a>
+                    
+                    <a href="/tags/%E9%83%A8%E7%BD%B2/">部署</a>
                     
                 </span>
                 
@@ -150,12 +152,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/notes/windows_linux_nslookup/'>Windows/Linux下查看DNS生效解析的nslookup命令详解</a></h2>
+        <h2><a href='/notes/nginx_default_site/'>Nginx禁止ip直接访问或任意域名访问</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>之前查域名生效情况都是直接在web页面上查询各地解析生效情况，实际在windows和linux下都可以直接查询，当然现在在线查询更方便，主要是节点多，国内外一些dns厂商也提供了在线查询的页面，在此不......</p>
+            <p>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。......</p>
         </div>
     </div>
     
@@ -164,19 +166,19 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.12.10</span>
+                    <span class="date">2022.10.01</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="/tags/dns/">DNS</a>
+                    <a href="/tags/nginx/">Nginx</a>
                     
-                    <a href="/tags/nslookup/">nslookup</a>
+                    <a href="/tags/%E7%A6%81%E6%AD%A2/">禁止</a>
                     
-                    <a href="/tags/%E8%A7%A3%E6%9E%90/">解析</a>
+                    <a href="/tags/%E8%AE%BF%E9%97%AE/">访问</a>
                     
-                    <a href="/tags/%E7%94%9F%E6%95%88/">生效</a>
+                    <a href="/tags/%E5%9F%9F%E5%90%8D/">域名</a>
                     
                 </span>
                 
@@ -187,12 +189,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/notes/installation-dig-nslookup-and-iftop-in-linux-system/'>Linux系统dig和nslookup及iftop的安装</a></h2>
+        <h2><a href='/life/autumn/'>故乡的雨雾和秋风秋雨</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>nslookup是常用来查询本机域名解析情况的命令，但是一些linux系统下默认无此命令。我们可以通过安装一个包来使该命令生效，这个包中也包括dig命令，安装方法如下： Debian / Ubuntu: sudo apt-get install dnsutils Fedora / Centos / RedHat: yum install bind-utils iftop......</p>
+            <p>秋天的时候，老家多雨，基本9&ndash;10月份算是北方的雨季，前半年没下的雨都放到9月底10月初下了。 先一天下雨，下下停停成了连阴雨，连绵几天，空气中的湿度太大的时候，第二天雾就出现了，可见范围不......</p>
         </div>
     </div>
     
@@ -201,19 +203,21 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.12.04</span>
+                    <span class="date">2022.09.12</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="/tags/dnsutils/">dnsutils</a>
+                    <a href="/tags/%E9%9B%BE/">雾</a>
                     
-                    <a href="/tags/dig/">dig</a>
+                    <a href="/tags/%E6%95%85%E4%B9%A1/">故乡</a>
                     
-                    <a href="/tags/nslookup/">nslookup</a>
+                    <a href="/tags/%E9%9B%A8/">雨</a>
                     
-                    <a href="/tags/iftop/">iftop</a>
+                    <a href="/tags/%E7%A7%8B%E9%A3%8E/">秋风</a>
+                    
+                    <a href="/tags/%E7%A7%8B%E9%9B%A8/">秋雨</a>
                     
                 </span>
                 
@@ -224,12 +228,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/life/subway_reading/'>地铁上看书</a></h2>
+        <h2><a href='/life/wind-sky/'>北风的天空下</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>混在魔都，由于工作关系，现在住的地方离上班的地方比较远， 天天得坐地铁，单趟45分钟左右，时间挺长的； 后来发现在地铁上看书是个不错的选择；不过在天朝人太多的时候是不行的，会被挤爆的，可能是比较挤的关系吧......</p>
+            <p>前几天回老家办房子的事情，一切还算顺利，中间不免有些小插曲，总算有个自己的小窝了；做什么事情都不要着急，因为着急没用，且一着急容易大脑发热做出错误的决定、掉坑，“心急吃不了热豆腐”这话不错； 老家那边每......</p>
         </div>
     </div>
     
@@ -238,17 +242,17 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.12.03</span>
+                    <span class="date">2016.11.19</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="/tags/%E9%AD%94%E9%83%BD/">魔都</a>
+                    <a href="/tags/%E5%8C%97%E9%A3%8E/">北风</a>
                     
-                    <a href="/tags/%E5%9C%B0%E9%93%81/">地铁</a>
+                    <a href="/tags/%E5%A4%A9%E7%A9%BA/">天空</a>
                     
-                    <a href="/tags/%E4%B9%A6/">书</a>
+                    <a href="/tags/%E5%9B%9E%E5%AE%B6/">回家</a>
                     
                 </span>
                 
@@ -259,12 +263,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/life/miwu/'>迷雾</a></h2>
+        <h2><a href='/life/qiuyu/'>秋雨周末</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>很多时候你不知道明天会发生什么，做最好的自己，合理分配平衡家庭工作职场上的争执； 尽人事，听天命！ 做到问心无愧就行了，虽然有时候很郁闷，很无力的感觉； 一个好的优秀的team里面要是没个好的领头羊，这迟早......</p>
+            <p>上海一年四季都爱下雨，是个雨季的城市； 周末雨比较大，实际上周四就开始下了，又是过台风，不过听说月末会大降温，实际挺好，快到冬天了吗？就要冷冷，这样一年四季才分明； 晚上醒来的时候想花花和崽崽，怎么都睡不......</p>
         </div>
     </div>
     
@@ -273,190 +277,19 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.30</span>
+                    <span class="date">2016.10.23</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="/tags/%E8%BF%B7%E9%9B%BE/">迷雾</a>
-                    
-                    <a href="/tags/%E5%AE%B6%E4%BA%BA/">家人</a>
-                    
-                    <a href="/tags/%E5%B7%A5%E4%BD%9C/">工作</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/mobile_idc/'>上海某移动机房就是个渣</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>上海某移动机房太渣渣了，上海电信和上海联通线路访问的时候，经期性超市，严重影响使用，果然是便宜没好货，建议用作备份等不重要的业务，用来做主要服务会被坑死在上面； 上海电信ping上海移动机房 上海联通pi......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.28</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="/tags/%E6%9C%BA%E6%88%BF/">机房</a>
+                    <a href="/tags/%E9%9B%A8/">雨</a>
                     
                     <a href="/tags/%E4%B8%8A%E6%B5%B7/">上海</a>
                     
-                    <a href="/tags/%E7%A7%BB%E5%8A%A8/">移动</a>
+                    <a href="/tags/%E7%A7%8B%E9%9B%A8/">秋雨</a>
                     
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/notes/typecho_iis6_rewrite/'>Typecho在Windows iis6环境下设置伪静态</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>之前一直是lnmp环境，直接给nginx设置下typecho的伪静态就好了，刚才在2003+iis6上面设置测试typecho的伪静态记录如下： 1、下载Rewrite.dll文件，放到非系统盘，我是放......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.27</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="/tags/lnmp/">lnmp</a>
-                    
-                    <a href="/tags/typecho/">Typecho</a>
-                    
-                    <a href="/tags/%E4%BC%AA%E9%9D%99%E6%80%81/">伪静态</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/book/'>书的盗版和正版</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>在刚毕业那几年买书的时候记得是在当当网上买了几本，技术类和非技术类阅读类的；西安那个城市有个图书大厦的地方，书很多基本都是正版，现在应该还在吧，那会买的都是正版。 在上海这边买书的时候还是当当网，包括0......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.23</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="/tags/%E4%B9%A6/">书</a>
-                    
-                    <a href="/tags/%E7%9B%97%E7%89%88/">盗版</a>
-                    
-                    <a href="/tags/%E6%AD%A3%E7%89%88/">正版</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/notes/mvc-think/'>对MVC模式的一些理解和看法</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>模型 (Model) 模型代表了程序逻辑。（在企业级程序中经常称为业务层（business layer）） 总的来说，模型的任务是把原有数据转换成包含某些意义的数据，这些数据将被视图所显示。通常，模型将封装数据查询，可能......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.13</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="/tags/mvc/">MVC</a>
-                    
-                    <a href="/tags/%E6%A8%A1%E5%BC%8F/">模式</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/edu/'>有关小孩教育问题</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>早上刚准备起床，就接到了老姐打的电话，让帮忙在这边派出所报下案，有个亲戚亲戚的家的小孩子在这边打工，已经联系不上了快两个月，简单洗漱后来不及去上班就奔小区跟前最近的那个派出所去了，费了不少劲转了两个派......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.11.12</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="/tags/%E5%B0%8F%E5%AD%A9/">小孩</a>
-                    
-                    <a href="/tags/%E6%95%99%E8%82%B2/">教育</a>
-                    
-                    <a href="/tags/%E4%B8%8B%E4%B8%80%E4%BB%A3/">下一代</a>
+                    <a href="/tags/%E9%9B%A8%E5%AD%A3/">雨季</a>
                     
                 </span>
                 
