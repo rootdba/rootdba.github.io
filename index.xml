@@ -89,21 +89,21 @@
     </item>
     
     <item>
-      <title>文档</title>
-      <link>/doc/</link>
-      <pubDate>Thu, 01 Sep 2022 21:38:42 +0800</pubDate>
-      
-      <guid>/doc/</guid>
-      <description>收集整理学习文档地址，部分已上传，不定期更新。 Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
-    </item>
-    
-    <item>
       <title>友链</title>
       <link>/firendlink/</link>
-      <pubDate>Wed, 01 Sep 2021 21:38:42 +0800</pubDate>
+      <pubDate>Thu, 01 Sep 2022 21:38:42 +0800</pubDate>
       
       <guid>/firendlink/</guid>
       <description>排名不分先后，友链添加方式： 请先做好本站链接，按照以下格式编排网站信息在本篇文章下进行回复 友链名称：&amp;#34;牧人池塘&amp;#34; 友链地址：&amp;#34;https://iops.top&amp;#34; 友情链接：</description>
+    </item>
+    
+    <item>
+      <title>文档</title>
+      <link>/doc/</link>
+      <pubDate>Sun, 01 May 2022 21:38:42 +0800</pubDate>
+      
+      <guid>/doc/</guid>
+      <description>收集整理学习文档地址，部分已上传，不定期更新。 Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
     </item>
     
     <item>
