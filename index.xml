@@ -89,12 +89,12 @@
     </item>
     
     <item>
-      <title>学习文档</title>
+      <title>文档</title>
       <link>/doc/</link>
       <pubDate>Thu, 01 Sep 2022 21:38:42 +0800</pubDate>
       
       <guid>/doc/</guid>
-      <description>Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
+      <description>收集整理学习文档地址，部分已上传，不定期更新。 Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
     </item>
     
     <item>
