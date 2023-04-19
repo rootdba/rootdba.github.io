@@ -46,7 +46,7 @@
     <item>
       <title>DNF包管理器</title>
       <link>/notes/dnf/</link>
-      <pubDate>Sun, 19 Feb 2023 19:57:58 +0800</pubDate>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/notes/dnf/</guid>
       <description>dnf是一个软件包管理器，它在基于RPM的Linux发行版上可以安装、更新和删除包。它自动计算依赖并确定安装包所需的操作。 dnf还使维护机器组变得更容易，无需使用rpm手动更新每个机器组。自fedor</description>
@@ -68,6 +68,15 @@
       
       <guid>/notes/nginx_default_site/</guid>
       <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
+    </item>
+    
+    <item>
+      <title>Windows/Linux下查看DNS生效解析的nslookup命令详解</title>
+      <link>/notes/windows_linux_nslookup/</link>
+      <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/windows_linux_nslookup/</guid>
+      <description>之前查域名生效情况都是直接在web页面上查询各地解析生效情况，实际在windows和linux下都可以直接查询，当然现在在线查询更方便，主要是节点多，国内外一些dns厂商也提供了在线查询的页面，在此不</description>
     </item>
     
     <item>

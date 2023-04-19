@@ -75,13 +75,13 @@
     <lastmod>2023-02-19T19:59:32+08:00</lastmod>
   </url><url>
     <loc>/tags/dnf/</loc>
-    <lastmod>2023-02-19T19:57:58+08:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/notes/dnf/</loc>
-    <lastmod>2023-02-19T19:57:58+08:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
-    <lastmod>2023-02-19T19:57:58+08:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/win11/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
@@ -152,6 +152,24 @@
     <loc>/doc/</loc>
     <lastmod>2022-05-01T21:38:42+08:00</lastmod>
   </url><url>
+    <loc>/tags/dns/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nslookup/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/windows/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/windows_linux_nslookup/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%94%9F%E6%95%88/</loc>
+    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/dig/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -162,9 +180,6 @@
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/notes/installation-dig-nslookup-and-iftop-in-linux-system/</loc>
-    <lastmod>2015-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/nslookup/</loc>
     <lastmod>2015-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%9C%B0%E9%93%81/</loc>

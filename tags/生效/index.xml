@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生效 on 牧人池塘</title>
+    <link>/tags/%E7%94%9F%E6%95%88/</link>
+    <description>Recent content in 生效 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%94%9F%E6%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows/Linux下查看DNS生效解析的nslookup命令详解</title>
+      <link>/notes/windows_linux_nslookup/</link>
+      <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/windows_linux_nslookup/</guid>
+      <description>之前查域名生效情况都是直接在web页面上查询各地解析生效情况，实际在windows和linux下都可以直接查询，当然现在在线查询更方便，主要是节点多，国内外一些dns厂商也提供了在线查询的页面，在此不</description>
+    </item>
+    
+  </channel>
+</rss>
