@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>Linux下使用route查看修改路由信息 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="1．命令格式： route [-f] [-p] [Command [Destination] [mask Netmask] [Gateway] [metric Metric]] [if Interface]] 2．命令功能： Route命令是用于操作基于内核ip路由表，它的主要作用是创建一个静态路由让指定一个主机或者一个网络通过一个网络接口，如eth0。当使用&amp;quot;" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/route/' title='Linux下使用route查看修改路由信息 '>Linux下使用route查看修改路由信息</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2016.12.27</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>1．命令格式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">route <span class="o">[</span>-f<span class="o">]</span> <span class="o">[</span>-p<span class="o">]</span> <span class="o">[</span>Command <span class="o">[</span>Destination<span class="o">]</span> <span class="o">[</span>mask Netmask<span class="o">]</span> <span class="o">[</span>Gateway<span class="o">]</span> <span class="o">[</span>metric Metric<span class="o">]]</span> <span class="o">[</span><span class="k">if</span> Interface<span class="o">]]</span>
+</span></span></code></pre></div><p>2．命令功能：
+Route命令是用于操作基于内核ip路由表，它的主要作用是创建一个静态路由让指定一个主机或者一个网络通过一个网络接口，如eth0。当使用&quot;add&quot;或者&quot;del&quot;参数时，路由表被修改，如果没有参数，则显示路由表当前的内容。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">3．命令参数：
+</span></span><span class="line"><span class="cl">-c 显示更多信息
+</span></span><span class="line"><span class="cl">-n 不解析名字
+</span></span><span class="line"><span class="cl">-v 显示详细的处理信息
+</span></span><span class="line"><span class="cl">-F 显示发送信息
+</span></span><span class="line"><span class="cl">-C 显示路由缓存
+</span></span><span class="line"><span class="cl">-f 清除所有网关入口的路由表。
+</span></span><span class="line"><span class="cl">-p 与 add 命令一起使用时使路由具有永久性。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">add:添加一条新路由。
+</span></span><span class="line"><span class="cl">del:删除一条路由。
+</span></span><span class="line"><span class="cl">-net:目标地址是一个网络。
+</span></span><span class="line"><span class="cl">-host:目标地址是一个主机。
+</span></span><span class="line"><span class="cl">netmask:当添加一个网络路由时，需要使用网络掩码。
+</span></span><span class="line"><span class="cl">gw:路由数据包通过网关。注意，你指定的网关必须能够达到。
+</span></span><span class="line"><span class="cl">metric：设置路由跳数。
+</span></span><span class="line"><span class="cl">Command 指定您想运行的命令 <span class="o">(</span>Add/Change/Delete/Print<span class="o">)</span>。
+</span></span><span class="line"><span class="cl">Destination 指定该路由的网络目标。
+</span></span><span class="line"><span class="cl">mask Netmask 指定与网络目标相关的网络掩码（也被称作子网掩码）。
+</span></span><span class="line"><span class="cl">Gateway 指定网络目标定义的地址集和子网掩码可以到达的前进或下一跃点 IP 地址。
+</span></span><span class="line"><span class="cl">metric Metric 为路由指定一个整数成本值标（从 <span class="m">1</span> 至 9999），当在路由表<span class="o">(</span>与转发的数据包目标地址最匹配<span class="o">)</span>的多个路由中进行选择时可以使用。
+</span></span><span class="line"><span class="cl"><span class="k">if</span> Interface 为可以访问目标的接口指定接口索引。若要获得一个接口列表和它们相应的接口索引，使用 route print 命令的显示功能。可以使用十进制或十六进制值进行接口索引。
+</span></span></code></pre></div><p>第一种:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">route add -net 172.16.6.0 netmask 255.255.255.0 gw 172.16.2.254 dev eth0
+</span></span><span class="line"><span class="cl">/ 增加一条网络172.16.6.0/24 经过172.16.2.254 eth0 /
+</span></span><span class="line"><span class="cl">/ -net增加网络 -host增加主机 netmask 子网掩码 gw 网关 dev 装置,设备,这里是你的网卡名/
+</span></span><span class="line"><span class="cl">route del gw 172.16.2.254 / 删除默认网关172.16.2.254 /
+</span></span><span class="line"><span class="cl">route del -net 172.16.86.0/24 / 删除默认网络172.16.86.0 /
+</span></span><span class="line"><span class="cl">route / 显示当前路由表 /
+</span></span></code></pre></div><p>第二种:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">实现的功能和上面的一样
+</span></span><span class="line"><span class="cl">ip route add 172.16.6.0/24 via 172.16.2.254 dev eth0
+</span></span><span class="line"><span class="cl">ip route del gw 172.16.2.254
+</span></span><span class="line"><span class="cl">ip route del 172.16.6.0/24 dev eth0
+</span></span><span class="line"><span class="cl">ip route
+</span></span></code></pre></div><p>删除的方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">添加路由:
+</span></span><span class="line"><span class="cl">route add -net 10.0.0.0 netmask 255.0.0.0 dev eth0
+</span></span><span class="line"><span class="cl">删除路由：
+</span></span><span class="line"><span class="cl">route del -net 10.0.0.0 netmask 255.0.0.0 dev eth0
+</span></span><span class="line"><span class="cl">添加默认路由：
+</span></span><span class="line"><span class="cl">route add default gw 10.0.0.1
+</span></span><span class="line"><span class="cl">删除默认路由：
+</span></span><span class="line"><span class="cl">route del default gw 10.0.0.1
+</span></span><span class="line"><span class="cl">或者
+</span></span><span class="line"><span class="cl">route del default
+</span></span></code></pre></div><p>使用route 命令添加的路由，机器重启或者网卡重启后路由就失效了，可以添加到启动文件/etc/rc.d/rc.local 里面；</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/route/" title="route">route</a>
+                                    
+                                    <a href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+                                    
+                                    <a href="/tags/%E9%9D%99%E6%80%81/" title="静态">静态</a>
+                                    
+                                    <a href="/tags/linux/" title="Linux">Linux</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

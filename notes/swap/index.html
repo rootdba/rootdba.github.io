@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>手动创建Swap交换分区及Swap说明 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="Swap分区在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到 Swap 分区中，等到那" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/swap/' title='手动创建Swap交换分区及Swap说明 '>手动创建Swap交换分区及Swap说明</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2016.12.23</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>Swap分区在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到 Swap 分区中，等到那些程序要运行时，再从 Swap 分区中恢复保存的数据到内存中；一种是将文件作为 Swap 分区，一种是将分区作为 Swap 分区，将分区作为 Swap 分区相比于文件更优。</p>
+<p>RHEL 6.8 的建议如下，当然还是需要根据实际情况进行适当调整：
+<img src="/upfile/uploads/2016/12/2104029800.png" alt="1730978474.jpg"></p>
+<p>RHEL 7.0 的建议如下：
+<img src="/upfile/uploads/2016/12/3814453987.png" alt="1730978474.jpg">
+推荐在安装系统的时候直接划分swap分区，系统并不是在消耗了全部的物理内存后才使用 Swap 分区，我们可以通过设置 swappiness 参数进行控制。</p>
+<p>该值默认为 60：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/sys/vm/swappiness
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">swappiness 的取值在 0-100 之间。0 时表示最大限度使用物理内存之后才使用 Swap 分区；100 时表示及时搬运内存里的数据到 Swap 分区。
+</span></span></code></pre></div><p>这个值并不是越高越好， 因为 Linux 会最大程度地使用内存，将一些数据保存在内存中，系统下一次调用数据就不需要从文件读取而是直接从内存中获得，从而提高系统的性能，但是如果每次都把内存中的数据保存到 Swap 分区，读取就相当于从文件中读取一样，反而会有性能损失。所以这个值反而小一些比较好。</p>
+<p>如何调整 swappiness？</p>
+<p>调整 swappiness 有两种方法，一种是临时的，重启后失效，一种是永久的。</p>
+<p>这里将swappiness的值设置为10</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sysctl vm.swappiness<span class="o">=</span><span class="m">10</span>
+</span></span></code></pre></div><p>临时把swappiness设置为10，重启后失效</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;vm.swappiness=10&#39;</span> &gt;&gt; /etc/sysctl.conf
+</span></span></code></pre></div><p>把swappiness=10写入sysctl.conf配置文件，重启后依旧有效
+添加一个512M的新Swap 分区：</p>
+<p>第一步：创建文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/Swapfile <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span>512k
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">=</span>input file，这里表示往文件中写0
+</span></span><span class="line"><span class="cl"><span class="nv">of</span><span class="o">=</span>output file，这是在根目录下创建Swapfile文件
+</span></span><span class="line"><span class="cl"><span class="nv">bs</span><span class="o">=</span>bytes，设置每个块大小
+</span></span><span class="line"><span class="cl">count表示有多少个这种块
+</span></span><span class="line"><span class="cl">新建的Swap文件大小为bs*count的大小
+</span></span></code></pre></div><p>第二步：格式化并启用 Swap 文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkswap /Swapfile
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">格式化根目录下的Swapfile文件
+</span></span><span class="line"><span class="cl">swapon /Swapfile
+</span></span></code></pre></div><p>启用根目录下的Swapfile文件
+执行上面的 shell 后，可以再使用下面的命令查看 Swap 分区是否已被激活</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">swapon -s
+</span></span><span class="line"><span class="cl">当返回的信息有Swapfile表示成功
+</span></span><span class="line"><span class="cl">当Swap不为0时表示成功
+</span></span><span class="line"><span class="cl">free -m
+</span></span><span class="line"><span class="cl">查看内存及swap
+</span></span></code></pre></div><p>第三步：开机自动挂载 Swap 文件</p>
+<p>执行完上诉步骤后 Swap 文件并不会开机自动挂载，接下来要编辑文件 /etc/fstab</p>
+<p>使用 vim /etc/fstab 在最下面一行添加 /Swapfile swap swap defaults 0 0，与上面的对齐，最后:wq保存并退出。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;/Swapfile swap swap defaults 0 0&#39;</span> &gt;&gt; /etc/fstab
+</span></span></code></pre></div><p>参考：</p>
+<p><a href="https://access.redhat.com/documentation/zh-TW/Red_Hat_Enterprise_Linux/6/html/Installation_Guide/s2-diskpartrecommend-x86.html">https://access.redhat.com/documentation/zh-TW/Red_Hat_Enterprise_Linux/6/html/Installation_Guide/s2-diskpartrecommend-x86.html</a></p>
+<p><a href="https://access.redhat.com/documentation/zh-TW/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-disk-partitioning-setup-x86.html#sect-recommended-partitioning-scheme-x86">https://access.redhat.com/documentation/zh-TW/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-disk-partitioning-setup-x86.html#sect-recommended-partitioning-scheme-x86</a></p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/swap/" title="swap">swap</a>
+                                    
+                                    <a href="/tags/%E5%88%86%E5%8C%BA/" title="分区">分区</a>
+                                    
+                                    <a href="/tags/linux/" title="Linux">Linux</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

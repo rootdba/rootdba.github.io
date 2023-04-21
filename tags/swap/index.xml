@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swap on 牧人池塘</title>
+    <link>/tags/swap/</link>
+    <description>Recent content in swap on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 23 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/swap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>手动创建Swap交换分区及Swap说明</title>
+      <link>/notes/swap/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/swap/</guid>
+      <description>Swap分区在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到 Swap 分区中，等到那</description>
+    </item>
+    
+  </channel>
+</rss>

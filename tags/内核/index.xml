@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>内核 on 牧人池塘</title>
+    <link>/tags/%E5%86%85%E6%A0%B8/</link>
+    <description>Recent content in 内核 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 22 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E5%86%85%E6%A0%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>快速升级kernel内核到指定版本</title>
+      <link>/notes/kernel-update/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/kernel-update/</guid>
+      <description>CentOS默认kernel内核版本是2.6.32-642.11.1.el6一些新工具不支持，可以用yum快速升级下内核，使用uname -r查看当前系统Linux内核版本，升级内核步骤如下： 导入 Public Key rpm</description>
+    </item>
+    
+  </channel>
+</rss>

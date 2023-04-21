@@ -134,6 +134,15 @@
     </item>
     
     <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
+      
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>镜像源</title>
       <link>/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</link>
       <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
@@ -310,6 +319,249 @@
       <pubDate>Sun, 01 May 2022 21:38:42 +0800</pubDate>
       
       <guid>/tags/%E6%96%87%E6%A1%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MetaData</title>
+      <link>/tags/metadata/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/metadata/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PROC</title>
+      <link>/tags/proc/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/proc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>存储过程</title>
+      <link>/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>route</title>
+      <link>/tags/route/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/route/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>静态</title>
+      <link>/tags/%E9%9D%99%E6%80%81/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%9D%99%E6%80%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>路由</title>
+      <link>/tags/%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%B7%AF%E7%94%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swap</title>
+      <link>/tags/swap/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/swap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分区</title>
+      <link>/tags/%E5%88%86%E5%8C%BA/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%88%86%E5%8C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CentOS</title>
+      <link>/tags/centos/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EPEL</title>
+      <link>/tags/epel/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/epel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fedora</title>
+      <link>/tags/fedora/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/fedora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel</title>
+      <link>/tags/kernel/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RHEL</title>
+      <link>/tags/rhel/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rhel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RockyLinux</title>
+      <link>/tags/rockylinux/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rockylinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>内核</title>
+      <link>/tags/%E5%86%85%E6%A0%B8/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%86%85%E6%A0%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软件</title>
+      <link>/tags/%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>curl</title>
+      <link>/tags/curl/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/curl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns</title>
+      <link>/tags/dns/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>冬</title>
+      <link>/tags/%E5%86%AC/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%86%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>黄叶</title>
+      <link>/tags/%E9%BB%84%E5%8F%B6/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%BB%84%E5%8F%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>魔都</title>
+      <link>/tags/%E9%AD%94%E9%83%BD/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%AD%94%E9%83%BD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>冬天</title>
+      <link>/tags/%E5%86%AC%E5%A4%A9/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%86%AC%E5%A4%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>公园</title>
+      <link>/tags/%E5%85%AC%E5%9B%AD/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%85%AC%E5%9B%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>小镇</title>
+      <link>/tags/%E5%B0%8F%E9%95%87/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%B0%8F%E9%95%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>阳光</title>
+      <link>/tags/%E9%98%B3%E5%85%89/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%98%B3%E5%85%89/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>监控</title>
+      <link>/tags/%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%9B%91%E6%8E%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>运维</title>
+      <link>/tags/%E8%BF%90%E7%BB%B4/</link>
+      <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%BF%90%E7%BB%B4/</guid>
       <description></description>
     </item>
     
@@ -593,15 +845,6 @@
     </item>
     
     <item>
-      <title>DNS</title>
-      <link>/tags/dns/</link>
-      <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dns/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>nslookup</title>
       <link>/tags/nslookup/</link>
       <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
@@ -652,15 +895,6 @@
       <pubDate>Thu, 03 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>/tags/%E5%9C%B0%E9%93%81/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>魔都</title>
-      <link>/tags/%E9%AD%94%E9%83%BD/</link>
-      <pubDate>Thu, 03 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/%E9%AD%94%E9%83%BD/</guid>
       <description></description>
     </item>
     

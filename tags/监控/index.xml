@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>监控 on 牧人池塘</title>
+    <link>/tags/%E7%9B%91%E6%8E%A7/</link>
+    <description>Recent content in 监控 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>也说说监控</title>
+      <link>/notes/monitor/</link>
+      <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/monitor/</guid>
+      <description>最近在用空闲时间看十月份就买的《SRE：Google运维解密》，说到IT监控就有了话题； 自从08年来到魔都，第一份工作就是运维监控，是中软的外派工，常驻太保南汇机房，对IT硬件、存储、网络、磁带机、大</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fedora on 牧人池塘</title>
+    <link>/tags/fedora/</link>
+    <description>Recent content in Fedora on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 22 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS/Redhat系列Linux安装EPEL软件库</title>
+      <link>/notes/install-epel/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/install-epel/</guid>
+      <description>EPEL（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 yum install 软件包名，即可安装很多以前需要编译安装的软件、</description>
+    </item>
+    
+  </channel>
+</rss>

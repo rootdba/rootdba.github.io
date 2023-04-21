@@ -80,6 +80,9 @@
     <loc>/notes/almalinux9_mirrors/</loc>
     <lastmod>2023-02-19T20:11:20+08:00</lastmod>
   </url><url>
+    <loc>/tags/linux/</loc>
+    <lastmod>2023-02-19T20:11:20+08:00</lastmod>
+  </url><url>
     <loc>/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
     <lastmod>2023-02-19T20:11:20+08:00</lastmod>
   </url><url>
@@ -166,6 +169,117 @@
   </url><url>
     <loc>/doc/</loc>
     <lastmod>2022-05-01T21:38:42+08:00</lastmod>
+  </url><url>
+    <loc>/tags/metadata/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/noaccesstoprocedurebodies/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/proc/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2016-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/route/</loc>
+    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/route/</loc>
+    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%9D%99%E6%80%81/</loc>
+    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%B7%AF%E7%94%B1/</loc>
+    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/swap/</loc>
+    <lastmod>2016-12-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%88%86%E5%8C%BA/</loc>
+    <lastmod>2016-12-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/swap/</loc>
+    <lastmod>2016-12-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/centos/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/install-epel/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/epel/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/fedora/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/kernel/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/rhel/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/rockylinux/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/kernel-update/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%86%85%E6%A0%B8/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/curl/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/curl/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/dns/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/life/chudong/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%86%AC/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%BB%84%E5%8F%B6/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%AD%94%E9%83%BD/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%86%AC%E5%A4%A9/</loc>
+    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%85%AC%E5%9B%AD/</loc>
+    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%B0%8F%E9%95%87/</loc>
+    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/life/xiaozhen/</loc>
+    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%98%B3%E5%85%89/</loc>
+    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%9B%91%E6%8E%A7/</loc>
+    <lastmod>2016-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2016-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/monitor/</loc>
+    <lastmod>2016-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <lastmod>2016-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%8C%97%E9%A3%8E/</loc>
     <lastmod>2016-11-19T00:00:00+00:00</lastmod>
@@ -293,9 +407,6 @@
     <loc>/tags/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</loc>
     <lastmod>2015-12-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/dns/</loc>
-    <lastmod>2015-12-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/nslookup/</loc>
     <lastmod>2015-12-10T00:00:00+00:00</lastmod>
   </url><url>
@@ -324,9 +435,6 @@
     <lastmod>2015-12-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/life/subway_reading/</loc>
-    <lastmod>2015-12-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E9%AD%94%E9%83%BD/</loc>
     <lastmod>2015-12-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E4%B9%A6/</loc>
@@ -378,9 +486,6 @@
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/notes/mvc-think/</loc>
-    <lastmod>2015-11-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2015-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E6%A8%A1%E5%BC%8F/</loc>

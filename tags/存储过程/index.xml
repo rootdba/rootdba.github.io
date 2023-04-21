@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>存储过程 on 牧人池塘</title>
+    <link>/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+    <description>Recent content in 存储过程 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 28 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL报错“noAccessToProcedureBodies=true”解决方法</title>
+      <link>/notes/noaccesstoprocedurebodies/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/noaccesstoprocedurebodies/</guid>
+      <description>MySQL执行存储过程的时候，报错: User does not have access to metadata required to determine stored procedure parameter types. If rights can not be granted, configure connection with &amp;#34;noAccessToProcedureBodies=true&amp;#34; to have driver generate parameters that represent INOUT strings irregardless of actual parameter types. 解决方法如下： 1、为连接MySQL的这个数据库用户分配“获取存储过程元数据（MetaDa</description>
+    </item>
+    
+  </channel>
+</rss>

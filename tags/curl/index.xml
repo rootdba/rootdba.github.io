@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>curl on 牧人池塘</title>
+    <link>/tags/curl/</link>
+    <description>Recent content in curl on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/curl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>curl来测试网站-dns解析时间,响应时间,传输时间</title>
+      <link>/notes/curl/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/curl/</guid>
+      <description>curl -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total} https://iops.top 0.044:0.412:0.446 给出对站点执行 curl 命令的情况.输出通常是 HTML 代码,通过 -o 参数发送到 /dev/null.-s 参数去掉所有状态信息.-w 参数让 curl 写出计时器的状态信息： 参数说明： time_connect 建立到服务器的 TCP 连接所用的时间 time_starttransfer 在发出请求之后,We</description>
+    </item>
+    
+  </channel>
+</rss>

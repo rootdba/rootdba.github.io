@@ -116,6 +116,87 @@
     </item>
     
     <item>
+      <title>MySQL报错“noAccessToProcedureBodies=true”解决方法</title>
+      <link>/notes/noaccesstoprocedurebodies/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/noaccesstoprocedurebodies/</guid>
+      <description>MySQL执行存储过程的时候，报错: User does not have access to metadata required to determine stored procedure parameter types. If rights can not be granted, configure connection with &amp;#34;noAccessToProcedureBodies=true&amp;#34; to have driver generate parameters that represent INOUT strings irregardless of actual parameter types. 解决方法如下： 1、为连接MySQL的这个数据库用户分配“获取存储过程元数据（MetaDa</description>
+    </item>
+    
+    <item>
+      <title>Linux下使用route查看修改路由信息</title>
+      <link>/notes/route/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/route/</guid>
+      <description>1．命令格式： route [-f] [-p] [Command [Destination] [mask Netmask] [Gateway] [metric Metric]] [if Interface]] 2．命令功能： Route命令是用于操作基于内核ip路由表，它的主要作用是创建一个静态路由让指定一个主机或者一个网络通过一个网络接口，如eth0。当使用&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>手动创建Swap交换分区及Swap说明</title>
+      <link>/notes/swap/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/swap/</guid>
+      <description>Swap分区在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到 Swap 分区中，等到那</description>
+    </item>
+    
+    <item>
+      <title>CentOS/Redhat系列Linux安装EPEL软件库</title>
+      <link>/notes/install-epel/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/install-epel/</guid>
+      <description>EPEL（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 yum install 软件包名，即可安装很多以前需要编译安装的软件、</description>
+    </item>
+    
+    <item>
+      <title>快速升级kernel内核到指定版本</title>
+      <link>/notes/kernel-update/</link>
+      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/kernel-update/</guid>
+      <description>CentOS默认kernel内核版本是2.6.32-642.11.1.el6一些新工具不支持，可以用yum快速升级下内核，使用uname -r查看当前系统Linux内核版本，升级内核步骤如下： 导入 Public Key rpm</description>
+    </item>
+    
+    <item>
+      <title>curl来测试网站-dns解析时间,响应时间,传输时间</title>
+      <link>/notes/curl/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/curl/</guid>
+      <description>curl -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total} https://iops.top 0.044:0.412:0.446 给出对站点执行 curl 命令的情况.输出通常是 HTML 代码,通过 -o 参数发送到 /dev/null.-s 参数去掉所有状态信息.-w 参数让 curl 写出计时器的状态信息： 参数说明： time_connect 建立到服务器的 TCP 连接所用的时间 time_starttransfer 在发出请求之后,We</description>
+    </item>
+    
+    <item>
+      <title>初冬</title>
+      <link>/life/chudong/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/life/chudong/</guid>
+      <description>魔都冬天没下雨或雪的时候也挺干燥，也有雾霾；树叶黄了一大片，落的满地都是，记的咸阳那边国庆的时候就开始满树的黄叶在随风飘扬了； 满地树叶，一片萧瑟； 冬天到了，春天还会远嚒？</description>
+    </item>
+    
+    <item>
+      <title>小镇一角</title>
+      <link>/life/xiaozhen/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/life/xiaozhen/</guid>
+      <description>冬天的阳光那么稀缺，晒会两三个小时就不暖洋洋了，顺着路转悠，上海郊区的小镇子还很多，也有比较破、脏、乱差的地方，不全都是表面那么光鲜的； 也就是哪句话里面说的，城市有光鲜的一面，也有脏乱差黑暗的一面，每</description>
+    </item>
+    
+    <item>
+      <title>也说说监控</title>
+      <link>/notes/monitor/</link>
+      <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/monitor/</guid>
+      <description>最近在用空闲时间看十月份就买的《SRE：Google运维解密》，说到IT监控就有了话题； 自从08年来到魔都，第一份工作就是运维监控，是中软的外派工，常驻太保南汇机房，对IT硬件、存储、网络、磁带机、大</description>
+    </item>
+    
+    <item>
       <title>北风的天空下</title>
       <link>/life/wind-sky/</link>
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>

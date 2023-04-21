@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>快速升级kernel内核到指定版本 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="CentOS默认kernel内核版本是2.6.32-642.11.1.el6一些新工具不支持，可以用yum快速升级下内核，使用uname -r查看当前系统Linux内核版本，升级内核步骤如下： 导入 Public Key rpm" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/kernel-update/' title='快速升级kernel内核到指定版本 '>快速升级kernel内核到指定版本</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2016.12.22</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>CentOS默认kernel内核版本是2.6.32-642.11.1.el6一些新工具不支持，可以用yum快速升级下内核，使用uname -r查看当前系统Linux内核版本，升级内核步骤如下：
+<img src="/upfile/uploads/2020/06/4192747885.jpg" alt="1730978474.jpg"></p>
+<p>导入 Public Key</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+</span></span></code></pre></div><p>安装 ELRepo</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">CentOS <span class="m">5</span>
+</span></span><span class="line"><span class="cl">rpm -Uvh http://www.elrepo.org/elrepo-release-5-5.el5.elrepo.noarch.rpm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">CentOS <span class="m">6</span>
+</span></span><span class="line"><span class="cl">rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">CentOS <span class="m">7</span>
+</span></span><span class="line"><span class="cl">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+</span></span></code></pre></div><p>升级 Kernel
+这里需要注意的是，在 ELRepo 中有两个内核选项，一个是 kernel-lt(长期支持版本)，一个是 kernel-ml(主线最新版本)，一般用长期支持版本(kernel-lt)，更稳定，有特殊需求除外，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kernel-lt
+</span></span><span class="line"><span class="cl">yum --enablerepo<span class="o">=</span>elrepo-kernel install kernel-lt -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kernel-ml
+</span></span><span class="line"><span class="cl">yum --enablerepo<span class="o">=</span>elrepo-kernel install kernel-ml -y
+</span></span></code></pre></div><p>也可以使用rpm快速升级内核：</p>
+<p>先下载4.19版本的rpm安装包：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">wget https://mirrors.tripadvisor.com/centos-vault/altarch/7.6.1810/experimental/x86_64/Packages/kernel-4.19.43-300.el7.x86_64.rpm
+</span></span><span class="line"><span class="cl">wget https://mirrors.tripadvisor.com/centos-vault/altarch/7.6.1810/experimental/x86_64/Packages/kernel-core-4.19.43-300.el7.x86_64.rpm
+</span></span><span class="line"><span class="cl">wget https://mirrors.tripadvisor.com/centos-vault/altarch/7.6.1810/experimental/x86_64/Packages/kernel-modules-4.19.43-300.el7.x86_64.rpm
+</span></span><span class="line"><span class="cl">yum install kernel-*    <span class="c1">#安装</span>
+</span></span></code></pre></div><p>更改 Grub
+使用命令查看：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@hongsinvm ~<span class="o">]</span><span class="c1"># awk -F\&#39; &#39;$1==&#34;menuentry &#34; {print $2}&#39; /etc/grub2.cfg</span>
+</span></span><span class="line"><span class="cl">CentOS Linux <span class="o">(</span>4.19.43-300.el7.x86_64<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span><span class="line"><span class="cl">CentOS Linux <span class="o">(</span>3.10.0-1127.13.1.el7.x86_64<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span><span class="line"><span class="cl">CentOS Linux <span class="o">(</span>3.10.0-957.27.2.el7.x86_64<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span><span class="line"><span class="cl">CentOS Linux <span class="o">(</span>3.10.0-957.el7.x86_64<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span><span class="line"><span class="cl">CentOS Linux <span class="o">(</span>0-rescue-24dd96630cf44a6881b56bfe072c710d<span class="o">)</span> <span class="m">7</span> <span class="o">(</span>Core<span class="o">)</span>
+</span></span></code></pre></div><p>根据安装好以后的内核位置，修改 default 的值，一般是修改为0，因为 default 从 0 开始，一般新安装的内核在第一个位置，所以设置default=0</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Centos5/6：
+</span></span><span class="line"><span class="cl">vi /etc/grub.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Centos7：
+</span></span><span class="line"><span class="cl">vi /etc/default/grub
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">将GRUB_DEFAULT<span class="o">=</span>saved 改成 <span class="nv">GRUB_DEFAULT</span><span class="o">=</span><span class="m">0</span>
+</span></span></code></pre></div><p>运行grub2-mkconfig命令来重新创建内核配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><p>重启后生效</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reboot
+</span></span></code></pre></div><p>查看 Kernel</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uname -r
+</span></span></code></pre></div><p>所有操作都执行完毕以后，重启主机，重启后执行 uname -r，查看内核版本号，判断是否升级成功。</p>
+<p><strong>参考：</strong></p>
+<p><a href="https://wiki.centos.org/zh/HowTos/Grub2">https://wiki.centos.org/zh/HowTos/Grub2</a></p>
+<p><a href="https://wangbin.io/blog/it/linux-kernel-4.19.html">https://wangbin.io/blog/it/linux-kernel-4.19.html</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1472857">https://cloud.tencent.com/developer/article/1472857</a></p>
+<p><a href="https://mirrors.tripadvisor.com/centos-vault/altarch/7.6.1810/experimental/x86_64/Packages/">https://mirrors.tripadvisor.com/centos-vault/altarch/7.6.1810/experimental/x86_64/Packages/</a></p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/kernel/" title="kernel">kernel</a>
+                                    
+                                    <a href="/tags/%E5%86%85%E6%A0%B8/" title="内核">内核</a>
+                                    
+                                    <a href="/tags/linux/" title="Linux">Linux</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>
