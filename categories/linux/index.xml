@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>MySQL报错“noAccessToProcedureBodies=true”解决方法</title>
-      <link>/notes/noaccesstoprocedurebodies/</link>
-      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/notes/noaccesstoprocedurebodies/</guid>
-      <description>MySQL执行存储过程的时候，报错: User does not have access to metadata required to determine stored procedure parameter types. If rights can not be granted, configure connection with &amp;#34;noAccessToProcedureBodies=true&amp;#34; to have driver generate parameters that represent INOUT strings irregardless of actual parameter types. 解决方法如下： 1、为连接MySQL的这个数据库用户分配“获取存储过程元数据（MetaDa</description>
-    </item>
-    
-    <item>
       <title>Linux下使用route查看修改路由信息</title>
       <link>/notes/route/</link>
       <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
