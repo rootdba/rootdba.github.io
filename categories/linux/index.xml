@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>Nginx禁止ip直接访问或任意域名访问</title>
+      <link>/notes/nginx_default_site/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx_default_site/</guid>
+      <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
+    </item>
+    
+    <item>
       <title>ubuntu15.10下远程连接windows服务器桌面</title>
       <link>/notes/vinagre_rdesktop/</link>
       <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>

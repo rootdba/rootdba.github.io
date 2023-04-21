@@ -53,6 +53,10 @@
             </li>
             
             <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
                 <a href="/tags/">标签</a>
             </li>
             
@@ -109,8 +113,16 @@
             <div class="post_page">
                 <div class="post animate__animated animate__fadeInDown">
                     <div class="post_title post_detail_title">
-                        <h2><a href='/notes/mysql8_count_information_schema/'>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</a></h2>
-                        <span class="date">2023.02.19</span>
+                        <h2><a href='/notes/mysql8_count_information_schema/' title='MySQL8.0.31统计信息更新INFORMATION_SCHEMA '>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</a>
+									
+					    						
+						<a href="/categories/mysql" title="分类：MySQL"> - MySQL</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2023.02.19</span>
+						
+
+						
                     </div>
                     <div class="post_content markdown"><p>导入完数据以后查看最大的表 top 10：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">root</span><span class="o">@</span><span class="n">kgoatestdb</span><span class="w"> </span><span class="mi">16</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">51</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="k">select</span><span class="w"> </span><span class="n">table_schema</span><span class="p">,</span><span class="k">table_name</span><span class="p">,</span><span class="n">table_rows</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">tables</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">table_rows</span><span class="w"> </span><span class="k">desc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
@@ -219,13 +231,13 @@ innodb_stats_auto_recalc: 插入数据量超过原表20%的时候更新统计信
                         <div class="meta">
                             <div class="info">
                                 <span class="field tags">
-                                    <i class="ri-stack-line"></i>
+                                    <i class="ri-stack-line"></i>Tag标签：
                                     
-                                    <a href="/tags/mysql/">MySQL</a>
+                                    <a href="/tags/mysql/" title="MySQL">MySQL</a>
                                     
-                                    <a href="/tags/%E7%BB%9F%E8%AE%A1/">统计</a>
+                                    <a href="/tags/%E7%BB%9F%E8%AE%A1/" title="统计">统计</a>
                                     
-                                    <a href="/tags/information_schema/">INFORMATION_SCHEMA</a>
+                                    <a href="/tags/information_schema/" title="INFORMATION_SCHEMA">INFORMATION_SCHEMA</a>
                                     
                                 </span>
                             </div>
