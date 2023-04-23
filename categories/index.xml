@@ -17,20 +17,20 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>/categories/linux/</link>
-      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
-      
-      <guid>/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>MySQL</title>
       <link>/categories/mysql/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
       
       <guid>/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>/categories/linux/</link>
+      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
+      
+      <guid>/categories/linux/</guid>
       <description></description>
     </item>
     

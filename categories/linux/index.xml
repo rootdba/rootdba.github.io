@@ -6,16 +6,7 @@
     <description>Recent content in Linux on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Debian修改时区及定时同步时间</title>
-      <link>/notes/debian-timezone-time-update/</link>
-      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
-      
-      <guid>/notes/debian-timezone-time-update/</guid>
-      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
-    </item>
-    
+    <lastBuildDate>Sun, 19 Feb 2023 20:11:20 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AlmaLinux9.1替换国内镜像源</title>
       <link>/notes/almalinux9_mirrors/</link>
@@ -23,6 +14,15 @@
       
       <guid>/notes/almalinux9_mirrors/</guid>
       <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
+    </item>
+    
+    <item>
+      <title>Debian修改时区及定时同步时间</title>
+      <link>/notes/debian-timezone-time-update/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/debian-timezone-time-update/</guid>
+      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
     </item>
     
     <item>
@@ -41,6 +41,15 @@
       
       <guid>/notes/nginx_default_site/</guid>
       <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
+    </item>
+    
+    <item>
+      <title>CentOS/RHEL7下运行级别的切换</title>
+      <link>/notes/runlevel/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/runlevel/</guid>
+      <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
     </item>
     
     <item>

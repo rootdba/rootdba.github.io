@@ -6,11 +6,11 @@
     <description>Recent content in 时区 on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:15:48 +0800</lastBuildDate><atom:link href="/tags/%E6%97%B6%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E6%97%B6%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debian修改时区及定时同步时间</title>
       <link>/notes/debian-timezone-time-update/</link>
-      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/notes/debian-timezone-time-update/</guid>
       <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>

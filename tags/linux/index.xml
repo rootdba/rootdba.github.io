@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>CentOS/RHEL7下运行级别的切换</title>
+      <link>/notes/runlevel/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/runlevel/</guid>
+      <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
+    </item>
+    
+    <item>
       <title>Linux下使用route查看修改路由信息</title>
       <link>/notes/route/</link>
       <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>

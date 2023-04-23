@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>CentOS/RHEL7下运行级别的切换 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/runlevel/' title='CentOS/RHEL7下运行级别的切换 '>CentOS/RHEL7下运行级别的切换</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2017.01.06</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>由命令行级别切换到窗口级别的命令未变：init 5或startx
+由窗口级别切换到命令行级别的命令未变：init 3
+新版本的运行级别都定义在 /lib/systemd/system下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ls -ltr /lib/systemd/system/runlevel*.target</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">16</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/default.target -&gt; graphical.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">13</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel1.target -&gt; rescue.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">15</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel0.target -&gt; poweroff.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">17</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel4.target -&gt; multi-user.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">17</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel3.target -&gt; multi-user.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">17</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel2.target -&gt; multi-user.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">16</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel5.target -&gt; graphical.target
+</span></span><span class="line"><span class="cl"><span class="m">1</span> root root <span class="m">13</span> 9月 <span class="m">10</span> 20:58 /lib/systemd/system/runlevel6.target -&gt; reboot.target
+</span></span></code></pre></div><p>可以针对不同需要设置不同的运行级别:
+如设置命令行级别(init 3)方法:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ln -sf /lib/systemd/system/runlevel3.target /etc/systemd/system/default.target</span>
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target</span>
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1">#systemctl set-default multi-user.target</span>
+</span></span></code></pre></div><p>设置窗口级别(init 5)方法:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target</span>
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target</span>
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1">#systemctl set-default graphical.target</span>
+</span></span></code></pre></div><p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;分割线&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+修改系统运行级别：
+1、systemd使用比sysvinit的运行级更为自由的target替代。第3运行级用multi-user.target替代。第5运行级用graphical.target替代。runlevel3.target和runlevel5.target分别是指向 multi-user.target和graphical.target的符号链接。
+可以使用下面的命令切换到“运行级别3 ”：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl isolate multi-user.target或systemctl isolate runlevel3.target
+</span></span></code></pre></div><p>可以使用下面的命令切换到“运行级别5 ”：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl isolate graphical.target或systemctl isolate runlevel5.target
+</span></span></code></pre></div><p>2、如何改变默认运行级别？
+systemd使用链接来指向默认的运行级别。在创建新的链接前，可以通过下面命令删除存在的链接：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm /etc/systemd/system/default.target
+</span></span></code></pre></div><p>默认启动运行级别3 ：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
+</span></span></code></pre></div><p>默认启动运行级别5 ：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -sf /lib/systemd/system/graphical.target/etc/systemd/system/default.target
+</span></span></code></pre></div><p>systemd不使用/etc/inittab文件。
+查看当前运行级别6/7通用：runlevel 命令即可；
+CentOS/Rhel6及以下版本是在直接修改/etc/inittab里面的id，如：id:3:initdefault: 即可进入命令行状态，修改为5为图形界面模式；</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/%E7%BA%A7%E5%88%AB/" title="级别">级别</a>
+                                    
+                                    <a href="/tags/linux/" title="Linux">Linux</a>
+                                    
+                                    <a href="/tags/systemd/" title="systemd">systemd</a>
+                                    
+                                    <a href="/tags/%E5%9B%BE%E5%BD%A2/" title="图形">图形</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

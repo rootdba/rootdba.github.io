@@ -26,15 +26,6 @@
     </item>
     
     <item>
-      <title>Debian修改时区及定时同步时间</title>
-      <link>/notes/debian-timezone-time-update/</link>
-      <pubDate>Sun, 19 Feb 2023 20:15:48 +0800</pubDate>
-      
-      <guid>/notes/debian-timezone-time-update/</guid>
-      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
-    </item>
-    
-    <item>
       <title>mysql_secure_installation报错Error: Can&#39;t connect to local MySQL server through socket &#39;/data/mysql/mysql.sock&#39; 解决</title>
       <link>/notes/mysql_secure_installation/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
@@ -59,6 +50,15 @@
       
       <guid>/notes/mysql8_count_information_schema/</guid>
       <description>导入完数据以后查看最大的表 top 10： root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; +--------------+----------------------------+------------+ | table_schema | table_name | table_rows | +--------------+----------------------------+------------+ | oadb | schedulerunlog | 2158070 | | oadb | hrmonlinecount | 1321563 | | oadb | hrmsysmaintenancelog | 538537 | | oadb | workflow_trackdetail | 353748 | | oadb | workflow_node_fix_flowtime | 226093 | | oadb | htmllabelinfo | 177120 | | oadb | workflow_requestflowinfo | 160161 | | oadb | workflow_approvelog | 156978 | | oadb | docshare | 142524</description>
+    </item>
+    
+    <item>
+      <title>Debian修改时区及定时同步时间</title>
+      <link>/notes/debian-timezone-time-update/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/debian-timezone-time-update/</guid>
+      <description>先查看Debian的默认时区： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:13:29 UTC Universal time: Fri 2022-11-24 10:13:29 UTC RTC time: Fri 2022-11-24 10:13:29 Time zone: UTC (UTC, +0000) System clock synchronized: no NTP service: inactive RTC in local TZ: no 现在当前是UTC，修改为Asia/Shanghai root@devops:~# timedatectl set-timezone Asia/Shanghai 查看修改情况： root@devops:~# timedatectl Local time: Fri 2022-11-24 10:15:51 CST Universal time: Fri 2022-11-24 10:15:51</description>
     </item>
     
     <item>
@@ -113,6 +113,15 @@
       
       <guid>/doc/</guid>
       <description>收集整理学习文档地址，部分已上传，不定期更新。 Django 3.2文档 Django 4.0文档 Python最佳实践指南 PythonCookbook3中文版 Python3官网文档 MySQL 8.0中文参考手册 TiDB官网文档</description>
+    </item>
+    
+    <item>
+      <title>CentOS/RHEL7下运行级别的切换</title>
+      <link>/notes/runlevel/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/runlevel/</guid>
+      <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
     </item>
     
     <item>
