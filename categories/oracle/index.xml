@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle on 牧人池塘</title>
+    <link>/categories/oracle/</link>
+    <description>Recent content in Oracle on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/categories/oracle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>oracle 赋予用户操作某个表的操作权限</title>
+      <link>/notes/grant-table/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/grant-table/</guid>
+      <description>oracle新增的每个表都要设置权限,如:GRANT update,select ON test TO dbuser; &amp;mdash;&amp;ndash;把表test的修改、查询权限赋给dbuser; 以下是权限说明: 一、创建 sys;//系统管理员，拥有最高权限 sy</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>oracle 赋予用户操作某个表的操作权限 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="oracle新增的每个表都要设置权限,如:GRANT update,select ON test TO dbuser; &amp;mdash;&amp;ndash;把表test的修改、查询权限赋给dbuser; 以下是权限说明: 一、创建 sys;//系统管理员，拥有最高权限 sy" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/grant-table/' title='oracle 赋予用户操作某个表的操作权限 '>oracle 赋予用户操作某个表的操作权限</a>
+									
+					    						
+						<a href="/categories/oracle" title="分类：Oracle"> - Oracle</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2017.01.06</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>oracle新增的每个表都要设置权限,如:GRANT update,select ON test TO dbuser; &mdash;&ndash;把表test的修改、查询权限赋给dbuser;</p>
+<p>以下是权限说明:</p>
+<p>　　一、创建</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">sys</span><span class="p">;</span><span class="o">//</span><span class="err">系统管理员，拥有最高权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">system</span><span class="p">;</span><span class="o">//</span><span class="err">本地管理员，次高权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">scott</span><span class="p">;</span><span class="o">//</span><span class="err">普通用户，密码默认为</span><span class="n">tiger</span><span class="p">,</span><span class="err">默认未解锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sys</span><span class="p">;</span><span class="o">//</span><span class="err">系统管理员，拥有最高权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">system</span><span class="p">;</span><span class="o">//</span><span class="err">本地管理员，次高权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">scott</span><span class="p">;</span><span class="o">//</span><span class="err">普通用户，密码默认为</span><span class="n">tiger</span><span class="p">,</span><span class="err">默认未解锁</span><span class="w">
+</span></span></span></code></pre></div><p>　　二、登陆</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">sqlplus</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sysdba</span><span class="p">;</span><span class="o">//</span><span class="err">登陆</span><span class="n">sys</span><span class="err">帐户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sqlplus</span><span class="w"> </span><span class="n">sys</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sysdba</span><span class="p">;</span><span class="o">//</span><span class="err">同上</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sqlplus</span><span class="w"> </span><span class="n">scott</span><span class="o">/</span><span class="n">tiger</span><span class="p">;</span><span class="o">//</span><span class="err">登陆普通用户</span><span class="n">scott</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sqlplus</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sysdba</span><span class="p">;</span><span class="o">//</span><span class="err">登陆</span><span class="n">sys</span><span class="err">帐户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sqlplus</span><span class="w"> </span><span class="n">sys</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sysdba</span><span class="p">;</span><span class="o">//</span><span class="err">同上</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sqlplus</span><span class="w"> </span><span class="n">scott</span><span class="o">/</span><span class="n">tiger</span><span class="p">;</span><span class="o">//</span><span class="err">登陆普通用户</span><span class="n">scott</span><span class="w">
+</span></span></span></code></pre></div><p>　　三、管理用户</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">在管理员帐户下，创建用户</span><span class="n">zhangsan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">alert</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">scott</span><span class="w"> </span><span class="n">identified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">tiger</span><span class="p">;</span><span class="o">//</span><span class="err">修改密码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">在管理员帐户下，创建用户</span><span class="n">zhangsan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">alert</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">scott</span><span class="w"> </span><span class="n">identified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">tiger</span><span class="p">;</span><span class="o">//</span><span class="err">修改密码</span><span class="w">
+</span></span></span></code></pre></div><p>　　四，授予权限</p>
+<p>　　1、默认的普通用户scott默认未解锁，不能进行那个使用，新建的用户也没有任何权限，必须授予权限</p>
+<p>　　/管理员授权/</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">grant</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户创建</span><span class="n">session</span><span class="err">的权限，即登陆权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">unlimited</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户使用表空间的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予创建表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">grante</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予删除表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">插入表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">修改表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">public</span><span class="p">;</span><span class="o">//</span><span class="err">这条比较重要，授予所有权限</span><span class="p">(</span><span class="k">all</span><span class="p">)</span><span class="err">给所有用户</span><span class="p">(</span><span class="k">public</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">/</span><span class="err">管理员授权</span><span class="o">/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户创建</span><span class="n">session</span><span class="err">的权限，即登陆权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">unlimited</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户使用表空间的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予创建表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">grante</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予删除表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">插入表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">修改表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">public</span><span class="p">;</span><span class="o">//</span><span class="err">这条比较重要，授予所有权限</span><span class="p">(</span><span class="k">all</span><span class="p">)</span><span class="err">给所有用户</span><span class="p">(</span><span class="k">public</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><p>　　2、oralce对权限管理比较严谨，普通用户之间也是默认不能互相访问的，需要互相授权</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">/</span><span class="n">oralce</span><span class="err">对权限管理比较严谨，普通用户之间也是默认不能互相访问的</span><span class="o">/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户查看指定表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予删除表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予插入的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予修改表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予对指定表特定字段的插入和修改权限，注意，只能是</span><span class="n">insert</span><span class="err">和</span><span class="k">update</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户</span><span class="n">alert</span><span class="err">任意表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">/</span><span class="n">oralce</span><span class="err">对权限管理比较严谨，普通用户之间也是默认不能互相访问的</span><span class="o">/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户查看指定表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予删除表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予插入的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予修改表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">insert</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">update</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予对指定表特定字段的插入和修改权限，注意，只能是</span><span class="n">insert</span><span class="err">和</span><span class="k">update</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="o">//</span><span class="err">授予</span><span class="n">zhangsan</span><span class="err">用户</span><span class="n">alert</span><span class="err">任意表的权限</span><span class="w">
+</span></span></span></code></pre></div><p>　　五、撤销权限</p>
+<p>　　基本语法同grant,关键字为revoke</p>
+<p>　　基本语法同grant,关键字为revoke</p>
+<p>　　六、查看权限</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">user_sys_privs</span><span class="p">;</span><span class="o">//</span><span class="err">查看当前用户所有权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">user_tab_privs</span><span class="p">;</span><span class="o">//</span><span class="err">查看所用用户对表的权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">user_sys_privs</span><span class="p">;</span><span class="o">//</span><span class="err">查看当前用户所有权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">user_tab_privs</span><span class="p">;</span><span class="o">//</span><span class="err">查看所用用户对表的权限</span><span class="w">
+</span></span></span></code></pre></div><p>　　七、操作表的用户的表</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">--需要在表名前加上用户名，如下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">.</span><span class="n">tablename</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">--需要在表名前加上用户名，如下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">.</span><span class="n">tablename</span><span class="w">
+</span></span></span></code></pre></div><p>　　八、权限传递</p>
+<p>　　即用户A将权限授予B，B可以将操作的权限再授予C，命令如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="k">option</span><span class="p">;</span><span class="o">//</span><span class="err">关键字</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="k">option</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">grant</span><span class="w"> </span><span class="k">option</span><span class="p">;</span><span class="o">//</span><span class="err">关键字</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">grant</span><span class="w"> </span><span class="n">option</span><span class="err">效果和</span><span class="n">admin</span><span class="err">类似</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="k">option</span><span class="p">;</span><span class="o">//</span><span class="err">关键字</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="k">option</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">grant</span><span class="w"> </span><span class="k">option</span><span class="p">;</span><span class="o">//</span><span class="err">关键字</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">grant</span><span class="w"> </span><span class="n">option</span><span class="err">效果和</span><span class="n">admin</span><span class="err">类似</span><span class="w">
+</span></span></span></code></pre></div><p>　　九、角色</p>
+<p>　　角色即权限的集合，可以把一个角色授予给用户</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">myrole</span><span class="p">;</span><span class="w"> </span><span class="c1">--创建角色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">myrole</span><span class="p">;</span><span class="w"> </span><span class="c1">--将创建session的权限授予myrole
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grant</span><span class="w"> </span><span class="n">myrole</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zhangsan</span><span class="p">;</span><span class="w">  </span><span class="c1">--授予zhangsan用户myrole的角色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">drop</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">myrole</span><span class="p">;</span><span class="w"> </span><span class="c1">--删除角色
+</span></span></span></code></pre></div><p>　　但是有些权限是不能授予给角色的，比如unlimited tablespace和any关键字</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/system/" title="system">system</a>
+                                    
+                                    <a href="/tags/%E6%9D%83%E9%99%90/" title="权限">权限</a>
+                                    
+                                    <a href="/tags/grant/" title="GRANT">GRANT</a>
+                                    
+                                    <a href="/tags/oracle/" title="Oracle">Oracle</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

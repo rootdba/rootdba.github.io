@@ -314,6 +314,60 @@
     </item>
     
     <item>
+      <title>GNOME</title>
+      <link>/tags/gnome/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gnome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GnomeGUI</title>
+      <link>/tags/gnomegui/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gnomegui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GRANT</title>
+      <link>/tags/grant/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/grant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle</title>
+      <link>/tags/oracle/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/oracle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RHEL</title>
+      <link>/tags/rhel/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rhel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system</title>
+      <link>/tags/system/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>systemd</title>
       <link>/tags/systemd/</link>
       <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
@@ -328,6 +382,15 @@
       <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/%E7%BA%A7%E5%88%AB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>权限</title>
+      <link>/tags/%E6%9D%83%E9%99%90/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E6%9D%83%E9%99%90/</guid>
       <description></description>
     </item>
     
@@ -445,15 +508,6 @@
       <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/kernel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RHEL</title>
-      <link>/tags/rhel/</link>
-      <pubDate>Thu, 22 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/rhel/</guid>
       <description></description>
     </item>
     

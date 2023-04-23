@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GNOME on 牧人池塘</title>
+    <link>/tags/gnome/</link>
+    <description>Recent content in GNOME on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/gnome/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS/RHEL7安装GnomeGUI</title>
+      <link>/notes/gnomegui/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/gnomegui/</guid>
+      <description>CentOS/RHEL 7: yum groupinstall &amp;#34;GNOME Desktop&amp;#34; &amp;#34;Graphical Administration Tools&amp;#34; &amp;#34;Server with GUI&amp;#34; -y 设置开机启动图形界面: ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target reboot 重启即可。</description>
+    </item>
+    
+  </channel>
+</rss>

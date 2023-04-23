@@ -167,13 +167,43 @@
     <loc>/doc/</loc>
     <lastmod>2022-05-01T21:38:42+08:00</lastmod>
   </url><url>
+    <loc>/notes/gnomegui/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/notes/runlevel/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/gnome/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/gnomegui/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/grant/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/oracle/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/oracle/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/grant-table/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/rhel/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/system/</loc>
     <lastmod>2017-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/systemd/</loc>
     <lastmod>2017-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E7%BA%A7%E5%88%AB/</loc>
+    <lastmod>2017-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E6%9D%83%E9%99%90/</loc>
     <lastmod>2017-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%9B%BE%E5%BD%A2/</loc>
@@ -225,9 +255,6 @@
     <lastmod>2016-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/kernel/</loc>
-    <lastmod>2016-12-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/rhel/</loc>
     <lastmod>2016-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/rockylinux/</loc>

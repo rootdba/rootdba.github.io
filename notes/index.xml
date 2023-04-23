@@ -80,12 +80,30 @@
     </item>
     
     <item>
+      <title>CentOS/RHEL7安装GnomeGUI</title>
+      <link>/notes/gnomegui/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/gnomegui/</guid>
+      <description>CentOS/RHEL 7: yum groupinstall &amp;#34;GNOME Desktop&amp;#34; &amp;#34;Graphical Administration Tools&amp;#34; &amp;#34;Server with GUI&amp;#34; -y 设置开机启动图形界面: ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target reboot 重启即可。</description>
+    </item>
+    
+    <item>
       <title>CentOS/RHEL7下运行级别的切换</title>
       <link>/notes/runlevel/</link>
       <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/notes/runlevel/</guid>
       <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
+    </item>
+    
+    <item>
+      <title>oracle 赋予用户操作某个表的操作权限</title>
+      <link>/notes/grant-table/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/grant-table/</guid>
+      <description>oracle新增的每个表都要设置权限,如:GRANT update,select ON test TO dbuser; &amp;mdash;&amp;ndash;把表test的修改、查询权限赋给dbuser; 以下是权限说明: 一、创建 sys;//系统管理员，拥有最高权限 sy</description>
     </item>
     
     <item>
