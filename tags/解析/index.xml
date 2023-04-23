@@ -6,16 +6,7 @@
     <description>Recent content in 解析 on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Win11快速部署MySQL Community Server 8.0.33</title>
-      <link>/notes/quickly-deploy-mysql-community-server8-on-win11/</link>
-      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/notes/quickly-deploy-mysql-community-server8-on-win11/</guid>
-      <description>1、先在MySQL官方下载安装包： --MySQL官方下载地址: https://dev.mysql.com/downloads/mysql/ --直接下载地址： https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.33-winx64.zip 2、解压并设置环境变量： 将mysql-8.0.33-winx64.zip解压到C盘根目录下，解压完成后会有C:\my</description>
-    </item>
-    
+    <lastBuildDate>Mon, 14 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>localhost与127.0.0.1的区别及MySQL链接相关</title>
       <link>/notes/localhost_127-0-0-1_mysql/</link>
