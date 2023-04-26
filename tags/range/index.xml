@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RANGE on 牧人池塘</title>
+    <link>/tags/range/</link>
+    <description>Recent content in RANGE on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/range/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TDSQL分区表测试记录</title>
+      <link>/notes/tdsql_partition_list_range_hash_/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/tdsql_partition_list_range_hash_/</guid>
+      <description>在TDSQL中，分表也叫一级分区表。有hash、range、list三种规则。 一级hash分区使用shardkey关键字指定拆分键。 range和list分区使用 tdsql_distributed by语法指定拆分键。 一级HASH分区：</description>
+    </item>
+    
+  </channel>
+</rss>

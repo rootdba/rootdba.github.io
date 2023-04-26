@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>TDSQL分区表测试记录 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="在TDSQL中，分表也叫一级分区表。有hash、range、list三种规则。 一级hash分区使用shardkey关键字指定拆分键。 range和list分区使用 tdsql_distributed by语法指定拆分键。 一级HASH分区：" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/tdsql_partition_list_range_hash_/' title='TDSQL分区表测试记录 '>TDSQL分区表测试记录</a>
+									
+					    						
+						<a href="/categories/mysql" title="分类：MySQL"> - MySQL</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2023.04.26</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>在TDSQL中，分表也叫一级分区表。有<strong>hash、range、list</strong>三种规则。</p>
+<p>一级hash分区使用shardkey关键字指定拆分键。</p>
+<p>range和list分区使用 tdsql_distributed by语法指定拆分键。</p>
+<p><strong>一级HASH分区：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="err">一级</span><span class="n">hash</span><span class="err">分区支持类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">DATE</span><span class="err">，</span><span class="n">DATETIME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="n">TINYINT</span><span class="p">,</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"> </span><span class="n">MEDIUMINT</span><span class="p">,</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">CHAR</span><span class="err">，</span><span class="nb">VARCHAR</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">Shardkey</span><span class="w"> </span><span class="err">字段必须是主键以及所有唯一索引的一部分</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Shardkey</span><span class="err">字段的值不能为中文，因为</span><span class="n">Proxy</span><span class="err">不会转换字符集，所以不同字符集可能会路由到不同的分区</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Shardkey</span><span class="o">=</span><span class="n">a</span><span class="w"> </span><span class="err">需放在</span><span class="n">SQL</span><span class="err">语句的最后</span><span class="w">
+</span></span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">employees_hash</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">employees_hash</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">`</span><span class="n">city</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">`</span><span class="n">fired</span><span class="o">`</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;1970.01.01&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">shardkey</span><span class="o">=</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p><strong>一级RANGE分区:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="err">一级</span><span class="n">range</span><span class="err">分区支持类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">DATE</span><span class="err">，</span><span class="n">DATETIME</span><span class="err">，</span><span class="k">TIMESTAMP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="n">TINYINT</span><span class="p">,</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"> </span><span class="n">MEDIUMINT</span><span class="p">,</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">CHAR</span><span class="err">，</span><span class="nb">VARCHAR</span><span class="w">
+</span></span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span><span class="w"> </span><span class="n">tdsql_distributed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">less</span><span class="w"> </span><span class="k">than</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">less</span><span class="w"> </span><span class="k">than</span><span class="p">(</span><span class="mi">200</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="err">【禁止】避免使用</span><span class="n">TIMESTAMP</span><span class="err">类型作为分区键，因为</span><span class="n">timestamp</span><span class="err">受到时区的影响，同时只能使用到</span><span class="mi">2038</span><span class="err">年</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">【建议】如果分区键是</span><span class="n">char</span><span class="err">或者</span><span class="n">varchar</span><span class="err">类型，建议长度不超</span><span class="mi">255</span><span class="w">
+</span></span></span></code></pre></div><p><strong>一级LIST分区：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="err">一级</span><span class="n">list</span><span class="err">分区支持类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">DATE</span><span class="err">，</span><span class="n">DATETIME</span><span class="err">，</span><span class="k">TIMESTAMP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="n">TINYINT</span><span class="p">,</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"> </span><span class="n">MEDIUMINT</span><span class="p">,</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">–</span><span class="w"> </span><span class="nb">CHAR</span><span class="err">，</span><span class="nb">VARCHAR</span><span class="w">
+</span></span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span><span class="w"> </span><span class="n">tdsql_distributed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="err">注意：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dsql_distributed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">...</span><span class="err">语法放置于</span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="p">...</span><span class="err">的末尾</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">创建一级</span><span class="n">range</span><span class="err">分区表语句中指定的</span><span class="n">s1</span><span class="err">和</span><span class="n">s2</span><span class="err">是每个</span><span class="n">set</span><span class="err">的别名，基于实现原理，</span><span class="n">s1</span><span class="err">、</span><span class="n">s2</span><span class="err">不能自定义，只能按照顺序依次命名为</span><span class="n">s1</span><span class="err">、</span><span class="n">s2</span><span class="err">…</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">set</span><span class="err">的别名可通过</span><span class="o">/</span><span class="n">proxy</span><span class="o">/</span><span class="k">show</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="err">获取到</span><span class="w">
+</span></span></span></code></pre></div><p><strong>实操创建3个分区表：</strong></p>
+<p><strong>1、创建range分区表：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">test_range</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sale_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sale_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">region</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sale_amount</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">sale_id</span><span class="p">,</span><span class="w"> </span><span class="n">sale_date</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">RANGE</span><span class="w"> </span><span class="p">(</span><span class="k">YEAR</span><span class="p">(</span><span class="n">sale_date</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">p0</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">LESS</span><span class="w"> </span><span class="k">THAN</span><span class="w"> </span><span class="p">(</span><span class="mi">2020</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">LESS</span><span class="w"> </span><span class="k">THAN</span><span class="w"> </span><span class="p">(</span><span class="mi">2021</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">LESS</span><span class="w"> </span><span class="k">THAN</span><span class="w"> </span><span class="p">(</span><span class="mi">2023</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">p3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">LESS</span><span class="w"> </span><span class="k">THAN</span><span class="w"> </span><span class="k">MAXVALUE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_range</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">sale_date</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">sale_amount</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;2009-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;east&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">11000</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_range</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">sale_date</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">sale_amount</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;2020-06-30&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;west&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12000</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_range</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">sale_date</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">sale_amount</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;2021-09-30&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;north&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">13000</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_range</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">sale_date</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">sale_amount</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;2022-07-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;south&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">14000</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">--要查看分区表 test_range 中的 p0 分区中的数据，使用 SELECT 语句并指定 PARTITION 子句
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 查询 p0 分区中所有行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_range</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="p">(</span><span class="n">p0</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p><strong>2、创建list分区表：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">test_list</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">hired</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;1970-01-01&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">separated</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">store_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">LIST</span><span class="p">(</span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">pNorth</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">17</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">pEast</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">pWest</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="n">pCentral</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_list</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">hired</span><span class="p">,</span><span class="w"> </span><span class="n">separated</span><span class="p">,</span><span class="w"> </span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;John Doe&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Jane Smith&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-02-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bob Johnson&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-03-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alice Williams&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-04-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tom Brown&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-05-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara Davis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-06-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mike Lee&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-07-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Emily Clark&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;David Allen&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-09-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lily Wilson&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-10-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999-12-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_list</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="p">(</span><span class="n">pNorth</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p><strong>3、创建hash分区表：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">test_hash</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">store_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">HASH</span><span class="p">(</span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">PARTITIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">test_hash</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">store_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;John Doe&#39;</span><span class="p">,</span><span class="w">   </span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Jane Smith&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">5</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Bob Johnson&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Alice Williams&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Tom Brown&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">4</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Sara Davis&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Mike Lee&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Emily Clark&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="s1">&#39;David Allen&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;Lily Wilson&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_hash</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="p">(</span><span class="n">p0</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>更多详情参考：</p>
+<p><a href="https://main.qcloudimg.com/raw/document/product/pdf/1515_62371_cn.pdf">https://main.qcloudimg.com/raw/document/product/pdf/1515_62371_cn.pdf</a></p>
+<p><a href="https://cloud.tencent.com/document/product/557/58907">https://cloud.tencent.com/document/product/557/58907</a></p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/tdsql/" title="TDSQL">TDSQL</a>
+                                    
+                                    <a href="/tags/%E5%88%86%E5%8C%BA/" title="分区">分区</a>
+                                    
+                                    <a href="/tags/hash/" title="HASH">HASH</a>
+                                    
+                                    <a href="/tags/list/" title="LIST">LIST</a>
+                                    
+                                    <a href="/tags/range/" title="RANGE">RANGE</a>
+                                    
+                                    <a href="/tags/%E6%8B%86%E5%88%86%E9%94%AE/" title="拆分键">拆分键</a>
+                                    
+                                    <a href="/tags/shardkey/" title="shardkey">shardkey</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>
