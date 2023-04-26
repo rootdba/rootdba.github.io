@@ -44,6 +44,15 @@
     </item>
     
     <item>
+      <title>MySQL Workbench 8.0 点击Server Status面板Could not acquire management access for administration报错问题解决</title>
+      <link>/notes/mysqlworkbench8/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mysqlworkbench8/</guid>
+      <description>Win10安装MySQL Workbench 8.0后连接MySQL服务器后，点击Server Status状态面板报错， 错误如下： Could not acquire management access for administration TRuntimeError: Target host is configured as Windows, but seems to be a different OS. Please review the connection settings. 解决方法： 是因为windows中文桌面</description>
+    </item>
+    
+    <item>
       <title>MySQL报错“noAccessToProcedureBodies=true”解决方法</title>
       <link>/notes/noaccesstoprocedurebodies/</link>
       <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>

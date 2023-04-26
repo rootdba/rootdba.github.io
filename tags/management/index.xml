@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>management on 牧人池塘</title>
+    <link>/tags/management/</link>
+    <description>Recent content in management on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL Workbench 8.0 点击Server Status面板Could not acquire management access for administration报错问题解决</title>
+      <link>/notes/mysqlworkbench8/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mysqlworkbench8/</guid>
+      <description>Win10安装MySQL Workbench 8.0后连接MySQL服务器后，点击Server Status状态面板报错， 错误如下： Could not acquire management access for administration TRuntimeError: Target host is configured as Windows, but seems to be a different OS. Please review the connection settings. 解决方法： 是因为windows中文桌面</description>
+    </item>
+    
+  </channel>
+</rss>
