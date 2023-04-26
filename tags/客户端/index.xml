@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>客户端 on 牧人池塘</title>
+    <link>/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+    <description>Recent content in 客户端 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS/RHEL7安装mysql8.0.33客户端</title>
+      <link>/notes/centos-rhel-install-mysql-client/</link>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/centos-rhel-install-mysql-client/</guid>
+      <description>下载 MySQL Yum Repository 文件： wget https://repo.mysql.com/mysql80-community-release-el7-7.noarch.rpm 安装下载的 RPM 包： rpm -ivh mysql80-community-release-el7-7.noarch.rpm 更新系统： yum update -y 安装 MySQL8 客户端： yum install mysql-community-client 确认安装： mysql --version</description>
+    </item>
+    
+  </channel>
+</rss>
