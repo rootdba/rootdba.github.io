@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ubuntu on 牧人池塘</title>
-    <link>/tags/ubuntu/</link>
-    <description>Recent content in ubuntu on 牧人池塘</description>
+    <title>vps on 牧人池塘</title>
+    <link>/tags/vps/</link>
+    <description>Recent content in vps on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/vps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在192 MB的VPS上安装ss服务</title>
       <link>/notes/ubuntu_insert_ss/</link>
@@ -14,15 +14,6 @@
       
       <guid>/notes/ubuntu_insert_ss/</guid>
       <description>在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF /usr/local/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log 2&amp;gt;&amp;amp;1 &amp;amp; 系统进程 C</description>
-    </item>
-    
-    <item>
-      <title>ubuntu15.10下远程连接windows服务器桌面</title>
-      <link>/notes/vinagre_rdesktop/</link>
-      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/notes/vinagre_rdesktop/</guid>
-      <description>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装</description>
     </item>
     
   </channel>

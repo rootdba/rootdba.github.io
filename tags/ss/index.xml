@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ubuntu on 牧人池塘</title>
-    <link>/tags/ubuntu/</link>
-    <description>Recent content in ubuntu on 牧人池塘</description>
+    <title>ss on 牧人池塘</title>
+    <link>/tags/ss/</link>
+    <description>Recent content in ss on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在192 MB的VPS上安装ss服务</title>
       <link>/notes/ubuntu_insert_ss/</link>
@@ -17,12 +17,12 @@
     </item>
     
     <item>
-      <title>ubuntu15.10下远程连接windows服务器桌面</title>
-      <link>/notes/vinagre_rdesktop/</link>
-      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
+      <title>CentOS快速安装ss服务</title>
+      <link>/notes/centos_insert_ss/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/notes/vinagre_rdesktop/</guid>
-      <description>ubuntu下要连接windows服务器远程桌面，有两个方法需要安装下工具，rdesktop和vinagre，安装方法如下： sudo apt-get install rdesktop sudo apt-get install vinagre 如果是redhat/centos系列直接yum安装即可； 安装</description>
+      <guid>/notes/centos_insert_ss/</guid>
+      <description>1、安装epel源： yum install epel-release -y 2、更新当前系统: yum update -y 3、安装升级pip yum install python-pip -y pip install -U pip 4、pip安装shadowsocks pip install shadowsocks 5、创建配置文件： cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;VPS IP&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9991&amp;#34;:&amp;#34;PASSWORD&amp;#34;, &amp;#34;9992&amp;#34;:&amp;#34;PASSWORD&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF 参数说明： serv</description>
     </item>
     
   </channel>

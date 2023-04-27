@@ -449,6 +449,78 @@
     </item>
     
     <item>
+      <title>pip3</title>
+      <link>/tags/pip3/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pip3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shadowsocks</title>
+      <link>/tags/shadowsocks/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/shadowsocks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ss</title>
+      <link>/tags/ss/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>/tags/ubuntu/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vps</title>
+      <link>/tags/vps/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>faw</title>
+      <link>/tags/faw/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/faw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>加密</title>
+      <link>/tags/%E5%8A%A0%E5%AF%86/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%8A%A0%E5%AF%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>/tags/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>GNOME</title>
       <link>/tags/gnome/</link>
       <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
@@ -1012,15 +1084,6 @@
       <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>/tags/rdesktop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ubuntu</title>
-      <link>/tags/ubuntu/</link>
-      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     
