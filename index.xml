@@ -53,6 +53,15 @@
     </item>
     
     <item>
+      <title>Rocky9替换国内镜像源</title>
+      <link>/notes/rocky9-china-mirrors/</link>
+      <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/rocky9-china-mirrors/</guid>
+      <description>替换为腾讯云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.cloud.tencent.com/rocky|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/rocky-extras.repo \ /etc/yum.repos.d/rocky.repo 替换后运行 dnf makecache 更新缓存 Rocky9国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/rockylinux/ 腾</description>
+    </item>
+    
+    <item>
       <title>mysql_secure_installation报错Error: Can&#39;t connect to local MySQL server through socket &#39;/data/mysql/mysql.sock&#39; 解决</title>
       <link>/notes/mysql_secure_installation/</link>
       <pubDate>Sun, 19 Feb 2023 20:13:20 +0800</pubDate>
@@ -62,21 +71,21 @@
     </item>
     
     <item>
-      <title>AlmaLinux9.1替换国内镜像源</title>
-      <link>/notes/almalinux9_mirrors/</link>
-      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
-      
-      <guid>/notes/almalinux9_mirrors/</guid>
-      <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
-    </item>
-    
-    <item>
       <title>MySQL8.0.31统计信息更新INFORMATION_SCHEMA</title>
       <link>/notes/mysql8_count_information_schema/</link>
       <pubDate>Sun, 19 Feb 2023 19:59:32 +0800</pubDate>
       
       <guid>/notes/mysql8_count_information_schema/</guid>
       <description>导入完数据以后查看最大的表 top 10： root@kgoatestdb 16:55:51 [(none)]&amp;gt;select table_schema,table_name,table_rows from INFORMATION_SCHEMA.tables order by table_rows desc limit 10; +--------------+----------------------------+------------+ | table_schema | table_name | table_rows | +--------------+----------------------------+------------+ | oadb | schedulerunlog | 2158070 | | oadb | hrmonlinecount | 1321563 | | oadb | hrmsysmaintenancelog | 538537 | | oadb | workflow_trackdetail | 353748 | | oadb | workflow_node_fix_flowtime | 226093 | | oadb | htmllabelinfo | 177120 | | oadb | workflow_requestflowinfo | 160161 | | oadb | workflow_approvelog | 156978 | | oadb | docshare | 142524</description>
+    </item>
+    
+    <item>
+      <title>AlmaLinux9.1替换国内镜像源</title>
+      <link>/notes/almalinux9_mirrors/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/almalinux9_mirrors/</guid>
+      <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
     </item>
     
     <item>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rocky on 牧人池塘</title>
+    <link>/tags/rocky/</link>
+    <description>Recent content in Rocky on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rocky/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rocky9替换国内镜像源</title>
+      <link>/notes/rocky9-china-mirrors/</link>
+      <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/rocky9-china-mirrors/</guid>
+      <description>替换为腾讯云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.cloud.tencent.com/rocky|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/rocky-extras.repo \ /etc/yum.repos.d/rocky.repo 替换后运行 dnf makecache 更新缓存 Rocky9国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/rockylinux/ 腾</description>
+    </item>
+    
+  </channel>
+</rss>

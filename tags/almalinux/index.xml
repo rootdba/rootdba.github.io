@@ -6,11 +6,11 @@
     <description>Recent content in AlmaLinux on 牧人池塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Feb 2023 20:11:20 +0800</lastBuildDate><atom:link href="/tags/almalinux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/almalinux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AlmaLinux9.1替换国内镜像源</title>
       <link>/notes/almalinux9_mirrors/</link>
-      <pubDate>Sun, 19 Feb 2023 20:11:20 +0800</pubDate>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/notes/almalinux9_mirrors/</guid>
       <description>备份源地址： cp -r /etc/yum.repos.d/ /etc/yum.repos.d_bak 替换为阿里云镜像: sed -e &amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39; \ -e &amp;#39;s|^# baseurl=https://repo.almalinux.org|baseurl=https://mirrors.aliyun.com|g&amp;#39; \ -i.bak \ /etc/yum.repos.d/almalinux*.repo AlmaLinux9.1国内镜像源地址： 阿里云AlmaLinux镜像：https://mirrors.aliyun.com/almalinu</description>
