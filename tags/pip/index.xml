@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pip on 牧人池塘</title>
+    <link>/tags/pip/</link>
+    <description>Recent content in pip on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 17 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux/Win下安装或升级pip</title>
+      <link>/notes/linux-windows-insert-update-python-pip/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux-windows-insert-update-python-pip/</guid>
+      <description>1、yum安装pip，RedHat/CentOS安装epel源以后可以使用yum直接安装： yum install python-pip -y Debian/Ubuntu可以直接 sudo apt-get install python-pip 2、查看pip的版本号 pip --version 3、升级方法 On Linux or OS X: pip install -U pip On W</description>
+    </item>
+    
+  </channel>
+</rss>

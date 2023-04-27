@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>MongoDB快速安装及启动参数配置文件说明 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="MongoDB3.4.x快速安装： 访问官网下载中心https://www.mongodb.com/download-center?jmp=nav 根据OS类型选择下载对应的版本： 此处下载RedHat/C" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/mongodb-start/' title='MongoDB快速安装及启动参数配置文件说明 '>MongoDB快速安装及启动参数配置文件说明</a>
+									
+					    						
+						<a href="/categories/mongodb" title="分类：MongoDB"> - MongoDB</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2017.01.16</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>MongoDB3.4.x快速安装：
+访问官网下载中心https://www.mongodb.com/download-center?jmp=nav 根据OS类型选择下载对应的版本：
+<img src="/upfile/uploads/2017/01/2246851333.png" alt="1730978474.jpg">
+此处下载RedHat/CentOS7对应的版本：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.1.tgz
+</span></span><span class="line"><span class="cl">tar xvf mongodb-linux-x86_64-rhel70-3.4.1.tgz
+</span></span><span class="line"><span class="cl">mv mongodb-linux-x86_64-rhel70-3.4.1 /usr/local/mongodb
+</span></span><span class="line"><span class="cl">chmod +x /usr/local/mongodb/bin/ -R
+</span></span><span class="line"><span class="cl">ln -s /usr/local/mongodb/bin/* /usr/bin/
+</span></span><span class="line"><span class="cl">mkdir /data/mongodb_data 创建默认目录，可用--dbpath来指定
+</span></span><span class="line"><span class="cl">mkdir /data/mongodb_logs
+</span></span></code></pre></div><p>安装完毕，然后就可以启动了，默认数据库目录是/data/db，要没这个目录的话会启动不了</p>
+<p>启动MongoDB有2种方式，一是直接指定配置参数，二是指定配置文件。配置文件启动方式如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./mongod --config /etc/mongodb.conf
+</span></span></code></pre></div><p>/etc/mongodb.conf里面写上各个参数即可如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">dbpath</span><span class="o">=</span>/data/mongodb_data
+</span></span><span class="line"><span class="cl"><span class="nv">fork</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">auth</span><span class="o">=</span><span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="nv">logpath</span><span class="o">=</span>/data/mongodb_logs/mongodb.log
+</span></span><span class="line"><span class="cl"><span class="nv">port</span><span class="o">=</span><span class="m">30000</span>
+</span></span><span class="line"><span class="cl"><span class="nv">pidfilepath</span><span class="o">=</span>/data/mongodb_data/30000.pid
+</span></span><span class="line"><span class="cl"><span class="nv">unixSocketPrefix</span><span class="o">=</span>/data/mongodb_data
+</span></span><span class="line"><span class="cl"><span class="nv">maxConns</span><span class="o">=</span><span class="m">65535</span>
+</span></span><span class="line"><span class="cl"><span class="nv">bind_ip</span><span class="o">=</span>0.0.0.0
+</span></span></code></pre></div><p>直接指定参数启动方式如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./mongod --dbpath<span class="o">=</span>/data/mongodb_data --fork --logpath<span class="o">=</span>/tmp/mongodb.log
+</span></span></code></pre></div><p>推荐用配置文件启动；</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/local/mongodb/bin/mongod --config /usr/local/mongodb/mongodb.conf
+</span></span></code></pre></div><p>附mongodb配置文件参数说明：
+基本配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--quiet    <span class="c1"># 安静输出</span>
+</span></span><span class="line"><span class="cl">--port arg    <span class="c1"># 指定服务端口号，默认端口27017</span>
+</span></span><span class="line"><span class="cl">--bind_ip arg    <span class="c1"># 绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP</span>
+</span></span><span class="line"><span class="cl">--logpath arg    <span class="c1"># 指定MongoDB日志文件，注意是指定文件不是目录</span>
+</span></span><span class="line"><span class="cl">--logappend    <span class="c1"># 使用追加的方式写日志</span>
+</span></span><span class="line"><span class="cl">--pidfilepath arg    <span class="c1"># PID File 的完整路径，如果没有设置，则没有PID文件</span>
+</span></span><span class="line"><span class="cl">--keyFile arg    <span class="c1"># 集群的私钥的完整路径，只对于Replica Set 架构有效</span>
+</span></span><span class="line"><span class="cl">--unixSocketPrefix arg    <span class="c1"># UNIX域套接字替代目录,(默认为 /tmp)</span>
+</span></span><span class="line"><span class="cl">--fork    <span class="c1"># 以守护进程的方式运行MongoDB，创建服务器进程</span>
+</span></span><span class="line"><span class="cl">--auth    <span class="c1"># 启用验证</span>
+</span></span><span class="line"><span class="cl">--cpu    <span class="c1"># 定期显示CPU的CPU利用率和iowait</span>
+</span></span><span class="line"><span class="cl">--dbpath arg    <span class="c1"># 指定数据库路径</span>
+</span></span><span class="line"><span class="cl">--diaglog arg    <span class="c1"># diaglog选项 0=off 1=W 2=R 3=both 7=W+some reads</span>
+</span></span><span class="line"><span class="cl">--directoryperdb    <span class="c1"># 设置每个数据库将被保存在一个单独的目录</span>
+</span></span><span class="line"><span class="cl">--journal    <span class="c1"># 启用日志选项，MongoDB的数据操作将会写入到journal文件夹的文件里</span>
+</span></span><span class="line"><span class="cl">--journalOptions arg    <span class="c1"># 启用日志诊断选项</span>
+</span></span><span class="line"><span class="cl">--ipv6    <span class="c1"># 启用IPv6选项</span>
+</span></span><span class="line"><span class="cl">--jsonp    <span class="c1"># 允许JSONP形式通过HTTP访问（有安全影响）</span>
+</span></span><span class="line"><span class="cl">--maxConns arg    <span class="c1"># 最大同时连接数 默认2000</span>
+</span></span><span class="line"><span class="cl">--noauth    <span class="c1"># 不启用验证</span>
+</span></span><span class="line"><span class="cl">--nohttpinterface    <span class="c1"># 关闭http接口，默认关闭27018端口访问</span>
+</span></span><span class="line"><span class="cl">--noprealloc    <span class="c1"># 禁用数据文件预分配(往往影响性能)</span>
+</span></span><span class="line"><span class="cl">--noscripting    <span class="c1"># 禁用脚本引擎</span>
+</span></span><span class="line"><span class="cl">--notablescan    <span class="c1"># 不允许表扫描</span>
+</span></span><span class="line"><span class="cl">--nounixsocket    <span class="c1"># 禁用Unix套接字监听</span>
+</span></span><span class="line"><span class="cl">--nssize arg <span class="o">(=</span>16<span class="o">)</span>    <span class="c1"># 设置信数据库.ns文件大小(MB)</span>
+</span></span><span class="line"><span class="cl">--objcheck    <span class="c1"># 在收到客户数据,检查的有效性，</span>
+</span></span><span class="line"><span class="cl">--profile arg    <span class="c1"># 档案参数 0=off 1=slow, 2=all</span>
+</span></span><span class="line"><span class="cl">--quota    <span class="c1"># 限制每个数据库的文件数，设置默认为8</span>
+</span></span><span class="line"><span class="cl">--quotaFiles arg    <span class="c1"># number of files allower per db, requires --quota</span>
+</span></span><span class="line"><span class="cl">--rest    <span class="c1"># 开启简单的rest API</span>
+</span></span><span class="line"><span class="cl">--repair    <span class="c1"># 修复所有数据库run repair on all dbs</span>
+</span></span><span class="line"><span class="cl">--repairpath arg    <span class="c1"># 修复库生成的文件的目录,默认为目录名称dbpath</span>
+</span></span><span class="line"><span class="cl">--slowms arg <span class="o">(=</span>100<span class="o">)</span>    <span class="c1"># value of slow for profile and console log</span>
+</span></span><span class="line"><span class="cl">--smallfiles    <span class="c1"># 使用较小的默认文件</span>
+</span></span><span class="line"><span class="cl">--syncdelay arg <span class="o">(=</span>60<span class="o">)</span>    <span class="c1"># 数据写入磁盘的时间秒数(0=never,不推荐)</span>
+</span></span><span class="line"><span class="cl">--sysinfo    <span class="c1"># 打印一些诊断系统信息</span>
+</span></span><span class="line"><span class="cl">--upgrade    <span class="c1"># 如果需要升级数据库</span>
+</span></span><span class="line"><span class="cl">* replication 参数
+</span></span><span class="line"><span class="cl">--fastsync    <span class="c1"># 从一个dbpath里启用从库复制服务，该dbpath的数据库是主库的快照，可用于快速启用同步</span>
+</span></span><span class="line"><span class="cl">--autoresync    <span class="c1"># 如果从库与主库同步数据差得多，自动重新同步，</span>
+</span></span><span class="line"><span class="cl">--oplogSize arg    <span class="c1"># 设置oplog的大小(MB)</span>
+</span></span><span class="line"><span class="cl">* 主/从参数
+</span></span><span class="line"><span class="cl">--master    <span class="c1"># 主库模式</span>
+</span></span><span class="line"><span class="cl">--slave    <span class="c1"># 从库模式</span>
+</span></span><span class="line"><span class="cl">--source arg    <span class="c1"># 从库 端口号</span>
+</span></span><span class="line"><span class="cl">--only arg    <span class="c1"># 指定单一的数据库复制</span>
+</span></span><span class="line"><span class="cl">--slavedelay arg    <span class="c1"># 设置从库同步主库的延迟时间</span>
+</span></span><span class="line"><span class="cl">* Replica set<span class="o">(</span>副本集<span class="o">)</span>选项：
+</span></span><span class="line"><span class="cl">--replSet arg    <span class="c1"># 设置副本集名称</span>
+</span></span><span class="line"><span class="cl">* Sharding<span class="o">(</span>分片<span class="o">)</span>选项
+</span></span><span class="line"><span class="cl">--configsvr    <span class="c1"># 声明这是一个集群的config服务,默认端口27019，默认目录/data/configdb</span>
+</span></span><span class="line"><span class="cl">--shardsvr    <span class="c1"># 声明这是一个集群的分片,默认端口27018</span>
+</span></span><span class="line"><span class="cl">--noMoveParanoia    <span class="c1"># 关闭偏执为moveChunk数据保存</span>
+</span></span></code></pre></div><p>上述参数都可以写入 mongod.conf 配置文档里例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">dbpath</span> <span class="o">=</span> /data/mongodb
+</span></span><span class="line"><span class="cl"><span class="nv">logpath</span> <span class="o">=</span> /data/mongodb/mongodb.log
+</span></span><span class="line"><span class="cl"><span class="nv">logappend</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">port</span> <span class="o">=</span> <span class="m">27017</span>
+</span></span><span class="line"><span class="cl"><span class="nv">fork</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">auth</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">e.g：./mongod -shardsvr -replSet shard1 -port <span class="m">16161</span> -dbpath /data/mongodb/data/shard1a -oplogSize <span class="m">100</span> -logpath /data/mongodb/logs/shard1a.log -logappend -fork -rest
+</span></span></code></pre></div><p>更多参考官方文档：https://docs.mongodb.com/manual/introduction/</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/mongodb/" title="MongoDB">MongoDB</a>
+                                    
+                                    <a href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+                                    
+                                    <a href="/tags/%E5%90%AF%E5%8A%A8/" title="启动">启动</a>
+                                    
+                                    <a href="/tags/%E5%8F%82%E6%95%B0/" title="参数">参数</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

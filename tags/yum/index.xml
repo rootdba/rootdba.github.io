@@ -16,5 +16,14 @@
       <description>下载 MySQL Yum Repository 文件： wget https://repo.mysql.com/mysql80-community-release-el7-7.noarch.rpm 安装下载的 RPM 包： rpm -ivh mysql80-community-release-el7-7.noarch.rpm 更新系统： yum update -y 安装 MySQL8 客户端： yum install mysql-community-client 确认安装： mysql --version</description>
     </item>
     
+    <item>
+      <title>Linux/Win下安装或升级pip</title>
+      <link>/notes/linux-windows-insert-update-python-pip/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux-windows-insert-update-python-pip/</guid>
+      <description>1、yum安装pip，RedHat/CentOS安装epel源以后可以使用yum直接安装： yum install python-pip -y Debian/Ubuntu可以直接 sudo apt-get install python-pip 2、查看pip的版本号 pip --version 3、升级方法 On Linux or OS X: pip install -U pip On W</description>
+    </item>
+    
   </channel>
 </rss>

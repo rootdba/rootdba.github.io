@@ -40,7 +40,7 @@
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/notes/ubuntu_insert_ss/</guid>
-      <description>在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF /usr/local/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log 2&amp;gt;&amp;amp;1 &amp;amp; 系统进程 C</description>
+      <description>在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF nohup /usr/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log &amp;amp; 系统进程 C</description>
     </item>
     
     <item>
@@ -50,6 +50,24 @@
       
       <guid>/notes/centos_insert_ss/</guid>
       <description>1、安装epel源： yum install epel-release -y 2、更新当前系统: yum update -y 3、安装升级pip yum install python-pip -y pip install -U pip 4、pip安装shadowsocks pip install shadowsocks 5、创建配置文件： cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;VPS IP&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9991&amp;#34;:&amp;#34;PASSWORD&amp;#34;, &amp;#34;9992&amp;#34;:&amp;#34;PASSWORD&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF 参数说明： serv</description>
+    </item>
+    
+    <item>
+      <title>Linux/Win下安装或升级pip</title>
+      <link>/notes/linux-windows-insert-update-python-pip/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux-windows-insert-update-python-pip/</guid>
+      <description>1、yum安装pip，RedHat/CentOS安装epel源以后可以使用yum直接安装： yum install python-pip -y Debian/Ubuntu可以直接 sudo apt-get install python-pip 2、查看pip的版本号 pip --version 3、升级方法 On Linux or OS X: pip install -U pip On W</description>
+    </item>
+    
+    <item>
+      <title>Redis配置文件redis.conf参数详解</title>
+      <link>/notes/redis-conf/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/redis-conf/</guid>
+      <description>Redis配置文件redis.conf参数详解，基本兼容4.x及5.0版本： /********************************* GENERAL *********************************/ // 是否作为守护进程运行 daemonize yes // 如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid pidfile /var/run/redis.pid // Re</description>
     </item>
     
     <item>
@@ -68,6 +86,15 @@
       
       <guid>/notes/runlevel/</guid>
       <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
+    </item>
+    
+    <item>
+      <title>CentOS关闭默认防火墙firewall切换到iptables</title>
+      <link>/notes/firewall-iptables/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/firewall-iptables/</guid>
+      <description>CentOS7的防火墙默认使用的是firewall，与之前的版本使用iptables不一样。 1、关闭防火墙：systemctl stop firewalld 2、关闭开机启动：systemctl disable firewalld 3、安装iptables防火墙</description>
     </item>
     
     <item>

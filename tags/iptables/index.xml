@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iptables on 牧人池塘</title>
+    <link>/tags/iptables/</link>
+    <description>Recent content in iptables on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS关闭默认防火墙firewall切换到iptables</title>
+      <link>/notes/firewall-iptables/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/firewall-iptables/</guid>
+      <description>CentOS7的防火墙默认使用的是firewall，与之前的版本使用iptables不一样。 1、关闭防火墙：systemctl stop firewalld 2、关闭开机启动：systemctl disable firewalld 3、安装iptables防火墙</description>
+    </item>
+    
+  </channel>
+</rss>

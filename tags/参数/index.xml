@@ -16,5 +16,32 @@
       <description>SQLCMD参数语法说明： sqlcmd -? Microsoft (R) SQL Server 命令行工具 版本 15.0.4298.1 NT 版权所有 (C) 2019 Microsoft Corporation。保留所有权利。 用法: Sqlcmd [-U 登录 ID] [-P 密码] [-S 服务器] [-H 主机名] [-E 信任连接] [-N 加密连接][-C 信任服务器证书] [-d</description>
     </item>
     
+    <item>
+      <title>MongoDB快速安装及启动参数配置文件说明</title>
+      <link>/notes/mongodb-start/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mongodb-start/</guid>
+      <description>MongoDB3.4.x快速安装： 访问官网下载中心https://www.mongodb.com/download-center?jmp=nav 根据OS类型选择下载对应的版本： 此处下载RedHat/C</description>
+    </item>
+    
+    <item>
+      <title>Redis安全事项策略要点</title>
+      <link>/notes/redis-safe/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/redis-safe/</guid>
+      <description>Redis生产环境中需要设置下安全策略,主要有以下几点: 1、指定redis服务使用的网卡即监听的地址 （需要重启redis才能生效）即监听地址为：bind 127.0.0.1 192.168.121.160 注：修改后只有本机和内网才能访问Redis。</description>
+    </item>
+    
+    <item>
+      <title>Redis配置文件redis.conf参数详解</title>
+      <link>/notes/redis-conf/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/redis-conf/</guid>
+      <description>Redis配置文件redis.conf参数详解，基本兼容4.x及5.0版本： /********************************* GENERAL *********************************/ // 是否作为守护进程运行 daemonize yes // 如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid pidfile /var/run/redis.pid // Re</description>
+    </item>
+    
   </channel>
 </rss>

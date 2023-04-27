@@ -44,6 +44,24 @@
     </item>
     
     <item>
+      <title>MongoDB</title>
+      <link>/categories/mongodb/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>/categories/redis/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Oracle</title>
       <link>/categories/oracle/</link>
       <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>

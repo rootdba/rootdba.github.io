@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>Redis安全事项策略要点 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="Redis生产环境中需要设置下安全策略,主要有以下几点: 1、指定redis服务使用的网卡即监听的地址 （需要重启redis才能生效）即监听地址为：bind 127.0.0.1 192.168.121.160 注：修改后只有本机和内网才能访问Redis。" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/redis-safe/' title='Redis安全事项策略要点 '>Redis安全事项策略要点</a>
+									
+					    						
+						<a href="/categories/redis" title="分类：Redis"> - Redis</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2017.01.11</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>Redis生产环境中需要设置下安全策略,主要有以下几点:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1、指定redis服务使用的网卡即监听的地址 （需要重启redis才能生效）即监听地址为：bind 127.0.0.1 192.168.121.160
+</span></span><span class="line"><span class="cl">注：修改后只有本机和内网才能访问Redis。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、设置访问密码 （需要重启redis才能生效）
+</span></span><span class="line"><span class="cl">在 redis.conf 中找到“requirepass”字段，在后面填上你需要的密码，Redis客户端也需要使用此密码来访问Redis服务。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、修改Redis服务运行账号
+</span></span><span class="line"><span class="cl">请以较低权限账号运行Redis服务，且禁用该账号的登录权限。可以限制攻击者往磁盘写入文件，但是Redis数据还是能被黑客访问到，或者被黑客恶意删除。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4、设置防火墙策略
+</span></span><span class="line"><span class="cl">如果正常业务中Redis服务需要被其他服务器来访问，可以设置iptables策略仅允许指定的IP来访问Redis服务。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5、关闭危险命令：Redis 中有一些危险的命令，例如 FLUSHALL、FLUSHDB 和 CONFIG 等，这些命令可能会导致数据丢失或服务拒绝。可以通过修改 Redis 的配置文件，设置 rename-command 参数来禁用这些命令，或者使用 --rename-command 命令行选项来动态禁用它们。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">6、定期备份数据：定期备份 Redis 数据可以防止数据丢失，同时也能够帮助您在发生安全事件时快速恢复。可以使用 Redis 提供的 BGSAVE 命令或者第三方工具（如 redis-rdb-tools）来备份数据。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">7、定期更新 Redis 版本：定期更新 Redis 版本可以保持系统与最新安全更新同步，避免已知漏洞导致的安全问题。在升级 Redis 时，请注意备份数据和测试应用程序是否与新版本兼容。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">8、监控 Redis 运行状态：监控 Redis 的运行状态可以帮助您快速检测和诊断潜在的安全问题。可以使用 Redis 自带的 MONITOR 命令、日志文件和统计信息，也可以使用第三方监控工具（如 Nagios、Zabbix 等）进行监控。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">9、使用 SSL 加密：如果您必须在 Redis 服务器和客户端之间传输敏感数据，应该考虑使用 SSL/TLS 加密来保护数据。可以在 Redis 的配置文件中设置 ssl 参数来启用 SSL/TLS 加密，也可以使用专门的代理工具（如 stunnel）来实现加密。
+</span></span></code></pre></div></div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/redis/" title="Redis">Redis</a>
+                                    
+                                    <a href="/tags/%E5%8F%82%E6%95%B0/" title="参数">参数</a>
+                                    
+                                    <a href="/tags/%E5%AE%89%E5%85%A8/" title="安全">安全</a>
+                                    
+                                    <a href="/tags/%E7%AD%96%E7%95%A5/" title="策略">策略</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>均衡 on 牧人池塘</title>
+    <link>/tags/%E5%9D%87%E8%A1%A1/</link>
+    <description>Recent content in 均衡 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 11 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E5%9D%87%E8%A1%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx负载均衡参数说明</title>
+      <link>/notes/nginx-upstream-keepalive-weight/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-upstream-keepalive-weight/</guid>
+      <description>upstream的负载均衡，（以权重方式分发），weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的比例越大: upstream blog.nginx.com { server 192.168.80.121:80 weight=5; server 192.168.80.122:80 weight=2; server 192.168.80.123:80 weight=3; } 以nginx热备方式分发，</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -16,5 +16,23 @@
       <description>禁止未绑定的域名或任意域名直接访问： server { listen 80 default_server; server_name _; # 默认server return 500; } 对任意域名访问做301跳转： server { listen 80 default_server; server_name _; return 301 https://www.test.com$request_uri; } 以上设置后使用IP不能直接访问服务器，需要绑定域名后访问。</description>
     </item>
     
+    <item>
+      <title>Nginx以普通用户运行</title>
+      <link>/notes/nginx-process-user/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-process-user/</guid>
+      <description>root账号执行： useradd nginx chown -R nginx.nginx /usr/local/nginx/ setcap CAP_NET_BIND_SERVICE=+ep /usr/local/nginx/sbin/nginx killall -9 nginx su - nginx /usr/local/nginx/sbin/nginx 查看进程，nginx主进程及子进程都是以nginx用户在运行了；</description>
+    </item>
+    
+    <item>
+      <title>Nginx负载均衡参数说明</title>
+      <link>/notes/nginx-upstream-keepalive-weight/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-upstream-keepalive-weight/</guid>
+      <description>upstream的负载均衡，（以权重方式分发），weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的比例越大: upstream blog.nginx.com { server 192.168.80.121:80 weight=5; server 192.168.80.122:80 weight=2; server 192.168.80.123:80 weight=3; } 以nginx热备方式分发，</description>
+    </item>
+    
   </channel>
 </rss>

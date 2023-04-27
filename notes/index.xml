@@ -121,7 +121,7 @@
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/notes/ubuntu_insert_ss/</guid>
-      <description>在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF /usr/local/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log 2&amp;gt;&amp;amp;1 &amp;amp; 系统进程 C</description>
+      <description>在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF nohup /usr/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log &amp;amp; 系统进程 C</description>
     </item>
     
     <item>
@@ -131,6 +131,78 @@
       
       <guid>/notes/centos_insert_ss/</guid>
       <description>1、安装epel源： yum install epel-release -y 2、更新当前系统: yum update -y 3、安装升级pip yum install python-pip -y pip install -U pip 4、pip安装shadowsocks pip install shadowsocks 5、创建配置文件： cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;VPS IP&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9991&amp;#34;:&amp;#34;PASSWORD&amp;#34;, &amp;#34;9992&amp;#34;:&amp;#34;PASSWORD&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF 参数说明： serv</description>
+    </item>
+    
+    <item>
+      <title>Linux/Win下安装或升级pip</title>
+      <link>/notes/linux-windows-insert-update-python-pip/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux-windows-insert-update-python-pip/</guid>
+      <description>1、yum安装pip，RedHat/CentOS安装epel源以后可以使用yum直接安装： yum install python-pip -y Debian/Ubuntu可以直接 sudo apt-get install python-pip 2、查看pip的版本号 pip --version 3、升级方法 On Linux or OS X: pip install -U pip On W</description>
+    </item>
+    
+    <item>
+      <title>Mongo命令连接远程服务器的MongoDB数据库</title>
+      <link>/notes/mongodb-remotely/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mongodb-remotely/</guid>
+      <description>MongoDB连接远程服务器的命令格式如下: mongo 远程主机ip或DNS:MongoDB端口号/数据库名 -u user -p password MongoDB连接远程服务器的命令示例代码: //使用默认端口连接MongoDB mongo 192.168.1.100 MongoDB shell version: 2.4.8 connecting to:</description>
+    </item>
+    
+    <item>
+      <title>MySql锁等待Lock wait timeout exceeded锁表处理</title>
+      <link>/notes/lock-wait-timeout-exceeded/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/lock-wait-timeout-exceeded/</guid>
+      <description>现象 A.数据更新或新增后数据经常自动回滚。 B.表操作总报 Lock wait timeout exceeded 并长时间无反应 解决方法 A.应急方法：show full processlist; kill掉出现问题的进程 B.根治方法：select * from innodb_trx;查看有是哪些</description>
+    </item>
+    
+    <item>
+      <title>MongoDB快速安装及启动参数配置文件说明</title>
+      <link>/notes/mongodb-start/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mongodb-start/</guid>
+      <description>MongoDB3.4.x快速安装： 访问官网下载中心https://www.mongodb.com/download-center?jmp=nav 根据OS类型选择下载对应的版本： 此处下载RedHat/C</description>
+    </item>
+    
+    <item>
+      <title>Nginx以普通用户运行</title>
+      <link>/notes/nginx-process-user/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-process-user/</guid>
+      <description>root账号执行： useradd nginx chown -R nginx.nginx /usr/local/nginx/ setcap CAP_NET_BIND_SERVICE=+ep /usr/local/nginx/sbin/nginx killall -9 nginx su - nginx /usr/local/nginx/sbin/nginx 查看进程，nginx主进程及子进程都是以nginx用户在运行了；</description>
+    </item>
+    
+    <item>
+      <title>Nginx负载均衡参数说明</title>
+      <link>/notes/nginx-upstream-keepalive-weight/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-upstream-keepalive-weight/</guid>
+      <description>upstream的负载均衡，（以权重方式分发），weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的比例越大: upstream blog.nginx.com { server 192.168.80.121:80 weight=5; server 192.168.80.122:80 weight=2; server 192.168.80.123:80 weight=3; } 以nginx热备方式分发，</description>
+    </item>
+    
+    <item>
+      <title>Redis安全事项策略要点</title>
+      <link>/notes/redis-safe/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/redis-safe/</guid>
+      <description>Redis生产环境中需要设置下安全策略,主要有以下几点: 1、指定redis服务使用的网卡即监听的地址 （需要重启redis才能生效）即监听地址为：bind 127.0.0.1 192.168.121.160 注：修改后只有本机和内网才能访问Redis。</description>
+    </item>
+    
+    <item>
+      <title>Redis配置文件redis.conf参数详解</title>
+      <link>/notes/redis-conf/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/redis-conf/</guid>
+      <description>Redis配置文件redis.conf参数详解，基本兼容4.x及5.0版本： /********************************* GENERAL *********************************/ // 是否作为守护进程运行 daemonize yes // 如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid pidfile /var/run/redis.pid // Re</description>
     </item>
     
     <item>
@@ -149,6 +221,15 @@
       
       <guid>/notes/runlevel/</guid>
       <description>由命令行级别切换到窗口级别的命令未变：init 5或startx 由窗口级别切换到命令行级别的命令未变：init 3 新版本的运行级别都定义在 /lib/systemd/system下: [root@localhost ~]# ls -ltr /lib/systemd/system/runlevel*.target 1 root root 16 9月 10</description>
+    </item>
+    
+    <item>
+      <title>CentOS关闭默认防火墙firewall切换到iptables</title>
+      <link>/notes/firewall-iptables/</link>
+      <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/firewall-iptables/</guid>
+      <description>CentOS7的防火墙默认使用的是firewall，与之前的版本使用iptables不一样。 1、关闭防火墙：systemctl stop firewalld 2、关闭开机启动：systemctl disable firewalld 3、安装iptables防火墙</description>
     </item>
     
     <item>

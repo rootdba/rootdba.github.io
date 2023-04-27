@@ -12,7 +12,7 @@
 	
     
     
-    <meta name="description" content="在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF /usr/local/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log 2&amp;gt;&amp;amp;1 &amp;amp; 系统进程 C" />
+    <meta name="description" content="在内存只有192MB小鸡vps上安装ss服务，基于ubuntu16.04精简版，安装脚本命令如下： apt-get update pip install -U pip pip3 install --upgrade pip pip3 install shadowsocks pip install --upgrade shadowsocks pip3 install --upgrade shadowsocks cat &amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; /etc/shadowsocks.json { &amp;#34;server&amp;#34;:&amp;#34;vps ipadder&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:8888, &amp;#34;port_password&amp;#34;:{ &amp;#34;9001&amp;#34;:&amp;#34;password&amp;#34;, &amp;#34;9002&amp;#34;:&amp;#34;password&amp;#34; }, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: false } EOF nohup /usr/bin/ssserver -c /etc/shadowsocks.json &amp;gt;&amp;gt; /ss.log &amp;amp; 系统进程 C" />
     
 
     
@@ -151,7 +151,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="s">    &#34;fast_open&#34;: false
 </span></span></span><span class="line"><span class="cl"><span class="s">}
 </span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/local/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nohup /usr/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log <span class="p">&amp;</span>
 </span></span></code></pre></div><p>系统进程</p>
 <p><img src="/upfile/uploads/2019/04/2509184595.png" alt="1730978474.jpg"></p>
 <p>CPU使用率</p>

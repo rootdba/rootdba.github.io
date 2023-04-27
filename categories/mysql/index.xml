@@ -62,6 +62,15 @@
     </item>
     
     <item>
+      <title>MySql锁等待Lock wait timeout exceeded锁表处理</title>
+      <link>/notes/lock-wait-timeout-exceeded/</link>
+      <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/lock-wait-timeout-exceeded/</guid>
+      <description>现象 A.数据更新或新增后数据经常自动回滚。 B.表操作总报 Lock wait timeout exceeded 并长时间无反应 解决方法 A.应急方法：show full processlist; kill掉出现问题的进程 B.根治方法：select * from innodb_trx;查看有是哪些</description>
+    </item>
+    
+    <item>
       <title>MySQL报错“noAccessToProcedureBodies=true”解决方法</title>
       <link>/notes/noaccesstoprocedurebodies/</link>
       <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>

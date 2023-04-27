@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>配置 on 牧人池塘</title>
+    <link>/tags/%E9%85%8D%E7%BD%AE/</link>
+    <description>Recent content in 配置 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 16 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MongoDB快速安装及启动参数配置文件说明</title>
+      <link>/notes/mongodb-start/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/mongodb-start/</guid>
+      <description>MongoDB3.4.x快速安装： 访问官网下载中心https://www.mongodb.com/download-center?jmp=nav 根据OS类型选择下载对应的版本： 此处下载RedHat/C</description>
+    </item>
+    
+  </channel>
+</rss>

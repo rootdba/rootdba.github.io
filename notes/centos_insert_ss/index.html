@@ -160,9 +160,9 @@
 </span></span><span class="line"><span class="cl">fast_open：true 或 false。Linux 内核在3.7+，可以开启 fast_open 以降低延迟。
 </span></span></code></pre></div><p>6、启动服务并加入开机启动项：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s /usr/local/bin/ssserver /usr/bin/ssserver
-</span></span><span class="line"><span class="cl">/usr/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/usr/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log 2&gt;&amp;1 &amp;&#34;</span> &gt;&gt; /etc/rc.d/rc.local
-</span></span><span class="line"><span class="cl">chmod +x /etc/rc.d/rc.local 
+</span></span><span class="line"><span class="cl">nohup /usr/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;nohup /usr/bin/ssserver -c /etc/shadowsocks.json &gt;&gt; /ss.log &amp;&#34;</span> &gt;&gt; /etc/rc.d/rc.local
+</span></span><span class="line"><span class="cl">chmod +x /etc/rc.d/rc.local
 </span></span></code></pre></div><p>至此，安装完成，直接在ShadowsocksR客户端配置相关IP和端口密码、加密算法即可。</p>
 </div>
                     <div class="post_footer">

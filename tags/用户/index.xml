@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>用户 on 牧人池塘</title>
+    <link>/tags/%E7%94%A8%E6%88%B7/</link>
+    <description>Recent content in 用户 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%94%A8%E6%88%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx以普通用户运行</title>
+      <link>/notes/nginx-process-user/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/nginx-process-user/</guid>
+      <description>root账号执行： useradd nginx chown -R nginx.nginx /usr/local/nginx/ setcap CAP_NET_BIND_SERVICE=+ep /usr/local/nginx/sbin/nginx killall -9 nginx su - nginx /usr/local/nginx/sbin/nginx 查看进程，nginx主进程及子进程都是以nginx用户在运行了；</description>
+    </item>
+    
+  </channel>
+</rss>
