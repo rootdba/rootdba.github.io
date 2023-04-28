@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>resize2fs on 牧人池塘</title>
+    <link>/tags/resize2fs/</link>
+    <description>Recent content in resize2fs on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/resize2fs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>调整Ubuntu22.10硬盘/dev/mapper/ubuntu--vg-ubuntu--lv分区容量</title>
+      <link>/notes/ubuntu-2210-dev-mapper-ubuntu-vg-ubuntu-lv/</link>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/ubuntu-2210-dev-mapper-ubuntu-vg-ubuntu-lv/</guid>
+      <description>调整步骤如下： 执行 sudo df -h 命令，确认该分区当前的使用情况和挂载点。 运行 sudo lvdisplay 命令，查看该逻辑卷的属性，包括名称、VG（卷组）名称、LV（逻辑卷）大小和路径等信息。 执行 sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 命令来重新调整文件系统大小。 运行</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -99,10 +99,25 @@
     <lastmod>2023-04-12T10:48:29+08:00</lastmod>
   </url><url>
     <loc>/tags/linux/</loc>
-    <lastmod>2023-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/linux/</loc>
-    <lastmod>2023-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/lvdisplay/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/lvresize/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/resize2fs/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/ubuntu/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/notes/ubuntu-2210-dev-mapper-ubuntu-vg-ubuntu-lv/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/rocky/</loc>
     <lastmod>2023-03-03T00:00:00+00:00</lastmod>
@@ -234,9 +249,6 @@
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/ss/</loc>
-    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/ubuntu/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/vps/</loc>

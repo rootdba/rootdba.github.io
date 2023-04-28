@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn" >
 <head>
-	<meta name="generator" content="Hugo 0.111.3">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,11 +8,11 @@
 	
 	
 	
-	<title>牧人池塘 ｜ 时光匆匆，记录是对思维的沉淀. </title>
+	<title>调整Ubuntu22.10硬盘/dev/mapper/ubuntu--vg-ubuntu--lv分区容量 ｜ 牧人池塘</title>
 	
     
     
-    <meta name="description" content="牧人池塘记录牧云生活点滴." />
+    <meta name="description" content="调整步骤如下： 执行 sudo df -h 命令，确认该分区当前的使用情况和挂载点。 运行 sudo lvdisplay 命令，查看该逻辑卷的属性，包括名称、VG（卷组）名称、LV（逻辑卷）大小和路径等信息。 执行 sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 命令来重新调整文件系统大小。 运行" />
     
 
     
@@ -22,8 +21,6 @@
     
 
 	
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="牧人池塘" />
-    
     
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -113,104 +110,84 @@
     </div>
 </div>
         <div class="content">
-            
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/ubuntu-2210-dev-mapper-ubuntu-vg-ubuntu-lv/' title='调整Ubuntu22.10硬盘/dev/mapper/ubuntu--vg-ubuntu--lv分区容量 '>调整Ubuntu22.10硬盘/dev/mapper/ubuntu--vg-ubuntu--lv分区容量</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2023.03.07</span>
+						
 
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/songjiang-juhua/' title='松江菊花文化节'>松江菊花文化节</a></h2>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.10.03</span>
-                </span>
+						
+                    </div>
+                    <div class="post_content markdown"><p>调整步骤如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">执行 sudo df -h 命令，确认该分区当前的使用情况和挂载点。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">运行 sudo lvdisplay 命令，查看该逻辑卷的属性，包括名称、VG（卷组）名称、LV（逻辑卷）大小和路径等信息。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">执行 sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 命令来重新调整文件系统大小。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">运行 sudo lvresize -r -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv 命令来将逻辑卷调整到最大可用空间
+</span></span><span class="line"><span class="cl">-r 选项会自动调整文件系统大小，-l 选项用于指定逻辑卷大小，+100%FREE 表示将逻辑卷扩展到最大可用空间。
+</span></span><span class="line"><span class="cl">扩展为30G则运行如下命令：
+</span></span><span class="line"><span class="cl">运行 sudo lvresize -r -L +30G /dev/mapper/ubuntu--vg-ubuntu--lv 
+</span></span></code></pre></div><p>其他版本也通用。</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/ubuntu/" title="Ubuntu">Ubuntu</a>
+                                    
+                                    <a href="/tags/lvdisplay/" title="lvdisplay">lvdisplay</a>
+                                    
+                                    <a href="/tags/linux/" title="Linux">Linux</a>
+                                    
+                                    <a href="/tags/%E5%88%86%E5%8C%BA/" title="分区">分区</a>
+                                    
+                                    <a href="/tags/lvresize/" title="lvresize">lvresize</a>
+                                    
+                                    <a href="/tags/resize2fs/" title="resize2fs">resize2fs</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
                 
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>Tag标签：
-                    
-                    <a href="/tags/%E8%8F%8A%E8%8A%B1/" title="菊花">菊花</a>
-                    
-                    <a href="/tags/%E6%9D%BE%E6%B1%9F/" title="松江">松江</a>
-                    
-                    <a href="/tags/%E6%96%87%E5%8C%96%E8%8A%82/" title="文化节">文化节</a>
-                    
-                </span>
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
                 
             </div>
         </div>
     </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/xihu/' title='西湖'>西湖</a></h2>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.09.08</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>Tag标签：
-                    
-                    <a href="/tags/%E8%A5%BF%E6%B9%96/" title="西湖">西湖</a>
-                    
-                    <a href="/tags/%E4%B9%90%E5%9B%AD/" title="乐园">乐园</a>
-                    
-                    <a href="/tags/%E9%9F%B3%E4%B9%90/" title="音乐">音乐</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/life/the/' title='新开始，新起点'>新开始，新起点</a></h2>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2015.03.01</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>Tag标签：
-                    
-                    <a href="/tags/%E5%BC%80%E5%A7%8B/" title="开始">开始</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="pagination">
-    
-    
-    <a href="/page/6/" class="pre">
-        
-    </a>
-    
-    
-    
-</div>
-        </div>
-    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
     <footer class="footer">
     <div class="powered_by">
 
