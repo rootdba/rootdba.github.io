@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="牧云" />
+	
+	
+	
+	<title>CentOS/RHEL禁用IPv6 ｜ 牧人池塘</title>
+	
+    
+    
+    <meta name="description" content="在红帽系中禁用IPv6的方法有两种： 第一种禁用IPv6的方法： 1.打开/etc/default/grub文件： vim /etc/default/grub 2.找到以下行： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;quiet&amp;#34; 3.将其更改为以下内容，并保存并关闭文件： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;ipv6.disable=1 quiet&amp;#34; 4.更新GRUB配置：" />
+    
+
+    
+    
+    <meta name="keywords" content="牧人池塘, DBA, 运维, 开发, 独立博客, iops.top" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcdn.net/ajax/libs/remixicon/3.1.1/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/notes/">技术</a>
+            </li>
+            
+            <li>
+                <a href="/life/">生活</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">分类</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/doc/">文档</a>
+            </li>
+            
+            <li>
+                <a href="/firendlink/">友链</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>牧人池塘</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">时光匆匆，记录是对思维的沉淀.</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/rootdba" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                
+                <a href="https://twitter.com/imlaoma" title="twitter" target="_blank"><i class="ri-twitter-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/notes/linux_disable_ipv6/' title='CentOS/RHEL禁用IPv6 '>CentOS/RHEL禁用IPv6</a>
+									
+					    						
+						<a href="/categories/linux" title="分类：Linux"> - Linux</a>	</h2>					
+					    
+						
+                        <span class="date">日期：2021.12.12</span>
+						
+
+						
+                    </div>
+                    <div class="post_content markdown"><p>在红帽系中禁用IPv6的方法有两种：</p>
+<p>第一种禁用IPv6的方法：</p>
+<p>1.打开<code>/etc/default/grub</code>文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim /etc/default/grub
+</span></span></code></pre></div><p>2.找到以下行：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&#34;quiet&#34;</span>
+</span></span></code></pre></div><p>3.将其更改为以下内容，并保存并关闭文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&#34;ipv6.disable=1 quiet&#34;</span>
+</span></span></code></pre></div><p>4.更新GRUB配置：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grub2-mkconfig -o /boot/grub2/grub.cfg
+</span></span></code></pre></div><p>5.重新启动系统以使更改生效：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reboot
+</span></span></code></pre></div><p>6.检查IPv6是否已禁用。运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+</span></span></code></pre></div><p>输出为“1”，则表示IPv6已禁用。</p>
+<p>第二种禁用IPv6的方法：</p>
+<ol>
+<li>打开<code>/etc/sysctl.conf</code>文件：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vim /etc/sysctl.conf
+</span></span></code></pre></div><ol>
+<li>在文件末尾添加以下行：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net.ipv6.conf.all.disable_ipv6 <span class="o">=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">net.ipv6.conf.default.disable_ipv6 <span class="o">=</span> <span class="m">1</span>
+</span></span></code></pre></div><p>3.保存并关闭文件。</p>
+<p>4.运行以下命令以使更改生效：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sysctl -p
+</span></span></code></pre></div><p>5.检查IPv6是否已禁用。运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+</span></span></code></pre></div><p>如果输出为“1”，则表示IPv6已禁用。</p>
+<p>推荐第二种方法。</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>Tag标签：
+                                    
+                                    <a href="/tags/%E7%A6%81%E7%94%A8/" title="禁用">禁用</a>
+                                    
+                                    <a href="/tags/ipv6/" title="IPv6">IPv6</a>
+                                    
+                                    <a href="/tags/sysctl/" title="sysctl">sysctl</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 16px;">发表评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="rootdba/rootdba.github.io" 
+            issue-term="url"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+
+
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+
+        
+        <a href="/">&copy; 2015-2023 牧人池塘</a> <a href="https://gohugo.io/" target="_blank">Hugo驱动</a> <a href="https://github.com/varkai/hugo-theme-zozo" target="_blank">Theme: Zozo</a> <a href='/index.xml' target="_blank" title='Rss订阅'>Rss订阅</a> 
+
+    </div>
+
+    <div class="footer_slogan">
+        <span>勿在浮沙筑高台，不为繁华易匠心.</span><br>
+    </div>
+</footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>

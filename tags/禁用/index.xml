@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>禁用 on 牧人池塘</title>
+    <link>/tags/%E7%A6%81%E7%94%A8/</link>
+    <description>Recent content in 禁用 on 牧人池塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%A6%81%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS/RHEL禁用IPv6</title>
+      <link>/notes/linux_disable_ipv6/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux_disable_ipv6/</guid>
+      <description>在红帽系中禁用IPv6的方法有两种： 第一种禁用IPv6的方法： 1.打开/etc/default/grub文件： vim /etc/default/grub 2.找到以下行： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;quiet&amp;#34; 3.将其更改为以下内容，并保存并关闭文件： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;ipv6.disable=1 quiet&amp;#34; 4.更新GRUB配置：</description>
+    </item>
+    
+  </channel>
+</rss>

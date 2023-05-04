@@ -62,6 +62,15 @@
     </item>
     
     <item>
+      <title>CentOS/RHEL禁用IPv6</title>
+      <link>/notes/linux_disable_ipv6/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/notes/linux_disable_ipv6/</guid>
+      <description>在红帽系中禁用IPv6的方法有两种： 第一种禁用IPv6的方法： 1.打开/etc/default/grub文件： vim /etc/default/grub 2.找到以下行： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;quiet&amp;#34; 3.将其更改为以下内容，并保存并关闭文件： GRUB_CMDLINE_LINUX_DEFAULT=&amp;#34;ipv6.disable=1 quiet&amp;#34; 4.更新GRUB配置：</description>
+    </item>
+    
+    <item>
       <title>在192 MB的VPS上安装ss服务</title>
       <link>/notes/ubuntu_insert_ss/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
